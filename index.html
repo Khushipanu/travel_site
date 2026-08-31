@@ -15,10 +15,13 @@
 
     <meta
         name="description"
-        content="Best Taxi Service in Mauritius - BTSM provides airport transfers, private transportation, excursions and customized travel services across Mauritius."
+        content="Best Taxi Service in Mauritius for airport transfers, private tours, excursions, group transportation and tailor-made island experiences."
     >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
     <link
         rel="preconnect"
@@ -29,6 +32,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap"
         rel="stylesheet"
+    >
+
+    <!-- International phone selector -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/intl-tel-input/build/css/intlTelInput.css"
     >
 
     <link
@@ -52,14 +61,12 @@
         <a
             href="#home"
             class="brand"
-            aria-label="BTSM - Best Taxi Service in Mauritius"
+            aria-label="BTSM Best Taxi Service in Mauritius"
         >
 
             <span>
 
-                <strong>
-                    BTSM
-                </strong>
+                <strong>BTSM</strong>
 
                 <small data-i18n="brand.tagline">
                     BEST TAXI SERVICE IN MAURITIUS
@@ -72,35 +79,59 @@
 
         <nav aria-label="Main navigation">
 
-            <a href="#home" data-i18n="nav.home">
+            <a
+                href="#home"
+                data-i18n="nav.home"
+            >
                 Home
             </a>
 
-            <a href="#services" data-i18n="nav.services">
+            <a
+                href="#services"
+                data-i18n="nav.services"
+            >
                 Services
             </a>
 
-            <a href="#vehicles" data-i18n="nav.transfers">
+            <a
+                href="#vehicles"
+                data-i18n="nav.transfers"
+            >
                 Transfers
             </a>
 
-            <a href="#excursions" data-i18n="nav.excursions">
+            <a
+                href="#excursions"
+                data-i18n="nav.excursions"
+            >
                 Excursions
             </a>
 
-            <a href="#experiences" data-i18n="nav.experiences">
+            <a
+                href="#experiences"
+                data-i18n="nav.experiences"
+            >
                 Experiences
             </a>
 
-            <a href="#fleet" data-i18n="nav.fleet">
+            <a
+                href="#fleet"
+                data-i18n="nav.fleet"
+            >
                 Fleet
             </a>
 
-            <a href="#why-us" data-i18n="nav.why">
+            <a
+                href="#why-us"
+                data-i18n="nav.why"
+            >
                 Why Us
             </a>
 
-            <a href="#faq" data-i18n="nav.faq">
+            <a
+                href="#faq"
+                data-i18n="nav.faq"
+            >
                 FAQ
             </a>
 
@@ -114,23 +145,23 @@
                 aria-label="Select language"
             >
                 <option value="en">
-                    English
+                    🇬🇧 English
                 </option>
 
                 <option value="fr">
-                    Français
+                    🇫🇷 Français
                 </option>
 
                 <option value="es">
-                    Español
+                    🇪🇸 Español
                 </option>
 
                 <option value="de">
-                    Deutsch
+                    🇩🇪 Deutsch
                 </option>
 
                 <option value="it">
-                    Italiano
+                    🇮🇹 Italiano
                 </option>
             </select>
 
@@ -139,13 +170,13 @@
                 class="phone"
                 href="tel:+23052532214"
             >
-                +230 5253 2214
+                🇲🇺 +230 5253 2214
             </a>
 
 
             <a
                 href="#booking"
-                class="btn green"
+                class="btn green header-book"
                 data-i18n="common.bookNow"
             >
                 Book Now
@@ -164,7 +195,6 @@
         </div>
 
     </div>
-
 
 
     <div
@@ -232,13 +262,15 @@
     <div class="container hero-grid">
 
 
+        <!-- HERO COPY -->
+
         <div class="hero-copy">
 
             <span
                 class="eyebrow"
                 data-i18n="hero.eyebrow"
             >
-                BEST TAXI SERVICE IN MAURITIUS
+                MAURITIUS AIRPORT TRANSFERS • PRIVATE TOURS
             </span>
 
 
@@ -246,16 +278,26 @@
                 data-i18n="hero.title"
                 data-i18n-html="true"
             >
-                Explore Mauritius.<br>
-                <em>Travel comfortably.</em>
+                Your Mauritius journey.<br>
+                <em>Beautifully handled.</em>
             </h1>
 
 
             <p data-i18n="hero.text">
-                Reliable airport transfers, private excursions
-                and group transportation with professional
-                local drivers.
+                Visiting Mauritius? From the moment you land,
+                travel comfortably with trusted local drivers,
+                private transfers and unforgettable island experiences.
             </p>
+
+
+            <div
+                class="hero-tourist-note"
+                data-i18n="hero.touristNote"
+            >
+                ✈️ First time in Mauritius? We can help with your
+                airport pickup, hotel transfer, private tours
+                and island itinerary.
+            </div>
 
 
             <div class="hero-buttons">
@@ -274,7 +316,7 @@
                     class="btn outline"
                     data-i18n="hero.explore"
                 >
-                    Explore Excursions
+                    Explore Mauritius
                 </a>
 
             </div>
@@ -283,15 +325,15 @@
             <div class="trust">
 
                 <span data-i18n="hero.trust1">
-                    ✓ Airport pickup & drop-off
+                    ✓ 24/7 Airport Pickup
                 </span>
 
                 <span data-i18n="hero.trust2">
-                    ✓ Private & group transport
+                    ✓ Local Mauritius Drivers
                 </span>
 
                 <span data-i18n="hero.trust3">
-                    ✓ Local professional drivers
+                    ✓ Private Tours & Transfers
                 </span>
 
             </div>
@@ -315,23 +357,20 @@
                     QUICK BOOKING
                 </span>
 
-
                 <b data-i18n="booking.available">
                     24/7 AVAILABLE
                 </b>
-
 
                 <h2 data-i18n="booking.title">
                     Plan your journey
                 </h2>
 
-
                 <p data-i18n="booking.intro">
-                    Choose your pickup and destination anywhere across Mauritius.
+                    Choose your pickup and destination
+                    anywhere across Mauritius.
                 </p>
 
             </div>
-
 
 
             <form
@@ -356,80 +395,47 @@
                             required
                         >
 
-                            <option
-                                value=""
-                                data-i18n="form.selectService"
-                            >
+                            <option value="">
                                 Select service
                             </option>
 
-                            <option
-                                value="Airport Transfer"
-                                data-i18n="service.airport"
-                            >
+                            <option value="Airport Transfer">
                                 Airport Transfer
                             </option>
 
-                            <option
-                                value="Private Transportation"
-                                data-i18n="service.private"
-                            >
+                            <option value="Private Transportation">
                                 Private Transportation
                             </option>
 
-                            <option
-                                value="Group Transportation"
-                                data-i18n="service.group"
-                            >
+                            <option value="Group Transportation">
                                 Group Transportation
                             </option>
 
-                            <option
-                                value="Excursion"
-                                data-i18n="service.excursion"
-                            >
+                            <option value="Excursion">
                                 Excursion
                             </option>
 
-                            <option
-                                value="Activity Booking"
-                                data-i18n="service.activity"
-                            >
+                            <option value="Activity Booking">
                                 Activity Booking
                             </option>
 
-                            <option
-                                value="Customized Local Tour"
-                                data-i18n="service.custom"
-                            >
+                            <option value="Customized Local Tour">
                                 Customized Local Tour
                             </option>
 
-                            <option
-                                value="Tailor-made Trip"
-                                data-i18n="service.tailor"
-                            >
+                            <option value="Tailor-made Trip">
                                 Tailor-made Trip
                             </option>
 
-                            <option
-                                value="Birthday Surprise"
-                                data-i18n="service.birthday"
-                            >
+                            <option value="Birthday Surprise">
                                 Birthday Surprise
                             </option>
 
-                            <option
-                                value="Wedding / Event"
-                                data-i18n="service.wedding"
-                            >
+                            <option value="Wedding / Event">
                                 Wedding / Event
                             </option>
 
-                            <option
-                                value="Cruise Ship Transfer"
-                                data-i18n="service.cruise"
-                            >
+                            <option value="Cruise Ship Transfer">
                                 Cruise Ship Transfer
                             </option>
 
@@ -451,9 +457,8 @@
                             type="text"
                             id="fullName"
                             name="fullName"
-                            placeholder="Your full name"
-                            data-i18n-placeholder="form.namePlaceholder"
                             autocomplete="name"
+                            placeholder="Your full name"
                             required
                         >
 
@@ -473,9 +478,8 @@
                             type="email"
                             id="customerEmail"
                             name="customerEmail"
-                            placeholder="yourname@example.com"
-                            data-i18n-placeholder="form.emailPlaceholder"
                             autocomplete="email"
+                            placeholder="yourname@example.com"
                             required
                         >
 
@@ -483,9 +487,7 @@
 
 
 
-                    <!-- =================================================
-                         PHONE WITH COUNTRY CODE
-                    ================================================== -->
+                    <!-- PHONE -->
 
                     <label class="full">
 
@@ -493,59 +495,15 @@
                             WhatsApp / Phone
                         </span>
 
-
-                        <div class="phone-input-group">
-
-                            <select
-                                id="countryCode"
-                                name="countryCode"
-                                aria-label="Country calling code"
-                                required
-                            >
-
-                                <option value="+230" selected>
-                                    🇲🇺 Mauritius +230
-                                </option>
-
-                                <option value="+262">
-                                    🇷🇪 Réunion +262
-                                </option>
-
-                                <option value="+261">
-                                    🇲🇬 Madagascar +261
-                                </option>
-
-                                <option value="+248">
-                                    🇸🇨 Seychelles +248
-                                </option>
-
-                                <option value="+27">
-                                    🇿🇦 South Africa +27
-                                </option>
-
-                                <option value="+269">
-                                    🇰🇲 Comoros +269
-                                </option>
-
-                                <option value="+91">
-                                    🇮🇳 India +91
-                                </option>
-
-                            </select>
-
-
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                placeholder="5253 2214"
-                                data-i18n-placeholder="form.phonePlaceholder"
-                                autocomplete="tel-national"
-                                inputmode="tel"
-                                required
-                            >
-
-                        </div>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            autocomplete="tel"
+                            inputmode="tel"
+                            placeholder="Phone number"
+                            required
+                        >
 
                     </label>
 
@@ -603,52 +561,20 @@
                             required
                         >
 
-                            <option
-                                value=""
-                                data-i18n="form.select"
-                            >
+                            <option value="">
                                 Select
                             </option>
 
-                            <option value="1" data-passenger-count="1">
-                                1 Passenger
-                            </option>
-
-                            <option value="2" data-passenger-count="2">
-                                2 Passengers
-                            </option>
-
-                            <option value="3" data-passenger-count="3">
-                                3 Passengers
-                            </option>
-
-                            <option value="4" data-passenger-count="4">
-                                4 Passengers
-                            </option>
-
-                            <option value="5" data-passenger-count="5">
-                                5 Passengers
-                            </option>
-
-                            <option value="6" data-passenger-count="6">
-                                6 Passengers
-                            </option>
-
-                            <option value="7" data-passenger-count="7">
-                                7 Passengers
-                            </option>
-
-                            <option value="8" data-passenger-count="8">
-                                8 Passengers
-                            </option>
-
-                            <option value="9" data-passenger-count="9">
-                                9 Passengers
-                            </option>
-
-                            <option value="10+" data-passenger-count="10+">
-                                10+ Passengers
-                            </option>
+                            <option value="1">1 Passenger</option>
+                            <option value="2">2 Passengers</option>
+                            <option value="3">3 Passengers</option>
+                            <option value="4">4 Passengers</option>
+                            <option value="5">5 Passengers</option>
+                            <option value="6">6 Passengers</option>
+                            <option value="7">7 Passengers</option>
+                            <option value="8">8 Passengers</option>
+                            <option value="9">9 Passengers</option>
+                            <option value="10+">10+ Passengers</option>
 
                         </select>
 
@@ -670,52 +596,31 @@
                             required
                         >
 
-                            <option
-                                value=""
-                                data-i18n="form.selectVehicle"
-                            >
+                            <option value="">
                                 Select vehicle
                             </option>
 
-                            <option
-                                value="Sedan"
-                                data-i18n="vehicle.sedan"
-                            >
+                            <option value="Sedan">
                                 Sedan
                             </option>
 
-                            <option
-                                value="SUV"
-                                data-i18n="vehicle.suv"
-                            >
+                            <option value="SUV">
                                 SUV
                             </option>
 
-                            <option
-                                value="Minivan"
-                                data-i18n="vehicle.minivan"
-                            >
+                            <option value="Minivan">
                                 Minivan
                             </option>
 
-                            <option
-                                value="Family Van"
-                                data-i18n="vehicle.family"
-                            >
+                            <option value="Family Van">
                                 Family Van
                             </option>
 
-                            <option
-                                value="Minibus"
-                                data-i18n="vehicle.minibus"
-                            >
+                            <option value="Minibus">
                                 Minibus
                             </option>
 
-                            <option
-                                value="Coach"
-                                data-i18n="vehicle.coach"
-                            >
+                            <option value="Coach">
                                 Coach / Large Group
                             </option>
 
@@ -748,7 +653,6 @@
                     </div>
 
 
-
                     <label>
 
                         <span data-i18n="pickup.district">
@@ -762,7 +666,6 @@
                         ></select>
 
                     </label>
-
 
 
                     <label>
@@ -780,13 +683,12 @@
                     </label>
 
 
-
                     <label
                         id="pickupCustomPlaceWrap"
                         class="full conditional-field"
                     >
 
-                        <span data-i18n="pickup.other">
+                        <span>
                             Other Pickup Town / Area
                         </span>
 
@@ -795,11 +697,9 @@
                             id="pickupCustomPlace"
                             name="pickupCustomPlace"
                             placeholder="Enter town, beach or area"
-                            data-i18n-placeholder="location.otherPlaceholder"
                         >
 
                     </label>
-
 
 
                     <label class="full">
@@ -813,7 +713,6 @@
                             id="pickupAddress"
                             name="pickupAddress"
                             placeholder="Hotel, villa, apartment, street, landmark..."
-                            data-i18n-placeholder="pickup.addressPlaceholder"
                             required
                         >
 
@@ -844,7 +743,6 @@
                     </div>
 
 
-
                     <label>
 
                         <span data-i18n="destination.district">
@@ -858,7 +756,6 @@
                         ></select>
 
                     </label>
-
 
 
                     <label>
@@ -876,13 +773,12 @@
                     </label>
 
 
-
                     <label
                         id="destinationCustomPlaceWrap"
                         class="full conditional-field"
                     >
 
-                        <span data-i18n="destination.other">
+                        <span>
                             Other Destination Town / Area
                         </span>
 
@@ -891,11 +787,9 @@
                             id="destinationCustomPlace"
                             name="destinationCustomPlace"
                             placeholder="Enter town, beach or area"
-                            data-i18n-placeholder="location.otherPlaceholder"
                         >
 
                     </label>
-
 
 
                     <label class="full">
@@ -909,7 +803,6 @@
                             id="destinationAddress"
                             name="destinationAddress"
                             placeholder="Hotel, resort, villa, street, landmark..."
-                            data-i18n-placeholder="destination.addressPlaceholder"
                             required
                         >
 
@@ -917,7 +810,7 @@
 
 
 
-                    <!-- SPECIAL REQUEST -->
+                    <!-- NOTES -->
 
                     <label class="full">
 
@@ -925,7 +818,7 @@
                             Special Request
                         </span>
 
-                        <small data-i18n="form.optional">
+                        <small>
                             (optional)
                         </small>
 
@@ -934,7 +827,6 @@
                             name="notes"
                             rows="3"
                             placeholder="Flight number, luggage, additional information..."
-                            data-i18n-placeholder="form.notesPlaceholder"
                         ></textarea>
 
                     </label>
@@ -949,9 +841,7 @@
 
                     <div class="baby-seat-heading">
 
-                        <span>
-                            👶
-                        </span>
+                        <span>👶</span>
 
                         <div>
 
@@ -980,38 +870,23 @@
                             name="babySeats"
                         >
 
-                            <option
-                                value="0"
-                                data-i18n="baby.zero"
-                            >
+                            <option value="0">
                                 No baby seat
                             </option>
 
-                            <option
-                                value="1"
-                                data-i18n="baby.one"
-                            >
+                            <option value="1">
                                 1 baby seat — FREE
                             </option>
 
-                            <option
-                                value="2"
-                                data-i18n="baby.two"
-                            >
+                            <option value="2">
                                 2 baby seats — €5 extra
                             </option>
 
-                            <option
-                                value="3"
-                                data-i18n="baby.three"
-                            >
+                            <option value="3">
                                 3 baby seats — €10 extra
                             </option>
 
-                            <option
-                                value="4"
-                                data-i18n="baby.four"
-                            >
+                            <option value="4">
                                 4 baby seats — €15 extra
                             </option>
 
@@ -1022,17 +897,14 @@
                 </div>
 
 
-
                 <button
                     type="submit"
                     id="submitBooking"
                     class="btn primary full-btn"
                 >
-
                     <span data-i18n="booking.submit">
                         Submit Booking
                     </span>
-
                 </button>
 
 
@@ -1040,8 +912,8 @@
                     class="note"
                     data-i18n="booking.note"
                 >
-                    After submitting, the WhatsApp application will open
-                    with your complete booking request ready to send.
+                    Your booking details will be emailed to BTSM
+                    and WhatsApp will open with your message ready to send.
                 </p>
 
             </form>
@@ -1064,34 +936,22 @@
 
         <div>
             <b>24/7</b>
-
-            <span data-i18n="stats.airport">
-                Airport Transfers
-            </span>
+            <span>Airport Transfers</span>
         </div>
 
         <div>
             <b>6+</b>
-
-            <span data-i18n="stats.vehicles">
-                Vehicle Options
-            </span>
+            <span>Vehicle Options</span>
         </div>
 
         <div>
             <b>100%</b>
-
-            <span data-i18n="stats.local">
-                Local Service
-            </span>
+            <span>Local Service</span>
         </div>
 
         <div>
             <b>1</b>
-
-            <span data-i18n="stats.booking">
-                Easy Booking
-            </span>
+            <span>Easy Booking</span>
         </div>
 
     </div>
@@ -1132,12 +992,11 @@
 
             <p data-i18n="services.text">
                 From airport arrival to your last day on the island,
-                Best Taxi Service in Mauritius helps you travel
-                comfortably, safely and stress-free.
+                BTSM helps tourists travel comfortably, safely
+                and stress-free across Mauritius.
             </p>
 
         </div>
-
 
 
         <div class="service-grid">
@@ -1147,184 +1006,158 @@
 
                 <span>✈️</span>
 
-                <h3 data-i18n="services.airport.title">
-                    Airport Transfers
-                </h3>
+                <h3>Airport Transfers</h3>
 
-                <p data-i18n="services.airport.text">
+                <p>
                     Reliable airport pickup and drop-off
                     with professional local drivers.
                 </p>
 
-                <a href="#booking" data-i18n="services.airport.link">
+                <a href="#booking">
                     Book transfer →
                 </a>
 
             </article>
 
 
-
             <article>
 
                 <span>🚐</span>
 
-                <h3 data-i18n="services.private.title">
-                    Private Transportation
-                </h3>
+                <h3>Private Transportation</h3>
 
-                <p data-i18n="services.private.text">
+                <p>
                     Comfortable private transport for individuals,
                     couples, families and groups.
                 </p>
 
-                <a href="#booking" data-i18n="services.private.link">
+                <a href="#booking">
                     Request transport →
                 </a>
 
             </article>
 
 
-
             <article>
 
                 <span>👥</span>
 
-                <h3 data-i18n="services.group.title">
-                    Group Transportation
-                </h3>
+                <h3>Group Transportation</h3>
 
-                <p data-i18n="services.group.text">
+                <p>
                     Transportation solutions for larger groups,
                     families and events.
                 </p>
 
-                <a href="#booking" data-i18n="services.group.link">
+                <a href="#booking">
                     Plan your group →
                 </a>
 
             </article>
 
 
-
             <article>
 
                 <span>🏝️</span>
 
-                <h3 data-i18n="services.excursion.title">
-                    Private Excursions
-                </h3>
+                <h3>Private Excursions</h3>
 
-                <p data-i18n="services.excursion.text">
-                    Discover Mauritius with flexible
-                    private sightseeing experiences.
+                <p>
+                    Discover Mauritius with flexible private
+                    sightseeing experiences.
                 </p>
 
-                <a href="#excursions" data-i18n="services.excursion.link">
+                <a href="#excursions">
                     View excursion →
                 </a>
 
             </article>
 
 
-
             <article>
 
                 <span>🎟️</span>
 
-                <h3 data-i18n="services.activity.title">
-                    Activity Booking
-                </h3>
+                <h3>Activity Booking</h3>
 
-                <p data-i18n="services.activity.text">
-                    Let us help arrange activities during
-                    your Mauritius holiday.
+                <p>
+                    Let us help arrange activities
+                    during your Mauritius holiday.
                 </p>
 
-                <a href="#experiences" data-i18n="services.activity.link">
+                <a href="#experiences">
                     Explore activities →
                 </a>
 
             </article>
 
 
-
             <article>
 
                 <span>✨</span>
 
-                <h3 data-i18n="services.tailor.title">
-                    Tailor-made Trips
-                </h3>
+                <h3>Tailor-made Trips</h3>
 
-                <p data-i18n="services.tailor.text">
+                <p>
                     Build a personalized Mauritius itinerary
                     around your interests and schedule.
                 </p>
 
-                <a href="#booking" data-i18n="services.tailor.link">
+                <a href="#booking">
                     Create your trip →
                 </a>
 
             </article>
 
 
-
             <article>
 
                 <span>🎂</span>
 
-                <h3 data-i18n="services.birthday.title">
-                    Birthday Surprises
-                </h3>
+                <h3>Birthday Surprises</h3>
 
-                <p data-i18n="services.birthday.text">
+                <p>
                     Make someone's Mauritius holiday
                     memorable with a birthday surprise.
                 </p>
 
-                <a href="#booking" data-i18n="services.birthday.link">
+                <a href="#booking">
                     Plan a surprise →
                 </a>
 
             </article>
 
 
-
             <article>
 
                 <span>💍</span>
 
-                <h3 data-i18n="services.wedding.title">
-                    Weddings & Events
-                </h3>
+                <h3>Weddings & Events</h3>
 
-                <p data-i18n="services.wedding.text">
+                <p>
                     Transportation support for weddings,
                     celebrations and events.
                 </p>
 
-                <a href="#booking" data-i18n="services.wedding.link">
+                <a href="#booking">
                     Plan your event →
                 </a>
 
             </article>
 
 
-
             <article>
 
                 <span>🚢</span>
 
-                <h3 data-i18n="services.cruise.title">
-                    Cruise Ship Trips
-                </h3>
+                <h3>Cruise Ship Trips</h3>
 
-                <p data-i18n="services.cruise.text">
+                <p>
                     Port transfers and excursions designed
                     around your time on the island.
                 </p>
 
-                <a href="#booking" data-i18n="services.cruise.link">
+                <a href="#booking">
                     Enquire now →
                 </a>
 
@@ -1349,27 +1182,24 @@
 
     <div class="container">
 
+
         <div class="center">
 
-            <i data-i18n="pricing.badge">
+            <i>
                 CHOOSE YOUR RIDE
             </i>
 
-            <h2
-                data-i18n="pricing.title"
-                data-i18n-html="true"
-            >
+            <h2>
                 A vehicle for<br>
                 <em>every journey.</em>
             </h2>
 
-            <p data-i18n="pricing.text">
+            <p>
                 Choose the vehicle that suits your group.
                 Final pricing depends on your journey requirements.
             </p>
 
         </div>
-
 
 
         <div class="prices">
@@ -1379,25 +1209,20 @@
 
                 <span>🚗</span>
 
-                <h3 data-i18n="vehicle.sedan">
-                    Sedan
-                </h3>
+                <h3>Sedan</h3>
 
-                <small data-i18n="pricing.sedanText">
+                <small>
                     Comfortable for couples and small groups.
                 </small>
 
                 <strong>1–4</strong>
 
-                <small data-i18n="pricing.passengers">
-                    passengers
-                </small>
+                <small>passengers</small>
 
                 <button
                     type="button"
                     class="choose-vehicle"
                     data-vehicle="Sedan"
-                    data-i18n="pricing.choose"
                 >
                     Choose vehicle →
                 </button>
@@ -1408,31 +1233,26 @@
 
             <article class="popular">
 
-                <label data-i18n="pricing.popular">
+                <label>
                     POPULAR
                 </label>
 
                 <span>🚙</span>
 
-                <h3 data-i18n="vehicle.suv">
-                    SUV
-                </h3>
+                <h3>SUV</h3>
 
-                <small data-i18n="pricing.suvText">
+                <small>
                     Extra space and comfort for families.
                 </small>
 
                 <strong>1–5</strong>
 
-                <small data-i18n="pricing.passengers">
-                    passengers
-                </small>
+                <small>passengers</small>
 
                 <button
                     type="button"
                     class="choose-vehicle"
                     data-vehicle="SUV"
-                    data-i18n="pricing.choose"
                 >
                     Choose vehicle →
                 </button>
@@ -1445,25 +1265,20 @@
 
                 <span>🚐</span>
 
-                <h3 data-i18n="vehicle.minivan">
-                    Minivan
-                </h3>
+                <h3>Minivan</h3>
 
-                <small data-i18n="pricing.minivanText">
+                <small>
                     Ideal for families and medium groups.
                 </small>
 
                 <strong>1–8</strong>
 
-                <small data-i18n="pricing.passengers">
-                    passengers
-                </small>
+                <small>passengers</small>
 
                 <button
                     type="button"
                     class="choose-vehicle"
                     data-vehicle="Minivan"
-                    data-i18n="pricing.choose"
                 >
                     Choose vehicle →
                 </button>
@@ -1476,25 +1291,20 @@
 
                 <span>🚌</span>
 
-                <h3 data-i18n="vehicle.minibus">
-                    Minibus
-                </h3>
+                <h3>Minibus</h3>
 
-                <small data-i18n="pricing.minibusText">
+                <small>
                     Convenient for larger groups.
                 </small>
 
                 <strong>9+</strong>
 
-                <small data-i18n="pricing.passengers">
-                    passengers
-                </small>
+                <small>passengers</small>
 
                 <button
                     type="button"
                     class="choose-vehicle"
                     data-vehicle="Minibus"
-                    data-i18n="pricing.choose"
                 >
                     Choose vehicle →
                 </button>
@@ -1504,30 +1314,29 @@
         </div>
 
 
-
         <div class="features">
 
-            <span data-i18n="features.one">
+            <span>
                 ✓ Professional local drivers
             </span>
 
-            <span data-i18n="features.two">
+            <span>
                 ✓ Airport meet & greet
             </span>
 
-            <span data-i18n="features.three">
+            <span>
                 ✓ 24/7 airport transfers
             </span>
 
-            <span data-i18n="features.four">
+            <span>
                 ✓ Private & group options
             </span>
 
-            <span data-i18n="features.five">
-                ✓ Baby seat available
+            <span>
+                ✓ Baby seats available
             </span>
 
-            <span data-i18n="features.six">
+            <span>
                 ✓ Flexible travel arrangements
             </span>
 
@@ -1550,18 +1359,18 @@
 
     <div class="container tour-grid">
 
+
         <div class="tour-art">
 
             <img
                 src="images/image1.jpeg"
-                alt="Grand Bassin and Shiva statue in Mauritius"
+                alt="Mauritius excursion"
                 loading="lazy"
             >
 
-
             <div class="tour-art-caption">
 
-                <small data-i18n="tour.featured">
+                <small>
                     FEATURED STOP
                 </small>
 
@@ -1569,7 +1378,7 @@
                     Grand Bassin
                 </b>
 
-                <span data-i18n="tour.caption">
+                <span>
                     Culture • Spirituality • Mauritius
                 </span>
 
@@ -1581,25 +1390,19 @@
 
         <div>
 
-            <i data-i18n="tour.badge">
+            <i>
                 FEATURED EXCURSION
             </i>
 
-
-            <h2
-                data-i18n="tour.title"
-                data-i18n-html="true"
-            >
+            <h2>
                 Discover the<br>
                 <em>South of Mauritius.</em>
             </h2>
 
-
-            <p data-i18n="tour.text">
+            <p>
                 Experience some of the island's most beautiful
                 natural and cultural highlights in one memorable day.
             </p>
-
 
 
             <ol>
@@ -1610,8 +1413,9 @@
                     <div>
                         <strong>Grand Bassin</strong>
 
-                        <small data-i18n="tour.stop1">
-                            Visit the sacred crater lake and surrounding temples.
+                        <small>
+                            Visit the sacred crater lake
+                            and surrounding temples.
                         </small>
                     </div>
                 </li>
@@ -1621,9 +1425,11 @@
                     <b>02</b>
 
                     <div>
-                        <strong>Shiva & Durga Statues</strong>
+                        <strong>
+                            Shiva & Durga Statues
+                        </strong>
 
-                        <small data-i18n="tour.stop2">
+                        <small>
                             Discover iconic cultural landmarks.
                         </small>
                     </div>
@@ -1635,11 +1441,12 @@
 
                     <div>
                         <strong>
-                            7 Coloured Earth / Adventure Park
+                            7 Coloured Earth
                         </strong>
 
-                        <small data-i18n="tour.stop3">
-                            Explore one of Mauritius' famous attractions.
+                        <small>
+                            Explore one of Mauritius'
+                            most famous attractions.
                         </small>
                     </div>
                 </li>
@@ -1653,8 +1460,9 @@
                             Alexandra Falls
                         </strong>
 
-                        <small data-i18n="tour.stop4">
-                            Enjoy beautiful mountain and waterfall views.
+                        <small>
+                            Enjoy beautiful mountain
+                            and waterfall views.
                         </small>
                     </div>
                 </li>
@@ -1668,8 +1476,9 @@
                             Chamarel Viewpoints
                         </strong>
 
-                        <small data-i18n="tour.stop5">
-                            Take in spectacular views across the island.
+                        <small>
+                            Take in spectacular views
+                            across the island.
                         </small>
                     </div>
                 </li>
@@ -1679,30 +1488,29 @@
                     <b>06</b>
 
                     <div>
-
-                        <strong data-i18n="tour.sunset">
+                        <strong>
                             Optional Le Morne Sunset
                         </strong>
 
-                        <small data-i18n="tour.stop6">
-                            Finish your day with an unforgettable sunset.
+                        <small>
+                            Finish your day with
+                            an unforgettable sunset.
                         </small>
-
                     </div>
                 </li>
 
             </ol>
 
 
-
             <div class="tour-note">
 
-                <b data-i18n="tour.lunchTitle">
+                <b>
                     Want lunch included?
                 </b>
 
-                <span data-i18n="tour.lunch">
-                    We can advise on a local restaurant during your excursion.
+                <span>
+                    We can advise on a local restaurant
+                    during your excursion.
                 </span>
 
             </div>
@@ -1712,7 +1520,6 @@
                 id="tourBook"
                 type="button"
                 class="btn light"
-                data-i18n="tour.plan"
             >
                 Plan This Excursion
             </button>
@@ -1736,131 +1543,227 @@
 
     <div class="container">
 
+
         <div class="center">
 
-            <i data-i18n="experiences.badge">
+            <i>
                 MAURITIUS EXPERIENCES
             </i>
 
-            <h2
-                data-i18n="experiences.title"
-                data-i18n-html="true"
-            >
+            <h2>
                 More ways to<br>
                 <em>enjoy the island.</em>
             </h2>
 
-            <p data-i18n="experiences.text">
-                Discover local flavours, fun attractions
-                and exciting activities.
+            <p>
+                Discover local flavours, family attractions
+                and exciting adventures across Mauritius.
             </p>
 
         </div>
 
 
 
-        <div class="experience-gallery">
+        <div class="experience-collections">
 
 
-            <button
-                class="experience-card gallery-item"
-                type="button"
-                data-image="images/image3.jpeg"
-                data-caption-key="experiences.caption1"
-            >
+            <!-- LOCAL -->
 
-                <img
-                    src="images/image3.jpeg"
-                    alt="Mauritius local tasting experience"
-                    loading="lazy"
-                >
+            <article class="experience-collection">
 
-                <span class="experience-overlay">
+                <div class="experience-collection-head">
 
-                    <small data-i18n="experiences.category1">
+                    <small>
                         LOCAL DISCOVERY
                     </small>
 
-                    <strong data-i18n="experiences.card1">
+                    <h3>
                         Taste & discover Mauritius
-                    </strong>
+                    </h3>
 
-                    <em data-i18n="experiences.view">
-                        View photo →
-                    </em>
-
-                </span>
-
-            </button>
+                </div>
 
 
+                <div class="experience-collage">
 
-            <button
-                class="experience-card gallery-item"
-                type="button"
-                data-image="images/image4.jpeg"
-                data-caption-key="experiences.caption2"
-            >
+                    <button
+                        type="button"
+                        class="experience-photo experience-photo-main gallery-item"
+                        data-image="images/image3.jpeg"
+                        data-caption="Discover local Mauritius experiences."
+                    >
+                        <img
+                            src="images/image3.jpeg"
+                            alt="Mauritius local experience"
+                            loading="lazy"
+                        >
+                    </button>
 
-                <img
-                    src="images/image4.jpeg"
-                    alt="Mauritius family attraction"
-                    loading="lazy"
-                >
 
-                <span class="experience-overlay">
+                    <button
+                        type="button"
+                        class="experience-photo gallery-item"
+                        data-image="images/image1.jpeg"
+                        data-caption="Discover beautiful Mauritius."
+                    >
+                        <img
+                            src="images/image1.jpeg"
+                            alt="Mauritius sightseeing"
+                            loading="lazy"
+                        >
+                    </button>
 
-                    <small data-i18n="experiences.category2">
+
+                    <button
+                        type="button"
+                        class="experience-photo gallery-item"
+                        data-image="images/image2.jpeg"
+                        data-caption="Comfortable Mauritius journeys."
+                    >
+                        <img
+                            src="images/image2.jpeg"
+                            alt="Mauritius travel"
+                            loading="lazy"
+                        >
+                    </button>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- FAMILY -->
+
+            <article class="experience-collection">
+
+                <div class="experience-collection-head">
+
+                    <small>
                         FUN & FAMILY
                     </small>
 
-                    <strong data-i18n="experiences.card2">
+                    <h3>
                         Unique island attractions
-                    </strong>
+                    </h3>
 
-                    <em data-i18n="experiences.view">
-                        View photo →
-                    </em>
-
-                </span>
-
-            </button>
+                </div>
 
 
+                <div class="experience-collage">
 
-            <button
-                class="experience-card gallery-item"
-                type="button"
-                data-image="images/image5.jpeg"
-                data-caption-key="experiences.caption3"
-            >
+                    <button
+                        type="button"
+                        class="experience-photo experience-photo-main gallery-item"
+                        data-image="images/image4.jpeg"
+                        data-caption="Family-friendly Mauritius attractions."
+                    >
+                        <img
+                            src="images/image4.jpeg"
+                            alt="Mauritius family attraction"
+                            loading="lazy"
+                        >
+                    </button>
 
-                <img
-                    src="images/image5.jpeg"
-                    alt="Mauritius zipline adventure"
-                    loading="lazy"
-                >
 
-                <span class="experience-overlay">
+                    <button
+                        type="button"
+                        class="experience-photo gallery-item"
+                        data-image="images/image3.jpeg"
+                        data-caption="Explore Mauritius culture."
+                    >
+                        <img
+                            src="images/image3.jpeg"
+                            alt="Mauritius attraction"
+                            loading="lazy"
+                        >
+                    </button>
 
-                    <small data-i18n="experiences.category3">
+
+                    <button
+                        type="button"
+                        class="experience-photo gallery-item"
+                        data-image="images/image5.jpeg"
+                        data-caption="Activities for unforgettable memories."
+                    >
+                        <img
+                            src="images/image5.jpeg"
+                            alt="Mauritius activity"
+                            loading="lazy"
+                        >
+                    </button>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ADVENTURE -->
+
+            <article class="experience-collection">
+
+                <div class="experience-collection-head">
+
+                    <small>
                         ADVENTURE
                     </small>
 
-                    <strong data-i18n="experiences.card3">
+                    <h3>
                         Make unforgettable memories
-                    </strong>
+                    </h3>
 
-                    <em data-i18n="experiences.view">
-                        View photo →
-                    </em>
+                </div>
 
-                </span>
 
-            </button>
+                <div class="experience-collage">
+
+                    <button
+                        type="button"
+                        class="experience-photo experience-photo-main gallery-item"
+                        data-image="images/image5.jpeg"
+                        data-caption="Adventure experiences in Mauritius."
+                    >
+                        <img
+                            src="images/image5.jpeg"
+                            alt="Mauritius adventure"
+                            loading="lazy"
+                        >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="experience-photo gallery-item"
+                        data-image="images/image1.jpeg"
+                        data-caption="Explore Mauritius landscapes."
+                    >
+                        <img
+                            src="images/image1.jpeg"
+                            alt="Mauritius landscape"
+                            loading="lazy"
+                        >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="experience-photo gallery-item"
+                        data-image="images/image4.jpeg"
+                        data-caption="Enjoy Mauritius attractions."
+                    >
+                        <img
+                            src="images/image4.jpeg"
+                            alt="Mauritius outdoor activity"
+                            loading="lazy"
+                        >
+                    </button>
+
+                </div>
+
+            </article>
 
         </div>
-
 
 
         <div class="experience-action">
@@ -1869,7 +1772,6 @@
                 id="experienceBook"
                 type="button"
                 class="btn primary"
-                data-i18n="experiences.plan"
             >
                 Plan Your Mauritius Experience
             </button>
@@ -1893,17 +1795,18 @@
 
     <div class="container">
 
+
         <div class="center">
 
-            <i data-i18n="fleet.badge">
+            <i>
                 OUR FLEET
             </i>
 
-            <h2 data-i18n="fleet.title">
+            <h2>
                 Travel your way.
             </h2>
 
-            <p data-i18n="fleet.text">
+            <p>
                 Choose from comfortable vehicles
                 depending on your passenger count.
             </p>
@@ -1911,66 +1814,42 @@
         </div>
 
 
-
         <div class="fleet">
 
             <article>
                 🚗
-                <h3 data-i18n="vehicle.sedan">
-                    Sedan
-                </h3>
+                <h3>Sedan</h3>
                 <p>1–4</p>
             </article>
 
-
             <article>
                 🚙
-                <h3 data-i18n="vehicle.suv">
-                    SUV
-                </h3>
+                <h3>SUV</h3>
                 <p>1–5</p>
             </article>
 
-
             <article>
                 🚐
-                <h3 data-i18n="vehicle.minivan">
-                    Minivan
-                </h3>
+                <h3>Minivan</h3>
                 <p>1–8</p>
             </article>
 
-
             <article>
                 🚐
-                <h3 data-i18n="vehicle.family">
-                    Family Van
-                </h3>
-                <p data-i18n="fleet.family">
-                    Families & groups
-                </p>
+                <h3>Family Van</h3>
+                <p>Families & groups</p>
             </article>
-
 
             <article>
                 🚌
-                <h3 data-i18n="vehicle.minibus">
-                    Minibus
-                </h3>
-                <p data-i18n="fleet.large">
-                    Larger groups
-                </p>
+                <h3>Minibus</h3>
+                <p>Larger groups</p>
             </article>
-
 
             <article>
                 🚌
-                <h3 data-i18n="vehicle.coach">
-                    Coach / Large Group
-                </h3>
-                <p data-i18n="fleet.events">
-                    Events & groups
-                </p>
+                <h3>Coach</h3>
+                <p>Events & groups</p>
             </article>
 
         </div>
@@ -1992,28 +1871,23 @@
 
     <div class="container why">
 
+
         <div>
 
-            <i data-i18n="why.badge">
+            <i>
                 WHY BTSM
             </i>
 
-
-            <h2
-                data-i18n="why.title"
-                data-i18n-html="true"
-            >
+            <h2>
                 Your island journey,<br>
                 <em>made easier.</em>
             </h2>
 
-
-            <p data-i18n="why.text">
+            <p>
                 Best Taxi Service in Mauritius combines comfortable
                 transportation with local knowledge to make getting
                 around the island simple and enjoyable.
             </p>
-
 
 
             <div class="benefits">
@@ -2021,11 +1895,11 @@
                 <p>
                     <span>✓</span>
 
-                    <b data-i18n="why.oneTitle">
+                    <b>
                         Reliable 24/7 service
                     </b>
 
-                    <small data-i18n="why.oneText">
+                    <small>
                         Airport transfers available around the clock.
                     </small>
                 </p>
@@ -2034,11 +1908,11 @@
                 <p>
                     <span>✓</span>
 
-                    <b data-i18n="why.twoTitle">
+                    <b>
                         Local professional drivers
                     </b>
 
-                    <small data-i18n="why.twoText">
+                    <small>
                         Travel with people who know Mauritius.
                     </small>
                 </p>
@@ -2047,11 +1921,11 @@
                 <p>
                     <span>✓</span>
 
-                    <b data-i18n="why.threeTitle">
+                    <b>
                         Private & group transportation
                     </b>
 
-                    <small data-i18n="why.threeText">
+                    <small>
                         Options for couples, families and groups.
                     </small>
                 </p>
@@ -2060,11 +1934,11 @@
                 <p>
                     <span>✓</span>
 
-                    <b data-i18n="why.fourTitle">
+                    <b>
                         Customized experiences
                     </b>
 
-                    <small data-i18n="why.fourText">
+                    <small>
                         Build your trip around what you want to see.
                     </small>
                 </p>
@@ -2075,25 +1949,75 @@
 
 
 
-        <div class="why-photo">
+        <!-- SLIDER -->
+
+        <div class="why-photo why-slider">
+
 
             <img
+                class="why-slide active"
                 src="images/image2.jpeg"
-                alt="Visitors enjoying Mauritius"
-                loading="lazy"
+                alt="Mauritius transportation"
             >
+
+
+            <img
+                class="why-slide"
+                src="images/image1.jpeg"
+                alt="Exploring Mauritius"
+            >
+
+
+            <img
+                class="why-slide"
+                src="images/image3.jpeg"
+                alt="Mauritius local experiences"
+            >
+
+
+            <img
+                class="why-slide"
+                src="images/image5.jpeg"
+                alt="Mauritius adventure"
+            >
+
+
+            <div class="why-slider-dots">
+
+                <button
+                    type="button"
+                    class="why-slider-dot active"
+                    aria-label="Slide 1"
+                ></button>
+
+                <button
+                    type="button"
+                    class="why-slider-dot"
+                    aria-label="Slide 2"
+                ></button>
+
+                <button
+                    type="button"
+                    class="why-slider-dot"
+                    aria-label="Slide 3"
+                ></button>
+
+                <button
+                    type="button"
+                    class="why-slider-dot"
+                    aria-label="Slide 4"
+                ></button>
+
+            </div>
 
 
             <div class="why-photo-text">
 
-                <small data-i18n="why.photoBadge">
+                <small>
                     EXPLORE MAURITIUS
                 </small>
 
-                <strong
-                    data-i18n="why.photoText"
-                    data-i18n-html="true"
-                >
+                <strong>
                     Beautiful places.<br>
                     Comfortable journeys.
                 </strong>
@@ -2119,17 +2043,18 @@
 
     <div class="container narrow">
 
+
         <div class="center">
 
             <i>
                 FAQ
             </i>
 
-            <h2 data-i18n="faq.title">
+            <h2>
                 Questions?
             </h2>
 
-            <p data-i18n="faq.text">
+            <p>
                 Everything you need to know before booking.
             </p>
 
@@ -2139,26 +2064,25 @@
 
         <details>
 
-            <summary data-i18n="faq.q1">
+            <summary>
                 Are airport transfers available 24/7?
             </summary>
 
-            <p data-i18n="faq.a1">
-                Yes. BTSM provides airport pickup and drop-off
-                services around the clock.
+            <p>
+                Yes. BTSM provides airport pickup
+                and drop-off services around the clock.
             </p>
 
         </details>
 
 
-
         <details>
 
-            <summary data-i18n="faq.q2">
+            <summary>
                 Do you provide private excursions?
             </summary>
 
-            <p data-i18n="faq.a2">
+            <p>
                 Yes. Private excursions can be arranged
                 around your preferred destinations.
             </p>
@@ -2166,14 +2090,13 @@
         </details>
 
 
-
         <details>
 
-            <summary data-i18n="faq.q3">
+            <summary>
                 Can I customize my Mauritius tour?
             </summary>
 
-            <p data-i18n="faq.a3">
+            <p>
                 Yes. You can request a tailor-made trip
                 based on the places you want to visit.
             </p>
@@ -2181,14 +2104,13 @@
         </details>
 
 
-
         <details>
 
-            <summary data-i18n="faq.q4">
+            <summary>
                 Do you provide transportation for weddings and events?
             </summary>
 
-            <p data-i18n="faq.a4">
+            <p>
                 Yes. BTSM can arrange transportation
                 for weddings and events.
             </p>
@@ -2196,14 +2118,13 @@
         </details>
 
 
-
         <details>
 
-            <summary data-i18n="faq.q5">
+            <summary>
                 How do baby seats work?
             </summary>
 
-            <p data-i18n="faq.a5">
+            <p>
                 One baby seat is included free with each booking.
                 Additional baby seats cost €5 each.
             </p>
@@ -2211,16 +2132,16 @@
         </details>
 
 
-
         <details>
 
-            <summary data-i18n="faq.q6">
+            <summary>
                 What happens after I submit?
             </summary>
 
-            <p data-i18n="faq.a6">
-                The installed WhatsApp application opens
-                with your complete booking request ready to send.
+            <p>
+                Your booking details are emailed to BTSM,
+                then WhatsApp opens with your complete
+                booking request ready to send.
             </p>
 
         </details>
@@ -2241,15 +2162,15 @@
 
         <div>
 
-            <i data-i18n="cta.badge">
+            <i>
                 READY TO EXPLORE?
             </i>
 
-            <h2 data-i18n="cta.title">
+            <h2>
                 Let's plan your Mauritius journey.
             </h2>
 
-            <p data-i18n="cta.text">
+            <p>
                 Airport transfer, excursion, event
                 or customized experience.
             </p>
@@ -2262,16 +2183,13 @@
             <a
                 href="#booking"
                 class="btn light"
-                data-i18n="common.bookNow"
             >
                 Book Now
             </a>
 
-
             <a
-                href="whatsapp://send?phone=23052532214"
+                href="https://wa.me/23052532214"
                 class="btn outline"
-                data-i18n="common.whatsapp"
             >
                 WhatsApp Us
             </a>
@@ -2295,6 +2213,7 @@
 
     <div class="container footer">
 
+
         <div>
 
             <a
@@ -2308,7 +2227,7 @@
                         BTSM
                     </strong>
 
-                    <small data-i18n="brand.tagline">
+                    <small>
                         BEST TAXI SERVICE IN MAURITIUS
                     </small>
 
@@ -2317,9 +2236,9 @@
             </a>
 
 
-            <p data-i18n="footer.text">
+            <p>
                 Best Taxi Service in Mauritius for airport transfers,
-                private transport, excursions and customized journeys.
+                private transportation, excursions and customized journeys.
             </p>
 
         </div>
@@ -2328,8 +2247,8 @@
 
         <div>
 
-            <h4 data-i18n="footer.services">
-                Services
+            <h4>
+                SERVICES
             </h4>
 
             <a href="#services">
@@ -2354,8 +2273,8 @@
 
         <div>
 
-            <h4 data-i18n="footer.experiences">
-                Experiences
+            <h4>
+                EXPERIENCES
             </h4>
 
             <a href="#experiences">
@@ -2380,19 +2299,19 @@
 
         <div>
 
-            <h4 data-i18n="footer.contact">
-                Contact
+            <h4>
+                CONTACT
             </h4>
 
             <a href="tel:+23052532214">
                 +230 5253 2214
             </a>
 
-            <a href="mailto:KhushiPanu007@gmail.com">
-                KhushiPanu007@gmail.com
+            <a href="mailto:info.mauritiustaxi@proton.me">
+                info.mauritiustaxi@proton.me
             </a>
 
-            <a href="whatsapp://send?phone=23052532214">
+            <a href="https://wa.me/23052532214">
                 WhatsApp
             </a>
 
@@ -2411,9 +2330,7 @@
 
         BTSM — Best Taxi Service in Mauritius.
 
-        <span data-i18n="footer.rights">
-            All rights reserved.
-        </span>
+        All rights reserved.
 
     </div>
 
@@ -2422,7 +2339,7 @@
 
 
 <!-- =========================================================
-     LIGHTBOX
+     IMAGE LIGHTBOX
 ========================================================= -->
 
 <div
@@ -2471,14 +2388,12 @@
         class="success-modal-card"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="successTitle"
     >
 
         <button
-            type="button"
             id="successModalClose"
+            type="button"
             class="success-modal-close"
-            aria-label="Close"
         >
             ×
         </button>
@@ -2489,34 +2404,25 @@
         </div>
 
 
-        <span
-            class="success-kicker"
-            data-i18n="success.kicker"
-        >
+        <span class="success-kicker">
             BOOKING READY
         </span>
 
 
-        <h3
-            id="successTitle"
-            data-i18n="success.title"
-        >
-            Form submitted successfully!
+        <h3>
+            Booking submitted successfully!
         </h3>
 
 
-        <p
-            class="success-description"
-            data-i18n="success.text"
-        >
-            Your complete booking request is ready.
+        <p class="success-description">
+            Your booking details have been sent to BTSM.
             WhatsApp is opening now.
         </p>
 
 
         <div class="success-booking-id">
 
-            <span data-i18n="success.bookingId">
+            <span>
                 Booking ID
             </span>
 
@@ -2535,13 +2441,12 @@
 
             <div>
 
-                <strong data-i18n="success.whatsappTitle">
+                <strong>
                     Opening WhatsApp
                 </strong>
 
-                <small data-i18n="success.whatsappText">
-                    Your complete booking message is ready
-                    to send to Best Taxi Service in Mauritius.
+                <small>
+                    Your complete booking request is ready to send.
                 </small>
 
             </div>
@@ -2549,32 +2454,21 @@
         </div>
 
 
-        <p
-            class="success-hint"
-            data-i18n="success.hint"
-        >
-            If Chrome asks for permission,
-            choose “Open WhatsApp”.
-        </p>
-
-
         <div class="success-actions">
 
             <button
-                type="button"
                 id="openWhatsAppButton"
+                type="button"
                 class="btn whatsapp-button"
-                data-i18n="success.openWhatsApp"
             >
-                Open WhatsApp App
+                Open WhatsApp
             </button>
 
 
             <button
-                type="button"
                 id="closeSuccessButton"
+                type="button"
                 class="btn success-secondary-button"
-                data-i18n="success.stay"
             >
                 Stay on Website
             </button>
@@ -2587,9 +2481,7 @@
 
 
 
-<!-- =========================================================
-     TOAST
-========================================================= -->
+<!-- TOAST -->
 
 <div
     id="toast"
@@ -2598,8 +2490,15 @@
 ></div>
 
 
+
+<!-- International phone library -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/intl-tel-input/build/js/intlTelInput.min.js"
+></script>
+
 <script src="script.js"></script>
 
-</body>
 
+</body>
 </html>
