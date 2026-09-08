@@ -30,7 +30,7 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
         rel="stylesheet"
     >
 
@@ -44,6 +44,61 @@
         rel="stylesheet"
         href="style.css"
     >
+
+
+    <!-- =====================================================
+         NAVBAR TYPOGRAPHY UPDATE
+         Loaded after style.css so these rules take priority
+    ====================================================== -->
+
+    <style>
+
+        .site-header .nav nav .nav-link {
+            font-family:
+                "DM Sans",
+                Arial,
+                sans-serif;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            letter-spacing: 0.015em;
+
+            line-height: 1;
+
+            text-transform: none;
+
+            white-space: nowrap;
+        }
+
+
+        @media (max-width: 1100px) {
+
+            .site-header .nav nav .nav-link {
+                font-size: 13px;
+            }
+
+        }
+
+
+        @media (max-width: 850px) {
+
+            .mobile-nav .nav-link {
+                font-family:
+                    "DM Sans",
+                    Arial,
+                    sans-serif;
+
+                font-size: 14px;
+                font-weight: 700;
+
+                letter-spacing: 0.01em;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
@@ -58,15 +113,27 @@
 
     <div class="container nav">
 
+
+        <!-- BRAND -->
+
         <a
             href="#home"
             class="brand"
             aria-label="BTSM Best Taxi Service in Mauritius"
         >
 
-            <span>
+            <span
+                class="brand-mark"
+                aria-hidden="true"
+            >
+                B
+            </span>
 
-                <strong>BTSM</strong>
+            <span class="brand-copy">
+
+                <strong>
+                    BTSM
+                </strong>
 
                 <small data-i18n="brand.tagline">
                     BEST TAXI SERVICE IN MAURITIUS
@@ -77,10 +144,14 @@
         </a>
 
 
+
+        <!-- DESKTOP NAVIGATION -->
+
         <nav aria-label="Main navigation">
 
             <a
                 href="#home"
+                class="nav-link"
                 data-i18n="nav.home"
             >
                 Home
@@ -88,6 +159,7 @@
 
             <a
                 href="#services"
+                class="nav-link"
                 data-i18n="nav.services"
             >
                 Services
@@ -95,6 +167,7 @@
 
             <a
                 href="#vehicles"
+                class="nav-link"
                 data-i18n="nav.transfers"
             >
                 Transfers
@@ -102,6 +175,7 @@
 
             <a
                 href="#excursions"
+                class="nav-link"
                 data-i18n="nav.excursions"
             >
                 Excursions
@@ -109,6 +183,7 @@
 
             <a
                 href="#experiences"
+                class="nav-link"
                 data-i18n="nav.experiences"
             >
                 Experiences
@@ -116,6 +191,7 @@
 
             <a
                 href="#fleet"
+                class="nav-link"
                 data-i18n="nav.fleet"
             >
                 Fleet
@@ -123,6 +199,7 @@
 
             <a
                 href="#why-us"
+                class="nav-link"
                 data-i18n="nav.why"
             >
                 Why Us
@@ -130,6 +207,7 @@
 
             <a
                 href="#faq"
+                class="nav-link"
                 data-i18n="nav.faq"
             >
                 FAQ
@@ -138,41 +216,183 @@
         </nav>
 
 
+
+        <!-- HEADER ACTIONS -->
+
         <div class="actions">
 
-            <select
-                id="languageSelect"
-                aria-label="Select language"
-            >
-                <option value="en">
-                    🇬🇧 English
-                </option>
 
-                <option value="fr">
-                    🇫🇷 Français
-                </option>
+            <!-- LANGUAGE PICKER -->
 
-                <option value="es">
-                    🇪🇸 Español
-                </option>
+            <div class="language-picker">
 
-                <option value="de">
-                    🇩🇪 Deutsch
-                </option>
+                <button
+                    id="languageButton"
+                    class="language-button"
+                    type="button"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-label="Select language"
+                >
 
-                <option value="it">
-                    🇮🇹 Italiano
-                </option>
-            </select>
+                    <span
+                        id="languageFlag"
+                        class="language-flag flag-gb"
+                        aria-hidden="true"
+                    ></span>
+
+                    <span id="languageLabel">
+                        English
+                    </span>
+
+                    <span
+                        class="language-chevron"
+                        aria-hidden="true"
+                    >
+                        ⌄
+                    </span>
+
+                </button>
 
 
-            <a
-                class="phone"
-                href="tel:+23052532214"
-            >
-                🇲🇺 +230 5253 2214
-            </a>
+                <div
+                    id="languageMenu"
+                    class="language-menu"
+                    role="listbox"
+                    aria-label="Languages"
+                >
 
+                    <button
+                        type="button"
+                        class="language-option"
+                        data-language="en"
+                        role="option"
+                    >
+
+                        <span
+                            class="language-flag flag-gb"
+                            aria-hidden="true"
+                        ></span>
+
+                        <span>
+                            English
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="language-option"
+                        data-language="fr"
+                        role="option"
+                    >
+
+                        <span
+                            class="language-flag flag-fr"
+                            aria-hidden="true"
+                        ></span>
+
+                        <span>
+                            Français
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="language-option"
+                        data-language="es"
+                        role="option"
+                    >
+
+                        <span
+                            class="language-flag flag-es"
+                            aria-hidden="true"
+                        ></span>
+
+                        <span>
+                            Español
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="language-option"
+                        data-language="de"
+                        role="option"
+                    >
+
+                        <span
+                            class="language-flag flag-de"
+                            aria-hidden="true"
+                        ></span>
+
+                        <span>
+                            Deutsch
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="language-option"
+                        data-language="it"
+                        role="option"
+                    >
+
+                        <span
+                            class="language-flag flag-it"
+                            aria-hidden="true"
+                        ></span>
+
+                        <span>
+                            Italiano
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <select
+                    id="languageSelect"
+                    class="language-native"
+                    aria-label="Select language"
+                    tabindex="-1"
+                >
+
+                    <option value="en">
+                        English
+                    </option>
+
+                    <option value="fr">
+                        Français
+                    </option>
+
+                    <option value="es">
+                        Español
+                    </option>
+
+                    <option value="de">
+                        Deutsch
+                    </option>
+
+                    <option value="it">
+                        Italiano
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- BOOK NOW -->
 
             <a
                 href="#booking"
@@ -182,6 +402,9 @@
                 Book Now
             </a>
 
+
+
+            <!-- MOBILE MENU BUTTON -->
 
             <button
                 id="menuToggle"
@@ -197,44 +420,85 @@
     </div>
 
 
+
+    <!-- =====================================================
+         MOBILE NAVIGATION
+    ====================================================== -->
+
     <div
         id="mobileNav"
         class="container mobile-nav"
     >
 
-        <a href="#home" data-i18n="nav.home">
+        <a
+            href="#home"
+            class="nav-link"
+            data-i18n="nav.home"
+        >
             Home
         </a>
 
-        <a href="#services" data-i18n="nav.services">
+        <a
+            href="#services"
+            class="nav-link"
+            data-i18n="nav.services"
+        >
             Services
         </a>
 
-        <a href="#vehicles" data-i18n="nav.transfers">
+        <a
+            href="#vehicles"
+            class="nav-link"
+            data-i18n="nav.transfers"
+        >
             Transfers
         </a>
 
-        <a href="#excursions" data-i18n="nav.excursions">
+        <a
+            href="#excursions"
+            class="nav-link"
+            data-i18n="nav.excursions"
+        >
             Excursions
         </a>
 
-        <a href="#experiences" data-i18n="nav.experiences">
+        <a
+            href="#experiences"
+            class="nav-link"
+            data-i18n="nav.experiences"
+        >
             Experiences
         </a>
 
-        <a href="#fleet" data-i18n="nav.fleet">
+        <a
+            href="#fleet"
+            class="nav-link"
+            data-i18n="nav.fleet"
+        >
             Fleet
         </a>
 
-        <a href="#why-us" data-i18n="nav.why">
+        <a
+            href="#why-us"
+            class="nav-link"
+            data-i18n="nav.why"
+        >
             Why Us
         </a>
 
-        <a href="#faq" data-i18n="nav.faq">
+        <a
+            href="#faq"
+            class="nav-link"
+            data-i18n="nav.faq"
+        >
             FAQ
         </a>
 
-        <a href="#booking" data-i18n="nav.bookTransfer">
+        <a
+            href="#booking"
+            class="nav-link"
+            data-i18n="nav.bookTransfer"
+        >
             Book a Transfer
         </a>
 
@@ -243,6 +507,10 @@
 </header>
 
 
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
 <main>
 
@@ -262,7 +530,7 @@
     <div class="container hero-grid">
 
 
-        <!-- HERO COPY -->
+        <!-- HERO TEXT -->
 
         <div class="hero-copy">
 
@@ -279,7 +547,10 @@
                 data-i18n-html="true"
             >
                 Your Mauritius journey.<br>
-                <em>Beautifully handled.</em>
+
+                <em>
+                    Beautifully handled.
+                </em>
             </h1>
 
 
@@ -298,6 +569,7 @@
                 airport pickup, hotel transfer, private tours
                 and island itinerary.
             </div>
+
 
 
             <div class="hero-buttons">
@@ -320,6 +592,7 @@
                 </a>
 
             </div>
+
 
 
             <div class="trust">
@@ -361,9 +634,11 @@
                     24/7 AVAILABLE
                 </b>
 
+
                 <h2 data-i18n="booking.title">
                     Plan your journey
                 </h2>
+
 
                 <p data-i18n="booking.intro">
                     Choose your pickup and destination
@@ -371,6 +646,7 @@
                 </p>
 
             </div>
+
 
 
             <form
@@ -445,7 +721,7 @@
 
 
 
-                    <!-- NAME -->
+                    <!-- FULL NAME -->
 
                     <label>
 
@@ -565,16 +841,45 @@
                                 Select
                             </option>
 
-                            <option value="1">1 Passenger</option>
-                            <option value="2">2 Passengers</option>
-                            <option value="3">3 Passengers</option>
-                            <option value="4">4 Passengers</option>
-                            <option value="5">5 Passengers</option>
-                            <option value="6">6 Passengers</option>
-                            <option value="7">7 Passengers</option>
-                            <option value="8">8 Passengers</option>
-                            <option value="9">9 Passengers</option>
-                            <option value="10+">10+ Passengers</option>
+                            <option value="1">
+                                1 Passenger
+                            </option>
+
+                            <option value="2">
+                                2 Passengers
+                            </option>
+
+                            <option value="3">
+                                3 Passengers
+                            </option>
+
+                            <option value="4">
+                                4 Passengers
+                            </option>
+
+                            <option value="5">
+                                5 Passengers
+                            </option>
+
+                            <option value="6">
+                                6 Passengers
+                            </option>
+
+                            <option value="7">
+                                7 Passengers
+                            </option>
+
+                            <option value="8">
+                                8 Passengers
+                            </option>
+
+                            <option value="9">
+                                9 Passengers
+                            </option>
+
+                            <option value="10+">
+                                10+ Passengers
+                            </option>
 
                         </select>
 
@@ -630,7 +935,9 @@
 
 
 
-                    <!-- PICKUP -->
+                    <!-- =================================================
+                         PICKUP LOCATION
+                    ================================================== -->
 
                     <div class="form-section-title">
 
@@ -653,6 +960,7 @@
                     </div>
 
 
+
                     <label>
 
                         <span data-i18n="pickup.district">
@@ -668,6 +976,7 @@
                     </label>
 
 
+
                     <label>
 
                         <span data-i18n="pickup.place">
@@ -681,6 +990,7 @@
                         ></select>
 
                     </label>
+
 
 
                     <label
@@ -702,6 +1012,7 @@
                     </label>
 
 
+
                     <label class="full">
 
                         <span data-i18n="pickup.address">
@@ -720,7 +1031,9 @@
 
 
 
-                    <!-- DESTINATION -->
+                    <!-- =================================================
+                         DESTINATION
+                    ================================================== -->
 
                     <div class="form-section-title">
 
@@ -743,6 +1056,7 @@
                     </div>
 
 
+
                     <label>
 
                         <span data-i18n="destination.district">
@@ -758,6 +1072,7 @@
                     </label>
 
 
+
                     <label>
 
                         <span data-i18n="destination.place">
@@ -771,6 +1086,7 @@
                         ></select>
 
                     </label>
+
 
 
                     <label
@@ -790,6 +1106,7 @@
                         >
 
                     </label>
+
 
 
                     <label class="full">
@@ -831,17 +1148,22 @@
 
                     </label>
 
+
                 </div>
 
 
 
-                <!-- BABY SEATS -->
+                <!-- =================================================
+                     BABY SEATS
+                ================================================== -->
 
                 <div class="baby-seat-box">
 
                     <div class="baby-seat-heading">
 
-                        <span>👶</span>
+                        <span>
+                            👶
+                        </span>
 
                         <div>
 
@@ -857,6 +1179,7 @@
                         </div>
 
                     </div>
+
 
 
                     <label class="baby-seat-select">
@@ -897,15 +1220,19 @@
                 </div>
 
 
+
                 <button
                     type="submit"
                     id="submitBooking"
                     class="btn primary full-btn"
                 >
+
                     <span data-i18n="booking.submit">
                         Submit Booking
                     </span>
+
                 </button>
+
 
 
                 <p
@@ -935,23 +1262,54 @@
     <div class="container">
 
         <div>
-            <b>24/7</b>
-            <span>Airport Transfers</span>
+
+            <b>
+                24/7
+            </b>
+
+            <span>
+                Airport Transfers
+            </span>
+
         </div>
 
-        <div>
-            <b>6+</b>
-            <span>Vehicle Options</span>
-        </div>
 
         <div>
-            <b>100%</b>
-            <span>Local Service</span>
+
+            <b>
+                6+
+            </b>
+
+            <span>
+                Vehicle Options
+            </span>
+
         </div>
 
+
         <div>
-            <b>1</b>
-            <span>Easy Booking</span>
+
+            <b>
+                100%
+            </b>
+
+            <span>
+                Local Service
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <b>
+                1
+            </b>
+
+            <span>
+                Easy Booking
+            </span>
+
         </div>
 
     </div>
@@ -971,6 +1329,7 @@
 
     <div class="container">
 
+
         <div class="head">
 
             <div>
@@ -979,15 +1338,20 @@
                     WHAT WE OFFER
                 </i>
 
+
                 <h2
                     data-i18n="services.title"
                     data-i18n-html="true"
                 >
                     More than a transfer.<br>
-                    <em>Your Mauritius experience.</em>
+
+                    <em>
+                        Your Mauritius experience.
+                    </em>
                 </h2>
 
             </div>
+
 
 
             <p data-i18n="services.text">
@@ -999,14 +1363,19 @@
         </div>
 
 
+
         <div class="service-grid">
 
 
             <article>
 
-                <span>✈️</span>
+                <span>
+                    ✈️
+                </span>
 
-                <h3>Airport Transfers</h3>
+                <h3>
+                    Airport Transfers
+                </h3>
 
                 <p>
                     Reliable airport pickup and drop-off
@@ -1020,11 +1389,16 @@
             </article>
 
 
+
             <article>
 
-                <span>🚐</span>
+                <span>
+                    🚐
+                </span>
 
-                <h3>Private Transportation</h3>
+                <h3>
+                    Private Transportation
+                </h3>
 
                 <p>
                     Comfortable private transport for individuals,
@@ -1038,11 +1412,16 @@
             </article>
 
 
+
             <article>
 
-                <span>👥</span>
+                <span>
+                    👥
+                </span>
 
-                <h3>Group Transportation</h3>
+                <h3>
+                    Group Transportation
+                </h3>
 
                 <p>
                     Transportation solutions for larger groups,
@@ -1056,11 +1435,16 @@
             </article>
 
 
+
             <article>
 
-                <span>🏝️</span>
+                <span>
+                    🏝️
+                </span>
 
-                <h3>Private Excursions</h3>
+                <h3>
+                    Private Excursions
+                </h3>
 
                 <p>
                     Discover Mauritius with flexible private
@@ -1074,11 +1458,16 @@
             </article>
 
 
+
             <article>
 
-                <span>🎟️</span>
+                <span>
+                    🎟️
+                </span>
 
-                <h3>Activity Booking</h3>
+                <h3>
+                    Activity Booking
+                </h3>
 
                 <p>
                     Let us help arrange activities
@@ -1092,11 +1481,16 @@
             </article>
 
 
+
             <article>
 
-                <span>✨</span>
+                <span>
+                    ✨
+                </span>
 
-                <h3>Tailor-made Trips</h3>
+                <h3>
+                    Tailor-made Trips
+                </h3>
 
                 <p>
                     Build a personalized Mauritius itinerary
@@ -1110,11 +1504,16 @@
             </article>
 
 
+
             <article>
 
-                <span>🎂</span>
+                <span>
+                    🎂
+                </span>
 
-                <h3>Birthday Surprises</h3>
+                <h3>
+                    Birthday Surprises
+                </h3>
 
                 <p>
                     Make someone's Mauritius holiday
@@ -1128,11 +1527,16 @@
             </article>
 
 
+
             <article>
 
-                <span>💍</span>
+                <span>
+                    💍
+                </span>
 
-                <h3>Weddings & Events</h3>
+                <h3>
+                    Weddings & Events
+                </h3>
 
                 <p>
                     Transportation support for weddings,
@@ -1146,11 +1550,16 @@
             </article>
 
 
+
             <article>
 
-                <span>🚢</span>
+                <span>
+                    🚢
+                </span>
 
-                <h3>Cruise Ship Trips</h3>
+                <h3>
+                    Cruise Ship Trips
+                </h3>
 
                 <p>
                     Port transfers and excursions designed
@@ -1162,6 +1571,7 @@
                 </a>
 
             </article>
+
 
         </div>
 
@@ -1189,35 +1599,52 @@
                 CHOOSE YOUR RIDE
             </i>
 
+
             <h2>
                 A vehicle for<br>
-                <em>every journey.</em>
+
+                <em>
+                    every journey.
+                </em>
             </h2>
 
+
             <p>
-                Choose the vehicle that suits your group.
+                Choose the vehicle that suits your group
+                and luggage requirements.
                 Final pricing depends on your journey requirements.
             </p>
 
         </div>
 
 
+
         <div class="prices">
 
 
+            <!-- SEDAN -->
+
             <article>
 
-                <span>🚗</span>
+                <span>
+                    🚗
+                </span>
 
-                <h3>Sedan</h3>
+                <h3>
+                    Sedan
+                </h3>
 
                 <small>
                     Comfortable for couples and small groups.
                 </small>
 
-                <strong>1–4</strong>
+                <strong>
+                    1–3
+                </strong>
 
-                <small>passengers</small>
+                <small>
+                    passengers + luggage
+                </small>
 
                 <button
                     type="button"
@@ -1231,23 +1658,33 @@
 
 
 
+            <!-- SUV -->
+
             <article class="popular">
 
                 <label>
                     POPULAR
                 </label>
 
-                <span>🚙</span>
+                <span>
+                    🚙
+                </span>
 
-                <h3>SUV</h3>
+                <h3>
+                    SUV
+                </h3>
 
                 <small>
                     Extra space and comfort for families.
                 </small>
 
-                <strong>1–5</strong>
+                <strong>
+                    1–3
+                </strong>
 
-                <small>passengers</small>
+                <small>
+                    passengers + luggage
+                </small>
 
                 <button
                     type="button"
@@ -1261,19 +1698,29 @@
 
 
 
+            <!-- MINIVAN -->
+
             <article>
 
-                <span>🚐</span>
+                <span>
+                    🚐
+                </span>
 
-                <h3>Minivan</h3>
+                <h3>
+                    Minivan
+                </h3>
 
                 <small>
                     Ideal for families and medium groups.
                 </small>
 
-                <strong>1–8</strong>
+                <strong>
+                    1–7
+                </strong>
 
-                <small>passengers</small>
+                <small>
+                    passengers + luggage
+                </small>
 
                 <button
                     type="button"
@@ -1287,19 +1734,29 @@
 
 
 
+            <!-- MINIBUS -->
+
             <article>
 
-                <span>🚌</span>
+                <span>
+                    🚌
+                </span>
 
-                <h3>Minibus</h3>
+                <h3>
+                    Minibus
+                </h3>
 
                 <small>
                     Convenient for larger groups.
                 </small>
 
-                <strong>9+</strong>
+                <strong>
+                    9+
+                </strong>
 
-                <small>passengers</small>
+                <small>
+                    passengers + luggage
+                </small>
 
                 <button
                     type="button"
@@ -1312,6 +1769,7 @@
             </article>
 
         </div>
+
 
 
         <div class="features">
@@ -1342,6 +1800,7 @@
 
         </div>
 
+
     </div>
 
 </section>
@@ -1367,6 +1826,7 @@
                 alt="Mauritius excursion"
                 loading="lazy"
             >
+
 
             <div class="tour-art-caption">
 
@@ -1394,10 +1854,15 @@
                 FEATURED EXCURSION
             </i>
 
+
             <h2>
                 Discover the<br>
-                <em>South of Mauritius.</em>
+
+                <em>
+                    South of Mauritius.
+                </em>
             </h2>
+
 
             <p>
                 Experience some of the island's most beautiful
@@ -1405,26 +1870,41 @@
             </p>
 
 
+
             <ol>
 
+
                 <li>
-                    <b>01</b>
+
+                    <b>
+                        01
+                    </b>
 
                     <div>
-                        <strong>Grand Bassin</strong>
+
+                        <strong>
+                            Grand Bassin
+                        </strong>
 
                         <small>
                             Visit the sacred crater lake
                             and surrounding temples.
                         </small>
+
                     </div>
+
                 </li>
 
 
+
                 <li>
-                    <b>02</b>
+
+                    <b>
+                        02
+                    </b>
 
                     <div>
+
                         <strong>
                             Shiva & Durga Statues
                         </strong>
@@ -1432,14 +1912,21 @@
                         <small>
                             Discover iconic cultural landmarks.
                         </small>
+
                     </div>
+
                 </li>
 
 
+
                 <li>
-                    <b>03</b>
+
+                    <b>
+                        03
+                    </b>
 
                     <div>
+
                         <strong>
                             7 Coloured Earth
                         </strong>
@@ -1448,14 +1935,21 @@
                             Explore one of Mauritius'
                             most famous attractions.
                         </small>
+
                     </div>
+
                 </li>
 
 
+
                 <li>
-                    <b>04</b>
+
+                    <b>
+                        04
+                    </b>
 
                     <div>
+
                         <strong>
                             Alexandra Falls
                         </strong>
@@ -1464,14 +1958,21 @@
                             Enjoy beautiful mountain
                             and waterfall views.
                         </small>
+
                     </div>
+
                 </li>
 
 
+
                 <li>
-                    <b>05</b>
+
+                    <b>
+                        05
+                    </b>
 
                     <div>
+
                         <strong>
                             Chamarel Viewpoints
                         </strong>
@@ -1480,14 +1981,21 @@
                             Take in spectacular views
                             across the island.
                         </small>
+
                     </div>
+
                 </li>
 
 
+
                 <li>
-                    <b>06</b>
+
+                    <b>
+                        06
+                    </b>
 
                     <div>
+
                         <strong>
                             Optional Le Morne Sunset
                         </strong>
@@ -1496,10 +2004,14 @@
                             Finish your day with
                             an unforgettable sunset.
                         </small>
+
                     </div>
+
                 </li>
 
+
             </ol>
+
 
 
             <div class="tour-note">
@@ -1516,6 +2028,7 @@
             </div>
 
 
+
             <button
                 id="tourBook"
                 type="button"
@@ -1525,6 +2038,7 @@
             </button>
 
         </div>
+
 
     </div>
 
@@ -1550,10 +2064,15 @@
                 MAURITIUS EXPERIENCES
             </i>
 
+
             <h2>
                 More ways to<br>
-                <em>enjoy the island.</em>
+
+                <em>
+                    enjoy the island.
+                </em>
             </h2>
+
 
             <p>
                 Discover local flavours, family attractions
@@ -1567,7 +2086,7 @@
         <div class="experience-collections">
 
 
-            <!-- LOCAL -->
+            <!-- LOCAL DISCOVERY -->
 
             <article class="experience-collection">
 
@@ -1584,7 +2103,9 @@
                 </div>
 
 
+
                 <div class="experience-collage">
+
 
                     <button
                         type="button"
@@ -1592,12 +2113,15 @@
                         data-image="images/image3.jpeg"
                         data-caption="Discover local Mauritius experiences."
                     >
+
                         <img
                             src="images/image3.jpeg"
                             alt="Mauritius local experience"
                             loading="lazy"
                         >
+
                     </button>
+
 
 
                     <button
@@ -1606,12 +2130,15 @@
                         data-image="images/image1.jpeg"
                         data-caption="Discover beautiful Mauritius."
                     >
+
                         <img
                             src="images/image1.jpeg"
                             alt="Mauritius sightseeing"
                             loading="lazy"
                         >
+
                     </button>
+
 
 
                     <button
@@ -1620,12 +2147,15 @@
                         data-image="images/image2.jpeg"
                         data-caption="Comfortable Mauritius journeys."
                     >
+
                         <img
                             src="images/image2.jpeg"
                             alt="Mauritius travel"
                             loading="lazy"
                         >
+
                     </button>
+
 
                 </div>
 
@@ -1650,7 +2180,9 @@
                 </div>
 
 
+
                 <div class="experience-collage">
+
 
                     <button
                         type="button"
@@ -1658,12 +2190,15 @@
                         data-image="images/image4.jpeg"
                         data-caption="Family-friendly Mauritius attractions."
                     >
+
                         <img
                             src="images/image4.jpeg"
                             alt="Mauritius family attraction"
                             loading="lazy"
                         >
+
                     </button>
+
 
 
                     <button
@@ -1672,12 +2207,15 @@
                         data-image="images/image3.jpeg"
                         data-caption="Explore Mauritius culture."
                     >
+
                         <img
                             src="images/image3.jpeg"
                             alt="Mauritius attraction"
                             loading="lazy"
                         >
+
                     </button>
+
 
 
                     <button
@@ -1686,12 +2224,15 @@
                         data-image="images/image5.jpeg"
                         data-caption="Activities for unforgettable memories."
                     >
+
                         <img
                             src="images/image5.jpeg"
                             alt="Mauritius activity"
                             loading="lazy"
                         >
+
                     </button>
+
 
                 </div>
 
@@ -1716,7 +2257,9 @@
                 </div>
 
 
+
                 <div class="experience-collage">
+
 
                     <button
                         type="button"
@@ -1724,12 +2267,15 @@
                         data-image="images/image5.jpeg"
                         data-caption="Adventure experiences in Mauritius."
                     >
+
                         <img
                             src="images/image5.jpeg"
                             alt="Mauritius adventure"
                             loading="lazy"
                         >
+
                     </button>
+
 
 
                     <button
@@ -1738,12 +2284,15 @@
                         data-image="images/image1.jpeg"
                         data-caption="Explore Mauritius landscapes."
                     >
+
                         <img
                             src="images/image1.jpeg"
                             alt="Mauritius landscape"
                             loading="lazy"
                         >
+
                     </button>
+
 
 
                     <button
@@ -1752,18 +2301,23 @@
                         data-image="images/image4.jpeg"
                         data-caption="Enjoy Mauritius attractions."
                     >
+
                         <img
                             src="images/image4.jpeg"
                             alt="Mauritius outdoor activity"
                             loading="lazy"
                         >
+
                     </button>
+
 
                 </div>
 
             </article>
 
+
         </div>
+
 
 
         <div class="experience-action">
@@ -1777,6 +2331,7 @@
             </button>
 
         </div>
+
 
     </div>
 
@@ -1807,52 +2362,114 @@
             </h2>
 
             <p>
-                Choose from comfortable vehicles
-                depending on your passenger count.
+                Choose from comfortable vehicles depending
+                on your passenger count and luggage requirements.
             </p>
 
         </div>
 
 
+
         <div class="fleet">
 
+
             <article>
+
                 🚗
-                <h3>Sedan</h3>
-                <p>1–4</p>
+
+                <h3>
+                    Sedan
+                </h3>
+
+                <p>
+                    1–3 passengers + luggage
+                </p>
+
             </article>
 
+
+
             <article>
+
                 🚙
-                <h3>SUV</h3>
-                <p>1–5</p>
+
+                <h3>
+                    SUV
+                </h3>
+
+                <p>
+                    1–3 passengers + luggage
+                </p>
+
             </article>
 
+
+
             <article>
+
                 🚐
-                <h3>Minivan</h3>
-                <p>1–8</p>
+
+                <h3>
+                    Minivan
+                </h3>
+
+                <p>
+                    1–7 passengers + luggage
+                </p>
+
             </article>
 
+
+
             <article>
+
                 🚐
-                <h3>Family Van</h3>
-                <p>Families & groups</p>
+
+                <h3>
+                    Family Van
+                </h3>
+
+                <p>
+                    Families & groups + luggage
+                </p>
+
             </article>
 
-            <article>
-                🚌
-                <h3>Minibus</h3>
-                <p>Larger groups</p>
-            </article>
+
 
             <article>
+
                 🚌
-                <h3>Coach</h3>
-                <p>Events & groups</p>
+
+                <h3>
+                    Minibus
+                </h3>
+
+                <p>
+                    Larger groups + luggage
+                </p>
+
             </article>
+
+
+
+            <article>
+
+                🚌
+
+                <h3>
+                    Coach
+                </h3>
+
+                <p>
+                    Events & groups + luggage
+                </p>
+
+            </article>
+
 
         </div>
+
 
     </div>
 
@@ -1878,10 +2495,15 @@
                 WHY BTSM
             </i>
 
+
             <h2>
                 Your island journey,<br>
-                <em>made easier.</em>
+
+                <em>
+                    made easier.
+                </em>
             </h2>
+
 
             <p>
                 Best Taxi Service in Mauritius combines comfortable
@@ -1890,10 +2512,15 @@
             </p>
 
 
+
             <div class="benefits">
 
+
                 <p>
-                    <span>✓</span>
+
+                    <span>
+                        ✓
+                    </span>
 
                     <b>
                         Reliable 24/7 service
@@ -1902,11 +2529,16 @@
                     <small>
                         Airport transfers available around the clock.
                     </small>
+
                 </p>
 
 
+
                 <p>
-                    <span>✓</span>
+
+                    <span>
+                        ✓
+                    </span>
 
                     <b>
                         Local professional drivers
@@ -1915,11 +2547,16 @@
                     <small>
                         Travel with people who know Mauritius.
                     </small>
+
                 </p>
 
 
+
                 <p>
-                    <span>✓</span>
+
+                    <span>
+                        ✓
+                    </span>
 
                     <b>
                         Private & group transportation
@@ -1928,11 +2565,16 @@
                     <small>
                         Options for couples, families and groups.
                     </small>
+
                 </p>
 
 
+
                 <p>
-                    <span>✓</span>
+
+                    <span>
+                        ✓
+                    </span>
 
                     <b>
                         Customized experiences
@@ -1941,7 +2583,9 @@
                     <small>
                         Build your trip around what you want to see.
                     </small>
+
                 </p>
+
 
             </div>
 
@@ -1949,7 +2593,7 @@
 
 
 
-        <!-- SLIDER -->
+        <!-- WHY US SLIDER -->
 
         <div class="why-photo why-slider">
 
@@ -1982,6 +2626,7 @@
             >
 
 
+
             <div class="why-slider-dots">
 
                 <button
@@ -2011,6 +2656,7 @@
             </div>
 
 
+
             <div class="why-photo-text">
 
                 <small>
@@ -2024,7 +2670,9 @@
 
             </div>
 
+
         </div>
+
 
     </div>
 
@@ -2076,6 +2724,7 @@
         </details>
 
 
+
         <details>
 
             <summary>
@@ -2088,6 +2737,7 @@
             </p>
 
         </details>
+
 
 
         <details>
@@ -2104,6 +2754,7 @@
         </details>
 
 
+
         <details>
 
             <summary>
@@ -2116,6 +2767,7 @@
             </p>
 
         </details>
+
 
 
         <details>
@@ -2132,6 +2784,7 @@
         </details>
 
 
+
         <details>
 
             <summary>
@@ -2145,6 +2798,7 @@
             </p>
 
         </details>
+
 
     </div>
 
@@ -2160,15 +2814,18 @@
 
     <div class="container">
 
+
         <div>
 
             <i>
                 READY TO EXPLORE?
             </i>
 
+
             <h2>
                 Let's plan your Mauritius journey.
             </h2>
+
 
             <p>
                 Airport transfer, excursion, event
@@ -2176,6 +2833,7 @@
             </p>
 
         </div>
+
 
 
         <div>
@@ -2187,6 +2845,7 @@
                 Book Now
             </a>
 
+
             <a
                 href="https://wa.me/23052532214"
                 class="btn outline"
@@ -2195,6 +2854,7 @@
             </a>
 
         </div>
+
 
     </div>
 
@@ -2321,7 +2981,9 @@
 
         </div>
 
+
     </div>
+
 
 
     <div class="container copyright">
@@ -2390,18 +3052,26 @@
         aria-modal="true"
     >
 
+
         <button
             id="successModalClose"
             type="button"
             class="success-modal-close"
+            aria-label="Close booking confirmation"
         >
             ×
         </button>
 
 
+
         <div class="success-icon">
-            <span>✓</span>
+
+            <span>
+                ✓
+            </span>
+
         </div>
+
 
 
         <span class="success-kicker">
@@ -2420,6 +3090,7 @@
         </p>
 
 
+
         <div class="success-booking-id">
 
             <span>
@@ -2433,11 +3104,13 @@
         </div>
 
 
+
         <div class="success-whatsapp-info">
 
             <div class="whatsapp-logo">
                 ✓
             </div>
+
 
             <div>
 
@@ -2452,6 +3125,7 @@
             </div>
 
         </div>
+
 
 
         <div class="success-actions">
@@ -2475,13 +3149,16 @@
 
         </div>
 
+
     </div>
 
 </div>
 
 
 
-<!-- TOAST -->
+<!-- =========================================================
+     TOAST
+========================================================= -->
 
 <div
     id="toast"
@@ -2491,7 +3168,9 @@
 
 
 
-<!-- International phone library -->
+<!-- =========================================================
+     SCRIPTS
+========================================================= -->
 
 <script
     src="https://cdn.jsdelivr.net/npm/intl-tel-input/build/js/intlTelInput.min.js"
@@ -2501,4 +3180,5 @@
 
 
 </body>
+
 </html>

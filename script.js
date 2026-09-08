@@ -920,8 +920,6 @@ const TRANSLATIONS = {
     }
 
 };
-
-
 /* =========================================================
    TRANSLATION HELPER
 ========================================================= */
@@ -1159,12 +1157,119 @@ function setupLanguage() {
     const languageSelect =
         $("#languageSelect");
 
+    const picker =
+        $(".language-picker");
+
+    const languageButton =
+        $("#languageButton");
+
+    const languageMenu =
+        $("#languageMenu");
+
+    const languageLabel =
+        $("#languageLabel");
+
+    const languageFlag =
+        $("#languageFlag");
+
 
     if (!languageSelect) {
 
         return;
 
     }
+
+
+    const languageMeta = {
+
+        en: {
+            label: "English",
+            flag: "flag-gb"
+        },
+
+        fr: {
+            label: "Français",
+            flag: "flag-fr"
+        },
+
+        es: {
+            label: "Español",
+            flag: "flag-es"
+        },
+
+        de: {
+            label: "Deutsch",
+            flag: "flag-de"
+        },
+
+        it: {
+            label: "Italiano",
+            flag: "flag-it"
+        }
+
+    };
+
+
+    const updateLanguagePicker =
+        (language) => {
+
+            const meta =
+                languageMeta[language] ||
+                languageMeta.en;
+
+
+            languageSelect.value =
+                language;
+
+
+            if (languageLabel) {
+
+                languageLabel.textContent =
+                    meta.label;
+
+            }
+
+
+            if (languageFlag) {
+
+                languageFlag.className =
+                    `language-flag ${meta.flag}`;
+
+            }
+
+
+            $$(
+                ".language-option"
+            ).forEach(
+                (option) => {
+
+                    option.setAttribute(
+                        "aria-selected",
+                        String(
+                            option.dataset.language ===
+                            language
+                        )
+                    );
+
+                }
+            );
+
+        };
+
+
+    const closeLanguageMenu =
+        () => {
+
+            picker?.classList.remove(
+                "open"
+            );
+
+            languageButton?.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        };
 
 
     const savedLanguage =
@@ -1184,12 +1289,80 @@ function setupLanguage() {
     }
 
 
-    languageSelect.value =
-        CURRENT_LANGUAGE;
-
+    updateLanguagePicker(
+        CURRENT_LANGUAGE
+    );
 
     translatePage(
         CURRENT_LANGUAGE
+    );
+
+
+    languageButton?.addEventListener(
+        "click",
+        (event) => {
+
+            event.stopPropagation();
+
+
+            const open =
+                picker?.classList.toggle(
+                    "open"
+                );
+
+
+            languageButton.setAttribute(
+                "aria-expanded",
+                String(
+                    Boolean(open)
+                )
+            );
+
+        }
+    );
+
+
+    $$(
+        ".language-option"
+    ).forEach(
+        (option) => {
+
+            option.addEventListener(
+                "click",
+                () => {
+
+                    const language =
+                        option.dataset.language;
+
+
+                    if (
+                        !language ||
+                        !TRANSLATIONS[language]
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    updateLanguagePicker(
+                        language
+                    );
+
+                    translatePage(
+                        language
+                    );
+
+                    closeLanguageMenu();
+
+                    showToast(
+                        t("toast.language")
+                    );
+
+                }
+            );
+
+        }
     );
 
 
@@ -1197,14 +1370,53 @@ function setupLanguage() {
         "change",
         () => {
 
+            updateLanguagePicker(
+                languageSelect.value
+            );
+
             translatePage(
                 languageSelect.value
             );
 
-
             showToast(
                 t("toast.language")
             );
+
+        }
+    );
+
+
+    document.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                picker &&
+                !picker.contains(
+                    event.target
+                )
+            ) {
+
+                closeLanguageMenu();
+
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key ===
+                "Escape"
+            ) {
+
+                closeLanguageMenu();
+
+            }
 
         }
     );
@@ -1500,14 +1712,11 @@ function setupLocationSelector(
     const district =
         $(`#${prefix}District`);
 
-
     const place =
         $(`#${prefix}Place`);
 
-
     const customWrap =
         $(`#${prefix}CustomPlaceWrap`);
-
 
     const customInput =
         $(`#${prefix}CustomPlace`);
@@ -1728,8 +1937,6 @@ function hideCustomPlace(
     }
 
 }
-
-
 /* =========================================================
    MOBILE MENU
 ========================================================= */
@@ -1738,7 +1945,6 @@ function setupMobileMenu() {
 
     const button =
         $("#menuToggle");
-
 
     const mobile =
         $("#mobileNav");
@@ -1991,7 +2197,6 @@ function setupWhySlider() {
     let current =
         0;
 
-
     let timer =
         null;
 
@@ -2123,14 +2328,11 @@ function setupLightbox() {
     const lightbox =
         $("#imageLightbox");
 
-
     const image =
         $("#lightboxImage");
 
-
     const caption =
         $("#lightboxCaption");
-
 
     const close =
         $("#lightboxClose");
@@ -2179,9 +2381,13 @@ function setupLightbox() {
                         item.dataset.image;
 
 
-                    caption.textContent =
-                        item.dataset.caption ||
-                        "";
+                    if (caption) {
+
+                        caption.textContent =
+                            item.dataset.caption ||
+                            "";
+
+                    }
 
 
                     lightbox.classList.add(
@@ -2217,7 +2423,8 @@ function setupLightbox() {
         (event) => {
 
             if (
-                event.target === lightbox
+                event.target ===
+                lightbox
             ) {
 
                 closeLightbox();
@@ -2277,12 +2484,13 @@ function validateBookingForm() {
 
 
     if (
+        !email ||
         !emailPattern.test(
             email.value.trim()
         )
     ) {
 
-        email.focus();
+        email?.focus();
 
 
         showToast(
@@ -2297,6 +2505,17 @@ function validateBookingForm() {
 
     const phone =
         $("#phone");
+
+
+    if (!phone) {
+
+        showToast(
+            t("toast.phone")
+        );
+
+        return false;
+
+    }
 
 
     const digits =
@@ -2533,7 +2752,8 @@ async function sendBookingEmail(
             booking.babySeats,
 
         Special_Request:
-            booking.data.notes || "None",
+            booking.data.notes ||
+            "None",
 
         Full_Booking_Message:
             booking.message
@@ -2613,8 +2833,6 @@ function openWhatsApp(
         url;
 
 }
-
-
 /* =========================================================
    BUILD BOOKING
 ========================================================= */
@@ -2645,6 +2863,7 @@ function buildBooking() {
         OTHER_PLACE
 
             ? data.pickupCustomPlace
+
             : data.pickupPlace;
 
 
@@ -2653,6 +2872,7 @@ function buildBooking() {
         OTHER_PLACE
 
             ? data.destinationCustomPlace
+
             : data.destinationPlace;
 
 
@@ -2888,7 +3108,7 @@ function generateBookingId() {
     const random =
         Math.random()
             .toString(36)
-            .slice(2,7)
+            .slice(2, 7)
             .toUpperCase();
 
 
@@ -2929,9 +3149,19 @@ function formatEnglishDate(
 
     const date =
         new Date(
-            Number(parts[0]),
-            Number(parts[1]) - 1,
-            Number(parts[2])
+
+            Number(
+                parts[0]
+            ),
+
+            Number(
+                parts[1]
+            ) - 1,
+
+            Number(
+                parts[2]
+            )
+
         );
 
 
@@ -2986,7 +3216,9 @@ function formatTime(
 
     const period =
         hour >= 12
+
             ? "PM"
+
             : "AM";
 
 
