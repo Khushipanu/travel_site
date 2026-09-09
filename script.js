@@ -1,6 +1,5 @@
 /* =========================================================
-   BTSM
-   BEST TAXI SERVICE IN MAURITIUS
+   BTSM - COMPLETE SCRIPT.JS
 ========================================================= */
 
 
@@ -8,931 +7,37 @@
    BUSINESS
 ========================================================= */
 
-const BUSINESS_NAME =
-    "BTSM - Best Taxi Service in Mauritius";
-
-const WHATSAPP_NUMBER =
-    "23052532214";
+const BUSINESS_EMAIL =
+    "info.mauritiustaxi@proton.me";
 
 const BUSINESS_PHONE =
     "+230 5253 2214";
 
-const BUSINESS_EMAIL =
-    "info.mauritiustaxi@proton.me";
+const WHATSAPP_NUMBER =
+    "23052532214";
 
 
 /* =========================================================
    HELPERS
 ========================================================= */
 
-const $ = (selector) =>
-    document.querySelector(selector);
+const $ =
+    (selector) =>
+        document.querySelector(selector);
 
-const $$ = (selector) =>
-    document.querySelectorAll(selector);
+const $$ =
+    (selector) =>
+        document.querySelectorAll(selector);
 
-
-/* =========================================================
-   GLOBAL STATE
-========================================================= */
-
-let CURRENT_LANGUAGE =
-    "en";
-
-let LAST_BOOKING_MESSAGE =
-    "";
-
-let LAST_BOOKING_ID =
-    "";
 
 let PHONE_INPUT =
     null;
 
-
-/* =========================================================
-   BASIC TRANSLATIONS
-========================================================= */
-
-const TRANSLATIONS = {
-
-    en: {
-
-        "brand.tagline":
-            "BEST TAXI SERVICE IN MAURITIUS",
-
-        "nav.home":
-            "Home",
-
-        "nav.services":
-            "Services",
-
-        "nav.transfers":
-            "Transfers",
-
-        "nav.excursions":
-            "Excursions",
-
-        "nav.experiences":
-            "Experiences",
-
-        "nav.fleet":
-            "Fleet",
-
-        "nav.why":
-            "Why Us",
-
-        "nav.faq":
-            "FAQ",
-
-        "nav.bookTransfer":
-            "Book a Transfer",
-
-        "common.bookNow":
-            "Book Now",
-
-        "hero.eyebrow":
-            "MAURITIUS AIRPORT TRANSFERS • PRIVATE TOURS",
-
-        "hero.title":
-            "Your Mauritius journey.<br><em>Beautifully handled.</em>",
-
-        "hero.text":
-            "Visiting Mauritius? From the moment you land, travel comfortably with trusted local drivers, private transfers and unforgettable island experiences.",
-
-        "hero.touristNote":
-            "✈️ First time in Mauritius? We can help with your airport pickup, hotel transfer, private tours and island itinerary.",
-
-        "hero.bookTransfer":
-            "Book Your Transfer",
-
-        "hero.explore":
-            "Explore Mauritius",
-
-        "hero.trust1":
-            "✓ 24/7 Airport Pickup",
-
-        "hero.trust2":
-            "✓ Local Mauritius Drivers",
-
-        "hero.trust3":
-            "✓ Private Tours & Transfers",
-
-        "booking.quick":
-            "QUICK BOOKING",
-
-        "booking.available":
-            "24/7 AVAILABLE",
-
-        "booking.title":
-            "Plan your journey",
-
-        "booking.intro":
-            "Choose your pickup and destination anywhere across Mauritius.",
-
-        "booking.submit":
-            "Submit Booking",
-
-        "booking.note":
-            "Your booking details will be emailed to BTSM and WhatsApp will open with your message ready to send.",
-
-        "form.service":
-            "Service",
-
-        "form.name":
-            "Full Name",
-
-        "form.email":
-            "Email Address",
-
-        "form.phone":
-            "WhatsApp / Phone",
-
-        "form.date":
-            "Travel Date",
-
-        "form.time":
-            "Pickup Time",
-
-        "form.passengers":
-            "Passengers",
-
-        "form.vehicle":
-            "Vehicle",
-
-        "form.notes":
-            "Special Request",
-
-        "pickup.title":
-            "Pickup Location",
-
-        "pickup.subtitle":
-            "Where should we collect you?",
-
-        "pickup.district":
-            "Pickup District / Area",
-
-        "pickup.place":
-            "Pickup Town / Place",
-
-        "pickup.address":
-            "Exact Pickup Address",
-
-        "destination.title":
-            "Destination",
-
-        "destination.subtitle":
-            "Where are you going?",
-
-        "destination.district":
-            "Destination District / Area",
-
-        "destination.place":
-            "Destination Town / Place",
-
-        "destination.address":
-            "Exact Drop-off Address",
-
-        "baby.title":
-            "Baby Seat",
-
-        "baby.subtitle":
-            "1 baby seat is included free per booking. Additional baby seats are €5 each.",
-
-        "baby.number":
-            "Number of Baby Seats",
-
-        "services.badge":
-            "WHAT WE OFFER",
-
-        "services.title":
-            "More than a transfer.<br><em>Your Mauritius experience.</em>",
-
-        "services.text":
-            "From airport arrival to your last day on the island, BTSM helps tourists travel comfortably, safely and stress-free across Mauritius.",
-
-        "toast.required":
-            "Please complete all required booking fields.",
-
-        "toast.email":
-            "Please enter a valid email address.",
-
-        "toast.phone":
-            "Please enter a valid phone number.",
-
-        "toast.emailSend":
-            "The booking email could not be sent. Please check your internet connection and try again.",
-
-        "toast.language":
-            "Language changed."
-
-    },
-
-
-    fr: {
-
-        "brand.tagline":
-            "MEILLEUR SERVICE DE TAXI À MAURICE",
-
-        "nav.home":
-            "Accueil",
-
-        "nav.services":
-            "Services",
-
-        "nav.transfers":
-            "Transferts",
-
-        "nav.excursions":
-            "Excursions",
-
-        "nav.experiences":
-            "Expériences",
-
-        "nav.fleet":
-            "Véhicules",
-
-        "nav.why":
-            "Pourquoi nous",
-
-        "nav.faq":
-            "FAQ",
-
-        "nav.bookTransfer":
-            "Réserver un transfert",
-
-        "common.bookNow":
-            "Réserver",
-
-        "hero.eyebrow":
-            "TRANSFERTS AÉROPORT • EXCURSIONS PRIVÉES",
-
-        "hero.title":
-            "Votre voyage à Maurice.<br><em>Parfaitement organisé.</em>",
-
-        "hero.text":
-            "Vous visitez Maurice ? Voyagez confortablement avec des chauffeurs locaux, des transferts privés et des expériences inoubliables.",
-
-        "hero.touristNote":
-            "✈️ Première visite à Maurice ? Nous pouvons organiser votre transfert aéroport, hôtel, excursions privées et itinéraire.",
-
-        "hero.bookTransfer":
-            "Réserver votre transfert",
-
-        "hero.explore":
-            "Explorer Maurice",
-
-        "hero.trust1":
-            "✓ Transfert aéroport 24h/24",
-
-        "hero.trust2":
-            "✓ Chauffeurs locaux",
-
-        "hero.trust3":
-            "✓ Excursions & transferts privés",
-
-        "booking.quick":
-            "RÉSERVATION RAPIDE",
-
-        "booking.available":
-            "DISPONIBLE 24H/24",
-
-        "booking.title":
-            "Planifiez votre trajet",
-
-        "booking.intro":
-            "Choisissez votre lieu de prise en charge et votre destination à Maurice.",
-
-        "booking.submit":
-            "Envoyer la réservation",
-
-        "booking.note":
-            "Les détails seront envoyés à BTSM et WhatsApp s'ouvrira avec votre message.",
-
-        "form.service":
-            "Service",
-
-        "form.name":
-            "Nom complet",
-
-        "form.email":
-            "Adresse e-mail",
-
-        "form.phone":
-            "WhatsApp / Téléphone",
-
-        "form.date":
-            "Date du voyage",
-
-        "form.time":
-            "Heure de départ",
-
-        "form.passengers":
-            "Passagers",
-
-        "form.vehicle":
-            "Véhicule",
-
-        "form.notes":
-            "Demande spéciale",
-
-        "pickup.title":
-            "Lieu de prise en charge",
-
-        "pickup.subtitle":
-            "Où devons-nous venir vous chercher ?",
-
-        "pickup.district":
-            "District / Zone de départ",
-
-        "pickup.place":
-            "Ville / Lieu de départ",
-
-        "pickup.address":
-            "Adresse exacte de départ",
-
-        "destination.title":
-            "Destination",
-
-        "destination.subtitle":
-            "Où allez-vous ?",
-
-        "destination.district":
-            "District / Zone de destination",
-
-        "destination.place":
-            "Ville / Lieu de destination",
-
-        "destination.address":
-            "Adresse exacte de destination",
-
-        "baby.title":
-            "Siège bébé",
-
-        "baby.subtitle":
-            "1 siège bébé est gratuit. Les sièges supplémentaires coûtent 5 €.",
-
-        "baby.number":
-            "Nombre de sièges bébé",
-
-        "services.badge":
-            "NOS SERVICES",
-
-        "services.title":
-            "Plus qu'un transfert.<br><em>Votre expérience à Maurice.</em>",
-
-        "services.text":
-            "De votre arrivée à l'aéroport jusqu'à votre dernier jour, BTSM vous aide à voyager confortablement à Maurice.",
-
-        "toast.required":
-            "Veuillez remplir tous les champs obligatoires.",
-
-        "toast.email":
-            "Veuillez saisir une adresse e-mail valide.",
-
-        "toast.phone":
-            "Veuillez saisir un numéro de téléphone valide.",
-
-        "toast.emailSend":
-            "Impossible d'envoyer l'e-mail de réservation. Vérifiez votre connexion.",
-
-        "toast.language":
-            "Langue modifiée."
-
-    },
-
-
-    es: {
-
-        "brand.tagline":
-            "MEJOR SERVICIO DE TAXI EN MAURICIO",
-
-        "nav.home":
-            "Inicio",
-
-        "nav.services":
-            "Servicios",
-
-        "nav.transfers":
-            "Traslados",
-
-        "nav.excursions":
-            "Excursiones",
-
-        "nav.experiences":
-            "Experiencias",
-
-        "nav.fleet":
-            "Vehículos",
-
-        "nav.why":
-            "Por qué nosotros",
-
-        "nav.faq":
-            "FAQ",
-
-        "nav.bookTransfer":
-            "Reservar traslado",
-
-        "common.bookNow":
-            "Reservar",
-
-        "hero.eyebrow":
-            "TRASLADOS AEROPUERTO • TOURS PRIVADOS",
-
-        "hero.title":
-            "Tu viaje por Mauricio.<br><em>Perfectamente organizado.</em>",
-
-        "hero.text":
-            "¿Visitas Mauricio? Viaja cómodamente con conductores locales, traslados privados y experiencias inolvidables.",
-
-        "hero.touristNote":
-            "✈️ ¿Primera vez en Mauricio? Podemos ayudarte con aeropuerto, hotel, excursiones privadas e itinerarios.",
-
-        "hero.bookTransfer":
-            "Reservar traslado",
-
-        "hero.explore":
-            "Explorar Mauricio",
-
-        "hero.trust1":
-            "✓ Aeropuerto 24/7",
-
-        "hero.trust2":
-            "✓ Conductores locales",
-
-        "hero.trust3":
-            "✓ Tours y traslados privados",
-
-        "booking.quick":
-            "RESERVA RÁPIDA",
-
-        "booking.available":
-            "DISPONIBLE 24/7",
-
-        "booking.title":
-            "Planifica tu viaje",
-
-        "booking.intro":
-            "Elige tu lugar de recogida y destino en Mauricio.",
-
-        "booking.submit":
-            "Enviar reserva",
-
-        "booking.note":
-            "Los datos se enviarán a BTSM y WhatsApp abrirá tu mensaje.",
-
-        "form.service":
-            "Servicio",
-
-        "form.name":
-            "Nombre completo",
-
-        "form.email":
-            "Correo electrónico",
-
-        "form.phone":
-            "WhatsApp / Teléfono",
-
-        "form.date":
-            "Fecha",
-
-        "form.time":
-            "Hora",
-
-        "form.passengers":
-            "Pasajeros",
-
-        "form.vehicle":
-            "Vehículo",
-
-        "form.notes":
-            "Solicitud especial",
-
-        "pickup.title":
-            "Lugar de recogida",
-
-        "pickup.subtitle":
-            "¿Dónde debemos recogerte?",
-
-        "pickup.district":
-            "Distrito de recogida",
-
-        "pickup.place":
-            "Ciudad / Lugar",
-
-        "pickup.address":
-            "Dirección de recogida",
-
-        "destination.title":
-            "Destino",
-
-        "destination.subtitle":
-            "¿Adónde vas?",
-
-        "destination.district":
-            "Distrito de destino",
-
-        "destination.place":
-            "Ciudad / Lugar",
-
-        "destination.address":
-            "Dirección de destino",
-
-        "baby.title":
-            "Silla para bebé",
-
-        "baby.subtitle":
-            "1 silla es gratis. Las adicionales cuestan 5 €.",
-
-        "baby.number":
-            "Número de sillas",
-
-        "services.badge":
-            "NUESTROS SERVICIOS",
-
-        "services.title":
-            "Más que un traslado.<br><em>Tu experiencia en Mauricio.</em>",
-
-        "services.text":
-            "Desde tu llegada al aeropuerto hasta tu último día, BTSM te ayuda a viajar cómodamente por Mauricio.",
-
-        "toast.required":
-            "Completa todos los campos obligatorios.",
-
-        "toast.email":
-            "Introduce un correo válido.",
-
-        "toast.phone":
-            "Introduce un teléfono válido.",
-
-        "toast.emailSend":
-            "No se pudo enviar el correo de la reserva.",
-
-        "toast.language":
-            "Idioma cambiado."
-
-    },
-
-
-    de: {
-
-        "brand.tagline":
-            "BESTER TAXISERVICE AUF MAURITIUS",
-
-        "nav.home":
-            "Startseite",
-
-        "nav.services":
-            "Leistungen",
-
-        "nav.transfers":
-            "Transfers",
-
-        "nav.excursions":
-            "Ausflüge",
-
-        "nav.experiences":
-            "Erlebnisse",
-
-        "nav.fleet":
-            "Fahrzeuge",
-
-        "nav.why":
-            "Warum wir",
-
-        "nav.faq":
-            "FAQ",
-
-        "nav.bookTransfer":
-            "Transfer buchen",
-
-        "common.bookNow":
-            "Jetzt buchen",
-
-        "hero.eyebrow":
-            "FLUGHAFENTRANSFERS • PRIVATE TOUREN",
-
-        "hero.title":
-            "Ihre Mauritius-Reise.<br><em>Perfekt organisiert.</em>",
-
-        "hero.text":
-            "Besuchen Sie Mauritius? Reisen Sie komfortabel mit lokalen Fahrern, privaten Transfers und unvergesslichen Erlebnissen.",
-
-        "hero.touristNote":
-            "✈️ Zum ersten Mal auf Mauritius? Wir helfen mit Flughafentransfer, Hotel, privaten Touren und Reiseplanung.",
-
-        "hero.bookTransfer":
-            "Transfer buchen",
-
-        "hero.explore":
-            "Mauritius entdecken",
-
-        "hero.trust1":
-            "✓ Flughafen 24/7",
-
-        "hero.trust2":
-            "✓ Lokale Fahrer",
-
-        "hero.trust3":
-            "✓ Private Touren & Transfers",
-
-        "booking.quick":
-            "SCHNELLBUCHUNG",
-
-        "booking.available":
-            "24/7 VERFÜGBAR",
-
-        "booking.title":
-            "Planen Sie Ihre Fahrt",
-
-        "booking.intro":
-            "Wählen Sie Abholort und Ziel auf Mauritius.",
-
-        "booking.submit":
-            "Buchung absenden",
-
-        "booking.note":
-            "Die Buchung wird an BTSM gesendet und WhatsApp öffnet Ihre Nachricht.",
-
-        "form.service":
-            "Service",
-
-        "form.name":
-            "Vollständiger Name",
-
-        "form.email":
-            "E-Mail-Adresse",
-
-        "form.phone":
-            "WhatsApp / Telefon",
-
-        "form.date":
-            "Reisedatum",
-
-        "form.time":
-            "Abholzeit",
-
-        "form.passengers":
-            "Fahrgäste",
-
-        "form.vehicle":
-            "Fahrzeug",
-
-        "form.notes":
-            "Besondere Wünsche",
-
-        "pickup.title":
-            "Abholort",
-
-        "pickup.subtitle":
-            "Wo sollen wir Sie abholen?",
-
-        "pickup.district":
-            "Abholbezirk",
-
-        "pickup.place":
-            "Abholort",
-
-        "pickup.address":
-            "Genaue Abholadresse",
-
-        "destination.title":
-            "Ziel",
-
-        "destination.subtitle":
-            "Wohin möchten Sie fahren?",
-
-        "destination.district":
-            "Zielbezirk",
-
-        "destination.place":
-            "Zielort",
-
-        "destination.address":
-            "Genaue Zieladresse",
-
-        "baby.title":
-            "Kindersitz",
-
-        "baby.subtitle":
-            "1 Kindersitz ist kostenlos. Weitere kosten 5 €.",
-
-        "baby.number":
-            "Anzahl der Kindersitze",
-
-        "services.badge":
-            "UNSERE LEISTUNGEN",
-
-        "services.title":
-            "Mehr als ein Transfer.<br><em>Ihr Mauritius-Erlebnis.</em>",
-
-        "services.text":
-            "Von Ihrer Ankunft bis zum letzten Urlaubstag hilft BTSM Ihnen, Mauritius komfortabel zu erleben.",
-
-        "toast.required":
-            "Bitte füllen Sie alle Pflichtfelder aus.",
-
-        "toast.email":
-            "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
-
-        "toast.phone":
-            "Bitte geben Sie eine gültige Telefonnummer ein.",
-
-        "toast.emailSend":
-            "Die Buchungs-E-Mail konnte nicht gesendet werden.",
-
-        "toast.language":
-            "Sprache geändert."
-
-    },
-
-
-    it: {
-
-        "brand.tagline":
-            "MIGLIOR SERVIZIO TAXI A MAURITIUS",
-
-        "nav.home":
-            "Home",
-
-        "nav.services":
-            "Servizi",
-
-        "nav.transfers":
-            "Transfer",
-
-        "nav.excursions":
-            "Escursioni",
-
-        "nav.experiences":
-            "Esperienze",
-
-        "nav.fleet":
-            "Veicoli",
-
-        "nav.why":
-            "Perché noi",
-
-        "nav.faq":
-            "FAQ",
-
-        "nav.bookTransfer":
-            "Prenota transfer",
-
-        "common.bookNow":
-            "Prenota",
-
-        "hero.eyebrow":
-            "TRANSFER AEROPORTO • TOUR PRIVATI",
-
-        "hero.title":
-            "Il tuo viaggio a Mauritius.<br><em>Perfettamente organizzato.</em>",
-
-        "hero.text":
-            "Visiti Mauritius? Viaggia comodamente con autisti locali, transfer privati ed esperienze indimenticabili.",
-
-        "hero.touristNote":
-            "✈️ Prima volta a Mauritius? Possiamo aiutarti con aeroporto, hotel, tour privati e itinerario.",
-
-        "hero.bookTransfer":
-            "Prenota transfer",
-
-        "hero.explore":
-            "Scopri Mauritius",
-
-        "hero.trust1":
-            "✓ Aeroporto 24/7",
-
-        "hero.trust2":
-            "✓ Autisti locali",
-
-        "hero.trust3":
-            "✓ Tour e transfer privati",
-
-        "booking.quick":
-            "PRENOTAZIONE RAPIDA",
-
-        "booking.available":
-            "DISPONIBILE 24/7",
-
-        "booking.title":
-            "Pianifica il tuo viaggio",
-
-        "booking.intro":
-            "Scegli punto di partenza e destinazione a Mauritius.",
-
-        "booking.submit":
-            "Invia prenotazione",
-
-        "booking.note":
-            "La prenotazione verrà inviata a BTSM e WhatsApp aprirà il messaggio.",
-
-        "form.service":
-            "Servizio",
-
-        "form.name":
-            "Nome completo",
-
-        "form.email":
-            "Indirizzo e-mail",
-
-        "form.phone":
-            "WhatsApp / Telefono",
-
-        "form.date":
-            "Data",
-
-        "form.time":
-            "Orario",
-
-        "form.passengers":
-            "Passeggeri",
-
-        "form.vehicle":
-            "Veicolo",
-
-        "form.notes":
-            "Richiesta speciale",
-
-        "pickup.title":
-            "Luogo di ritiro",
-
-        "pickup.subtitle":
-            "Dove dobbiamo venirti a prendere?",
-
-        "pickup.district":
-            "Distretto di ritiro",
-
-        "pickup.place":
-            "Città / Luogo",
-
-        "pickup.address":
-            "Indirizzo di ritiro",
-
-        "destination.title":
-            "Destinazione",
-
-        "destination.subtitle":
-            "Dove stai andando?",
-
-        "destination.district":
-            "Distretto destinazione",
-
-        "destination.place":
-            "Città / Luogo",
-
-        "destination.address":
-            "Indirizzo di destinazione",
-
-        "baby.title":
-            "Seggiolino",
-
-        "baby.subtitle":
-            "1 seggiolino è gratuito. Gli altri costano 5 €.",
-
-        "baby.number":
-            "Numero di seggiolini",
-
-        "services.badge":
-            "I NOSTRI SERVIZI",
-
-        "services.title":
-            "Più di un transfer.<br><em>La tua esperienza a Mauritius.</em>",
-
-        "services.text":
-            "Dal tuo arrivo in aeroporto fino all'ultimo giorno, BTSM ti aiuta a viaggiare comodamente.",
-
-        "toast.required":
-            "Completa tutti i campi obbligatori.",
-
-        "toast.email":
-            "Inserisci un indirizzo e-mail valido.",
-
-        "toast.phone":
-            "Inserisci un numero di telefono valido.",
-
-        "toast.emailSend":
-            "Impossibile inviare l'e-mail della prenotazione.",
-
-        "toast.language":
-            "Lingua cambiata."
-
-    }
-
-};
-/* =========================================================
-   TRANSLATION HELPER
-========================================================= */
-
-function t(key) {
-
-    return (
-        TRANSLATIONS[CURRENT_LANGUAGE]?.[key] ||
-        TRANSLATIONS.en[key] ||
-        key
-    );
-
-}
+let LAST_BOOKING_MESSAGE =
+    "";
+
+let toastTimer =
+    null;
 
 
 /* =========================================================
@@ -949,7 +54,6 @@ const MAURITIUS_PLACES = {
         "Le Morne",
         "Chamarel",
         "La Gaulette",
-        "Case Noyale",
         "Albion"
     ],
 
@@ -959,8 +63,7 @@ const MAURITIUS_PLACES = {
         "Trou d'Eau Douce",
         "Centre de Flacq",
         "Poste de Flacq",
-        "Quatre Cocos",
-        "Grand River South East"
+        "Quatre Cocos"
     ],
 
     "Grand Port": [
@@ -969,9 +72,7 @@ const MAURITIUS_PLACES = {
         "Blue Bay",
         "Pointe d'Esny",
         "Plaine Magnien",
-        "Rose Belle",
-        "Vieux Grand Port",
-        "Bambous Virieux"
+        "Rose Belle"
     ],
 
     "Moka": [
@@ -979,8 +80,7 @@ const MAURITIUS_PLACES = {
         "Réduit",
         "Saint Pierre",
         "Bagatelle",
-        "Quartier Militaire",
-        "Montagne Blanche"
+        "Quartier Militaire"
     ],
 
     "Pamplemousses": [
@@ -989,9 +89,7 @@ const MAURITIUS_PLACES = {
         "Pointe aux Piments",
         "Balaclava",
         "Pamplemousses",
-        "Triolet",
-        "Arsenal",
-        "Terre Rouge"
+        "Triolet"
     ],
 
     "Plaines Wilhems": [
@@ -1001,8 +99,7 @@ const MAURITIUS_PLACES = {
         "Phoenix",
         "Beau Bassin",
         "Rose Hill",
-        "Floréal",
-        "Sodnac"
+        "Floréal"
     ],
 
     "Port Louis": [
@@ -1010,9 +107,7 @@ const MAURITIUS_PLACES = {
         "Caudan Waterfront",
         "Port Louis Harbour",
         "Chinatown",
-        "Champ de Mars",
-        "Plaine Verte",
-        "Pailles"
+        "Champ de Mars"
     ],
 
     "Rivière du Rempart": [
@@ -1021,10 +116,7 @@ const MAURITIUS_PLACES = {
         "Cap Malheureux",
         "Grand Gaube",
         "Goodlands",
-        "Roches Noires",
-        "Poudre d'Or",
-        "Calodyne",
-        "Rivière du Rempart"
+        "Calodyne"
     ],
 
     "Savanne": [
@@ -1033,8 +125,6 @@ const MAURITIUS_PLACES = {
         "Bel Ombre",
         "Riambel",
         "Chemin Grenier",
-        "Rivière des Anguilles",
-        "Saint Aubin",
         "Grand Bassin / Ganga Talao",
         "Baie du Cap"
     ]
@@ -1042,34 +132,12 @@ const MAURITIUS_PLACES = {
 };
 
 
-const PLACE_TO_DISTRICT =
-    {};
-
-
-Object.entries(
-    MAURITIUS_PLACES
-).forEach(
-    ([district, places]) => {
-
-        places.forEach(
-            (place) => {
-
-                PLACE_TO_DISTRICT[place] =
-                    district;
-
-            }
-        );
-
-    }
-);
-
-
 const OTHER_PLACE =
     "__OTHER__";
 
 
 /* =========================================================
-   START SITE
+   START
 ========================================================= */
 
 document.addEventListener(
@@ -1080,31 +148,21 @@ document.addEventListener(
 
         setupMinimumDate();
 
-        initializeDistrictSelect(
-            $("#pickupDistrict")
-        );
+        setupImageFallbacks();
 
-        initializeDistrictSelect(
-            $("#destinationDistrict")
-        );
-
-        setupLocationSelector(
-            "pickup"
-        );
-
-        setupLocationSelector(
-            "destination"
-        );
+        setupLanguage();
 
         setupMobileMenu();
 
-        setupVehicleButtons();
+        setupLocations();
 
-        setupTourButton();
+        setupCountryPhone();
+
+        setupVehicleButtons();
 
         setupExperienceButton();
 
-        setupCountryPhone();
+        setupExcursionSlider();
 
         setupWhySlider();
 
@@ -1112,17 +170,7 @@ document.addEventListener(
 
         setupSuccessModal();
 
-        setupLanguage();
-
-
-        const form =
-            $("#bookingForm");
-
-
-        form?.addEventListener(
-            "submit",
-            handleBookingSubmit
-        );
+        setupBookingForm();
 
     }
 );
@@ -1137,7 +185,6 @@ function setupYear() {
     const year =
         $("#year");
 
-
     if (year) {
 
         year.textContent =
@@ -1149,38 +196,153 @@ function setupYear() {
 
 
 /* =========================================================
+   MINIMUM DATE
+========================================================= */
+
+function setupMinimumDate() {
+
+    const input =
+        $("#date");
+
+    if (!input) {
+        return;
+    }
+
+
+    const now =
+        new Date();
+
+
+    const localToday =
+        new Date(
+            now.getTime() -
+            now.getTimezoneOffset() * 60000
+        )
+            .toISOString()
+            .split("T")[0];
+
+
+    input.min =
+        localToday;
+
+}
+
+
+/* =========================================================
+   IMAGE FALLBACK SYSTEM
+
+   This is important.
+
+   Example:
+
+   src="./images/jp3.jpeg"
+
+   If jp3.jpeg cannot be found,
+   JS automatically tries image4.jpeg,
+   then image2.jpeg,
+   then image1.jpeg.
+
+========================================================= */
+
+function setupImageFallbacks() {
+
+    $$("img[data-fallbacks]")
+        .forEach(
+            (image) => {
+
+                const fallbackList =
+                    String(
+                        image.dataset.fallbacks ||
+                        ""
+                    )
+                        .split("|")
+                        .map(
+                            (item) =>
+                                item.trim()
+                        )
+                        .filter(Boolean);
+
+
+                let fallbackIndex =
+                    0;
+
+
+                image.addEventListener(
+                    "error",
+                    () => {
+
+                        if (
+                            fallbackIndex <
+                            fallbackList.length
+                        ) {
+
+                            image.src =
+                                fallbackList[
+                                    fallbackIndex
+                                ];
+
+                            fallbackIndex +=
+                                1;
+
+                            return;
+
+                        }
+
+
+                        /*
+                           If every local image is missing,
+                           hide broken-image text.
+                        */
+
+                        image.style.display =
+                            "none";
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
    LANGUAGE
 ========================================================= */
 
 function setupLanguage() {
 
-    const languageSelect =
-        $("#languageSelect");
-
     const picker =
         $(".language-picker");
 
-    const languageButton =
+    const button =
         $("#languageButton");
 
-    const languageMenu =
+    const menu =
         $("#languageMenu");
 
-    const languageLabel =
+    const label =
         $("#languageLabel");
 
-    const languageFlag =
+    const flag =
         $("#languageFlag");
 
+    const hiddenSelect =
+        $("#languageSelect");
 
-    if (!languageSelect) {
+
+    if (
+        !picker ||
+        !button ||
+        !menu
+    ) {
 
         return;
 
     }
 
 
-    const languageMeta = {
+    const languages = {
 
         en: {
             label: "English",
@@ -1210,95 +372,101 @@ function setupLanguage() {
     };
 
 
-    const updateLanguagePicker =
-        (language) => {
+    function close() {
 
-            const meta =
-                languageMeta[language] ||
-                languageMeta.en;
-
-
-            languageSelect.value =
-                language;
-
-
-            if (languageLabel) {
-
-                languageLabel.textContent =
-                    meta.label;
-
-            }
-
-
-            if (languageFlag) {
-
-                languageFlag.className =
-                    `language-flag ${meta.flag}`;
-
-            }
-
-
-            $$(
-                ".language-option"
-            ).forEach(
-                (option) => {
-
-                    option.setAttribute(
-                        "aria-selected",
-                        String(
-                            option.dataset.language ===
-                            language
-                        )
-                    );
-
-                }
-            );
-
-        };
-
-
-    const closeLanguageMenu =
-        () => {
-
-            picker?.classList.remove(
-                "open"
-            );
-
-            languageButton?.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-        };
-
-
-    const savedLanguage =
-        localStorage.getItem(
-            "btsm-language"
+        picker.classList.remove(
+            "open"
         );
 
-
-    if (
-        savedLanguage &&
-        TRANSLATIONS[savedLanguage]
-    ) {
-
-        CURRENT_LANGUAGE =
-            savedLanguage;
+        button.setAttribute(
+            "aria-expanded",
+            "false"
+        );
 
     }
 
 
-    updateLanguagePicker(
-        CURRENT_LANGUAGE
+    function selectLanguage(
+        language
+    ) {
+
+        const data =
+            languages[language] ||
+            languages.en;
+
+
+        if (label) {
+
+            label.textContent =
+                data.label;
+
+        }
+
+
+        if (flag) {
+
+            flag.className =
+                `language-flag ${data.flag}`;
+
+        }
+
+
+        if (hiddenSelect) {
+
+            hiddenSelect.value =
+                language;
+
+        }
+
+
+        try {
+
+            localStorage.setItem(
+                "btsm-language",
+                language
+            );
+
+        }
+
+        catch (error) {
+
+            console.warn(
+                error
+            );
+
+        }
+
+    }
+
+
+    let saved =
+        "en";
+
+
+    try {
+
+        saved =
+            localStorage.getItem(
+                "btsm-language"
+            ) ||
+            "en";
+
+    }
+
+    catch (error) {
+
+        saved =
+            "en";
+
+    }
+
+
+    selectLanguage(
+        saved
     );
 
-    translatePage(
-        CURRENT_LANGUAGE
-    );
 
-
-    languageButton?.addEventListener(
+    button.addEventListener(
         "click",
         (event) => {
 
@@ -1306,84 +474,43 @@ function setupLanguage() {
 
 
             const open =
-                picker?.classList.toggle(
+                picker.classList.toggle(
                     "open"
                 );
 
 
-            languageButton.setAttribute(
+            button.setAttribute(
                 "aria-expanded",
-                String(
-                    Boolean(open)
-                )
+                String(open)
             );
 
         }
     );
 
 
-    $$(
-        ".language-option"
-    ).forEach(
-        (option) => {
+    $$(".language-option")
+        .forEach(
+            (option) => {
 
-            option.addEventListener(
-                "click",
-                () => {
+                option.addEventListener(
+                    "click",
+                    () => {
 
-                    const language =
-                        option.dataset.language;
+                        selectLanguage(
+                            option.dataset.language
+                        );
 
+                        close();
 
-                    if (
-                        !language ||
-                        !TRANSLATIONS[language]
-                    ) {
-
-                        return;
+                        showToast(
+                            "Language changed."
+                        );
 
                     }
+                );
 
-
-                    updateLanguagePicker(
-                        language
-                    );
-
-                    translatePage(
-                        language
-                    );
-
-                    closeLanguageMenu();
-
-                    showToast(
-                        t("toast.language")
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-    languageSelect.addEventListener(
-        "change",
-        () => {
-
-            updateLanguagePicker(
-                languageSelect.value
-            );
-
-            translatePage(
-                languageSelect.value
-            );
-
-            showToast(
-                t("toast.language")
-            );
-
-        }
-    );
+            }
+        );
 
 
     document.addEventListener(
@@ -1391,13 +518,12 @@ function setupLanguage() {
         (event) => {
 
             if (
-                picker &&
                 !picker.contains(
                     event.target
                 )
             ) {
 
-                closeLanguageMenu();
+                close();
 
             }
 
@@ -1414,67 +540,7 @@ function setupLanguage() {
                 "Escape"
             ) {
 
-                closeLanguageMenu();
-
-            }
-
-        }
-    );
-
-}
-
-
-function translatePage(
-    language
-) {
-
-    if (
-        !TRANSLATIONS[language]
-    ) {
-
-        language =
-            "en";
-
-    }
-
-
-    CURRENT_LANGUAGE =
-        language;
-
-
-    document.documentElement.lang =
-        language;
-
-
-    localStorage.setItem(
-        "btsm-language",
-        language
-    );
-
-
-    $$(
-        "[data-i18n]"
-    ).forEach(
-        (element) => {
-
-            const key =
-                element.dataset.i18n;
-
-
-            if (
-                element.dataset.i18nHtml ===
-                "true"
-            ) {
-
-                element.innerHTML =
-                    t(key);
-
-            }
-
-            else {
-
-                element.textContent =
-                    t(key);
+                close();
 
             }
 
@@ -1485,25 +551,21 @@ function translatePage(
 
 
 /* =========================================================
-   INTERNATIONAL PHONE
+   MOBILE MENU
 ========================================================= */
 
-function setupCountryPhone() {
+function setupMobileMenu() {
 
-    const phone =
-        $("#phone");
+    const button =
+        $("#menuToggle");
 
-
-    if (!phone) {
-
-        return;
-
-    }
+    const menu =
+        $("#mobileNav");
 
 
     if (
-        typeof window.intlTelInput !==
-        "function"
+        !button ||
+        !menu
     ) {
 
         return;
@@ -1511,195 +573,72 @@ function setupCountryPhone() {
     }
 
 
-    PHONE_INPUT =
-        window.intlTelInput(
-            phone,
-            {
-
-                initialCountry:
-                    "mu",
-
-                separateDialCode:
-                    true,
-
-                nationalMode:
-                    true,
-
-                allowDropdown:
-                    true,
-
-                autoPlaceholder:
-                    "aggressive"
-
-            }
-        );
-
-}
-
-
-/* =========================================================
-   FULL CUSTOMER PHONE
-========================================================= */
-
-function getFullCustomerPhone() {
-
-    const phone =
-        $("#phone");
-
-
-    if (!phone) {
-
-        return "";
-
-    }
-
-
-    const digits =
-        phone.value.replace(
-            /\D/g,
-            ""
-        );
-
-
-    if (
-        PHONE_INPUT
-    ) {
-
-        try {
-
-            const country =
-                PHONE_INPUT
-                    .getSelectedCountryData();
-
-
-            if (
-                country &&
-                country.dialCode
-            ) {
-
-                return (
-                    `+${country.dialCode}${digits}`
-                );
-
-            }
-
-        }
-
-        catch (error) {
-
-            console.warn(
-                error
-            );
-
-        }
-
-    }
-
-
-    return digits;
-
-}
-
-
-/* =========================================================
-   DATE
-========================================================= */
-
-function setupMinimumDate() {
-
-    const input =
-        $("#date");
-
-
-    if (!input) {
-
-        return;
-
-    }
-
-
-    const now =
-        new Date();
-
-
-    const today =
-        new Date(
-            now.getTime() -
-            now.getTimezoneOffset() *
-            60000
-        )
-            .toISOString()
-            .split("T")[0];
-
-
-    input.min =
-        today;
-
-}
-
-
-/* =========================================================
-   LOCATION SELECT
-========================================================= */
-
-function initializeDistrictSelect(
-    select
-) {
-
-    if (!select) {
-
-        return;
-
-    }
-
-
-    select.innerHTML =
-        "";
-
-
-    const first =
-        document.createElement(
-            "option"
-        );
-
-
-    first.value =
-        "";
-
-
-    first.textContent =
-        "Select district / area";
-
-
-    select.appendChild(
-        first
-    );
-
-
-    Object.keys(
-        MAURITIUS_PLACES
-    ).forEach(
-        (district) => {
-
-            const option =
-                document.createElement(
-                    "option"
+    button.addEventListener(
+        "click",
+        () => {
+
+            const open =
+                menu.classList.toggle(
+                    "open"
                 );
 
 
-            option.value =
-                district;
+            button.textContent =
+                open
+                    ? "×"
+                    : "☰";
 
 
-            option.textContent =
-                district;
-
-
-            select.appendChild(
-                option
+            button.setAttribute(
+                "aria-expanded",
+                String(open)
             );
 
         }
+    );
+
+
+    $$("#mobileNav a")
+        .forEach(
+            (link) => {
+
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        menu.classList.remove(
+                            "open"
+                        );
+
+                        button.textContent =
+                            "☰";
+
+                        button.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   LOCATIONS
+========================================================= */
+
+function setupLocations() {
+
+    setupLocationSelector(
+        "pickup"
+    );
+
+    setupLocationSelector(
+        "destination"
     );
 
 }
@@ -1732,7 +671,12 @@ function setupLocationSelector(
     }
 
 
-    populatePlaceSelect(
+    populateDistricts(
+        district
+    );
+
+
+    populatePlaces(
         place,
         ""
     );
@@ -1742,16 +686,14 @@ function setupLocationSelector(
         "change",
         () => {
 
-            populatePlaceSelect(
+            populatePlaces(
                 place,
                 district.value
             );
 
-
             hideCustomPlace(
                 customWrap,
-                customInput,
-                true
+                customInput
             );
 
         }
@@ -1767,22 +709,28 @@ function setupLocationSelector(
                 OTHER_PLACE
             ) {
 
-                showCustomPlace(
+                customWrap
+                    ?.classList
+                    .add("show");
+
+
+                if (customInput) {
+
+                    customInput.required =
+                        true;
+
+                }
+
+            }
+
+            else {
+
+                hideCustomPlace(
                     customWrap,
                     customInput
                 );
 
-
-                return;
-
             }
-
-
-            hideCustomPlace(
-                customWrap,
-                customInput,
-                true
-            );
 
         }
     );
@@ -1790,18 +738,9 @@ function setupLocationSelector(
 }
 
 
-function populatePlaceSelect(
-    select,
-    district = "",
-    selected = ""
+function populateDistricts(
+    select
 ) {
-
-    if (!select) {
-
-        return;
-
-    }
-
 
     select.innerHTML =
         "";
@@ -1812,14 +751,63 @@ function populatePlaceSelect(
             "option"
         );
 
+    first.value =
+        "";
+
+    first.textContent =
+        "Select district / area";
+
+    select.appendChild(
+        first
+    );
+
+
+    Object.keys(
+        MAURITIUS_PLACES
+    )
+        .forEach(
+            (district) => {
+
+                const option =
+                    document.createElement(
+                        "option"
+                    );
+
+                option.value =
+                    district;
+
+                option.textContent =
+                    district;
+
+                select.appendChild(
+                    option
+                );
+
+            }
+        );
+
+}
+
+
+function populatePlaces(
+    select,
+    district
+) {
+
+    select.innerHTML =
+        "";
+
+
+    const first =
+        document.createElement(
+            "option"
+        );
 
     first.value =
         "";
 
-
     first.textContent =
         "Select town / place";
-
 
     select.appendChild(
         first
@@ -1828,10 +816,14 @@ function populatePlaceSelect(
 
     const places =
         district
-            ? MAURITIUS_PLACES[district] || []
-            : Object.values(
-                MAURITIUS_PLACES
-            ).flat();
+            ? MAURITIUS_PLACES[
+                district
+            ] || []
+            : Object
+                .values(
+                    MAURITIUS_PLACES
+                )
+                .flat();
 
 
     places.forEach(
@@ -1842,24 +834,11 @@ function populatePlaceSelect(
                     "option"
                 );
 
-
             option.value =
                 place;
 
-
             option.textContent =
                 place;
-
-
-            if (
-                place === selected
-            ) {
-
-                option.selected =
-                    true;
-
-            }
-
 
             select.appendChild(
                 option
@@ -1874,14 +853,11 @@ function populatePlaceSelect(
             "option"
         );
 
-
     other.value =
         OTHER_PLACE;
 
-
     other.textContent =
         "Other / Not listed";
-
 
     select.appendChild(
         other
@@ -1890,35 +866,14 @@ function populatePlaceSelect(
 }
 
 
-function showCustomPlace(
+function hideCustomPlace(
     wrapper,
     input
 ) {
 
-    wrapper?.classList.add(
-        "show"
-    );
-
-
-    if (input) {
-
-        input.required =
-            true;
-
-    }
-
-}
-
-
-function hideCustomPlace(
-    wrapper,
-    input,
-    clear = false
-) {
-
-    wrapper?.classList.remove(
-        "show"
-    );
+    wrapper
+        ?.classList
+        .remove("show");
 
 
     if (input) {
@@ -1926,33 +881,32 @@ function hideCustomPlace(
         input.required =
             false;
 
-
-        if (clear) {
-
-            input.value =
-                "";
-
-        }
+        input.value =
+            "";
 
     }
 
 }
+
+
 /* =========================================================
-   MOBILE MENU
+   PHONE
 ========================================================= */
 
-function setupMobileMenu() {
+function setupCountryPhone() {
 
-    const button =
-        $("#menuToggle");
+    const phone =
+        $("#phone");
 
-    const mobile =
-        $("#mobileNav");
+
+    if (!phone) {
+        return;
+    }
 
 
     if (
-        !button ||
-        !mobile
+        typeof window.intlTelInput !==
+        "function"
     ) {
 
         return;
@@ -1960,59 +914,83 @@ function setupMobileMenu() {
     }
 
 
-    button.addEventListener(
-        "click",
-        () => {
+    try {
 
-            const open =
-                mobile.classList.toggle(
-                    "open"
-                );
+        PHONE_INPUT =
+            window.intlTelInput(
+                phone,
+                {
 
+                    initialCountry:
+                        "mu",
 
-            button.textContent =
-                open
-                    ? "×"
-                    : "☰";
+                    separateDialCode:
+                        true,
 
+                    nationalMode:
+                        true,
 
-            button.setAttribute(
-                "aria-expanded",
-                String(open)
-            );
-
-        }
-    );
-
-
-    $$(
-        "#mobileNav a"
-    ).forEach(
-        (link) => {
-
-            link.addEventListener(
-                "click",
-                () => {
-
-                    mobile.classList.remove(
-                        "open"
-                    );
-
-
-                    button.textContent =
-                        "☰";
-
-
-                    button.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
+                    allowDropdown:
+                        true
 
                 }
             );
 
+    }
+
+    catch (error) {
+
+        console.warn(
+            error
+        );
+
+    }
+
+}
+
+
+function getCustomerPhone() {
+
+    const phone =
+        $("#phone");
+
+
+    if (!phone) {
+
+        return "";
+
+    }
+
+
+    if (PHONE_INPUT) {
+
+        try {
+
+            const full =
+                PHONE_INPUT
+                    .getNumber();
+
+
+            if (full) {
+
+                return full;
+
+            }
+
         }
-    );
+
+        catch (error) {
+
+            console.warn(
+                error
+            );
+
+        }
+
+    }
+
+
+    return phone.value.trim();
 
 }
 
@@ -2023,80 +1001,34 @@ function setupMobileMenu() {
 
 function setupVehicleButtons() {
 
-    $$(
-        ".choose-vehicle"
-    ).forEach(
-        (button) => {
+    $$(".choose-vehicle")
+        .forEach(
+            (button) => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                    const vehicle =
-                        $("#vehicle");
+                        const vehicle =
+                            $("#vehicle");
 
 
-                    if (vehicle) {
+                        if (vehicle) {
 
-                        vehicle.value =
-                            button.dataset.vehicle;
+                            vehicle.value =
+                                button.dataset.vehicle ||
+                                "";
+
+                        }
+
+
+                        scrollToBooking();
 
                     }
-
-
-                    scrollToBooking();
-
-                }
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   TOUR BUTTON
-========================================================= */
-
-function setupTourButton() {
-
-    const button =
-        $("#tourBook");
-
-
-    button?.addEventListener(
-        "click",
-        () => {
-
-            const bookingType =
-                $("#bookingType");
-
-
-            if (bookingType) {
-
-                bookingType.value =
-                    "Excursion";
+                );
 
             }
-
-
-            const notes =
-                $("#notes");
-
-
-            if (notes) {
-
-                notes.value =
-                    "Interested in Grand Bassin, Shiva & Durga Statues, 7 Coloured Earth, Alexandra Falls, Chamarel viewpoints and optional Le Morne sunset.";
-
-            }
-
-
-            scrollToBooking();
-
-        }
-    );
+        );
 
 }
 
@@ -2107,57 +1039,496 @@ function setupTourButton() {
 
 function setupExperienceButton() {
 
-    const button =
-        $("#experienceBook");
+    $("#experienceBook")
+        ?.addEventListener(
+            "click",
+            () => {
+
+                const type =
+                    $("#bookingType");
+
+                const notes =
+                    $("#notes");
 
 
-    button?.addEventListener(
+                if (type) {
+
+                    type.value =
+                        "Activity Booking";
+
+                }
+
+
+                if (notes) {
+
+                    notes.value =
+                        "I am interested in a Mauritius activity or experience.";
+
+                }
+
+
+                scrollToBooking();
+
+            }
+        );
+
+}
+
+
+function scrollToBooking() {
+
+    $("#booking")
+        ?.scrollIntoView(
+            {
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "start"
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   EXCURSION SLIDER
+   INFINITE AUTO SLIDER
+
+   Normal:
+   5 seconds
+
+   Manual click:
+   user's action happens immediately
+   then waits 8 seconds
+   then auto-slide resumes forever.
+========================================================= */
+
+function setupExcursionSlider() {
+
+    const slider =
+        $("#excursionSlider");
+
+
+    if (!slider) {
+
+        return;
+
+    }
+
+
+    const slides =
+        Array.from(
+            slider.querySelectorAll(
+                ".excursion-slide"
+            )
+        );
+
+
+    const dots =
+        Array.from(
+            $$("#excursionDots .excursion-dot")
+        );
+
+
+    const previous =
+        $("#excursionPrev");
+
+    const next =
+        $("#excursionNext");
+
+
+    if (
+        slides.length <
+        2
+    ) {
+
+        return;
+
+    }
+
+
+    const AUTO_DELAY =
+        5000;
+
+    const MANUAL_DELAY =
+        8000;
+
+
+    let current =
+        0;
+
+    let autoTimer =
+        null;
+
+    let manualTimer =
+        null;
+
+    let touchStartX =
+        null;
+
+
+    function show(
+        index
+    ) {
+
+        current =
+            (
+                index +
+                slides.length
+            ) %
+            slides.length;
+
+
+        slides.forEach(
+            (slide,index) => {
+
+                const active =
+                    index ===
+                    current;
+
+
+                slide.classList.toggle(
+                    "active",
+                    active
+                );
+
+
+                slide.setAttribute(
+                    "aria-hidden",
+                    String(
+                        !active
+                    )
+                );
+
+            }
+        );
+
+
+        dots.forEach(
+            (dot,index) => {
+
+                dot.classList.toggle(
+                    "active",
+                    index ===
+                    current
+                );
+
+            }
+        );
+
+    }
+
+
+    function nextSlide() {
+
+        show(
+            current + 1
+        );
+
+    }
+
+
+    function previousSlide() {
+
+        show(
+            current - 1
+        );
+
+    }
+
+
+    function clearAuto() {
+
+        if (
+            autoTimer !==
+            null
+        ) {
+
+            clearTimeout(
+                autoTimer
+            );
+
+            autoTimer =
+                null;
+
+        }
+
+    }
+
+
+    function clearManual() {
+
+        if (
+            manualTimer !==
+            null
+        ) {
+
+            clearTimeout(
+                manualTimer
+            );
+
+            manualTimer =
+                null;
+
+        }
+
+    }
+
+
+    function scheduleAuto() {
+
+        clearAuto();
+
+
+        autoTimer =
+            setTimeout(
+                () => {
+
+                    nextSlide();
+
+                    scheduleAuto();
+
+                },
+                AUTO_DELAY
+            );
+
+    }
+
+
+    function manualAction(
+        action
+    ) {
+
+        clearAuto();
+
+        clearManual();
+
+
+        action();
+
+
+        manualTimer =
+            setTimeout(
+                () => {
+
+                    manualTimer =
+                        null;
+
+                    scheduleAuto();
+
+                },
+                MANUAL_DELAY
+            );
+
+    }
+
+
+    next?.addEventListener(
         "click",
         () => {
 
-            const bookingType =
-                $("#bookingType");
+            manualAction(
+                nextSlide
+            );
+
+        }
+    );
 
 
-            if (bookingType) {
+    previous?.addEventListener(
+        "click",
+        () => {
 
-                bookingType.value =
-                    "Activity Booking";
+            manualAction(
+                previousSlide
+            );
+
+        }
+    );
+
+
+    dots.forEach(
+        (dot,index) => {
+
+            dot.addEventListener(
+                "click",
+                () => {
+
+                    manualAction(
+                        () => {
+
+                            show(
+                                index
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    slider.addEventListener(
+        "touchstart",
+        (event) => {
+
+            touchStartX =
+                event
+                    .changedTouches[0]
+                    ?.clientX ??
+                null;
+
+        },
+        {
+            passive:
+                true
+        }
+    );
+
+
+    slider.addEventListener(
+        "touchend",
+        (event) => {
+
+            if (
+                touchStartX ===
+                null
+            ) {
+
+                return;
 
             }
 
 
-            scrollToBooking();
+            const endX =
+                event
+                    .changedTouches[0]
+                    ?.clientX ??
+                touchStartX;
 
-        }
-    );
 
-}
+            const distance =
+                endX -
+                touchStartX;
 
 
-/* =========================================================
-   SCROLL
-========================================================= */
+            touchStartX =
+                null;
 
-function scrollToBooking() {
 
-    $("#booking")?.scrollIntoView(
+            if (
+                Math.abs(
+                    distance
+                ) <
+                45
+            ) {
+
+                return;
+
+            }
+
+
+            manualAction(
+                distance < 0
+                    ? nextSlide
+                    : previousSlide
+            );
+
+        },
         {
+            passive:
+                true
+        }
+    );
 
-            behavior:
-                "smooth",
 
-            block:
-                "start"
+    $$(".excursion-book-button")
+        .forEach(
+            (button) => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const type =
+                            $("#bookingType");
+
+                        const notes =
+                            $("#notes");
+
+
+                        if (type) {
+
+                            type.value =
+                                "Excursion";
+
+                        }
+
+
+                        if (notes) {
+
+                            notes.value =
+                                `I am interested in the ${button.dataset.excursion} excursion.`;
+
+                        }
+
+
+                        scrollToBooking();
+
+                    }
+                );
+
+            }
+        );
+
+
+    /*
+       Pause while browser tab is hidden.
+    */
+
+    document.addEventListener(
+        "visibilitychange",
+        () => {
+
+            if (
+                document.hidden
+            ) {
+
+                clearAuto();
+
+            }
+
+            else if (
+                manualTimer ===
+                null
+            ) {
+
+                scheduleAuto();
+
+            }
 
         }
     );
+
+
+    show(
+        0
+    );
+
+
+    scheduleAuto();
 
 }
 
 
 /* =========================================================
-   WHY US SLIDER
+   WHY SLIDER
 ========================================================= */
 
 function setupWhySlider() {
@@ -2174,19 +1545,24 @@ function setupWhySlider() {
 
 
     const slides =
-        slider.querySelectorAll(
-            ".why-slide"
+        Array.from(
+            slider.querySelectorAll(
+                ".why-slide"
+            )
         );
 
 
     const dots =
-        slider.querySelectorAll(
-            ".why-slider-dot"
+        Array.from(
+            slider.querySelectorAll(
+                ".why-slider-dot"
+            )
         );
 
 
     if (
-        slides.length < 2
+        slides.length <
+        2
     ) {
 
         return;
@@ -2197,11 +1573,8 @@ function setupWhySlider() {
     let current =
         0;
 
-    let timer =
-        null;
 
-
-    function showSlide(
+    function show(
         index
     ) {
 
@@ -2214,11 +1587,12 @@ function setupWhySlider() {
 
 
         slides.forEach(
-            (slide, i) => {
+            (slide,index) => {
 
                 slide.classList.toggle(
                     "active",
-                    i === current
+                    index ===
+                    current
                 );
 
             }
@@ -2226,11 +1600,12 @@ function setupWhySlider() {
 
 
         dots.forEach(
-            (dot, i) => {
+            (dot,index) => {
 
                 dot.classList.toggle(
                     "active",
-                    i === current
+                    index ===
+                    current
                 );
 
             }
@@ -2239,35 +1614,30 @@ function setupWhySlider() {
     }
 
 
-    function stop() {
+    let timer =
+        null;
+
+
+    function schedule() {
 
         if (timer) {
 
-            clearInterval(
+            clearTimeout(
                 timer
             );
 
-
-            timer =
-                null;
-
         }
-
-    }
-
-
-    function start() {
-
-        stop();
 
 
         timer =
-            setInterval(
+            setTimeout(
                 () => {
 
-                    showSlide(
+                    show(
                         current + 1
                     );
+
+                    schedule();
 
                 },
                 4500
@@ -2277,18 +1647,17 @@ function setupWhySlider() {
 
 
     dots.forEach(
-        (dot, index) => {
+        (dot,index) => {
 
             dot.addEventListener(
                 "click",
                 () => {
 
-                    showSlide(
+                    show(
                         index
                     );
 
-
-                    start();
+                    schedule();
 
                 }
             );
@@ -2297,24 +1666,11 @@ function setupWhySlider() {
     );
 
 
-    slider.addEventListener(
-        "mouseenter",
-        stop
-    );
-
-
-    slider.addEventListener(
-        "mouseleave",
-        start
-    );
-
-
-    showSlide(
+    show(
         0
     );
 
-
-    start();
+    schedule();
 
 }
 
@@ -2325,7 +1681,7 @@ function setupWhySlider() {
 
 function setupLightbox() {
 
-    const lightbox =
+    const modal =
         $("#imageLightbox");
 
     const image =
@@ -2339,7 +1695,7 @@ function setupLightbox() {
 
 
     if (
-        !lightbox ||
+        !modal ||
         !image
     ) {
 
@@ -2348,18 +1704,16 @@ function setupLightbox() {
     }
 
 
-    function closeLightbox() {
+    function closeModal() {
 
-        lightbox.classList.remove(
+        modal.classList.remove(
             "open"
         );
 
-
-        lightbox.setAttribute(
+        modal.setAttribute(
             "aria-hidden",
             "true"
         );
-
 
         document.body.classList.remove(
             "no-scroll"
@@ -2368,66 +1722,94 @@ function setupLightbox() {
     }
 
 
-    $$(
-        ".gallery-item"
-    ).forEach(
-        (item) => {
+    $$(".gallery-item")
+        .forEach(
+            (item) => {
 
-            item.addEventListener(
-                "click",
-                () => {
+                item.addEventListener(
+                    "click",
+                    () => {
 
-                    image.src =
-                        item.dataset.image;
+                        const clickedImage =
+                            item.querySelector(
+                                "img"
+                            );
 
 
-                    if (caption) {
+                        /*
+                           Use the actual loaded image source,
+                           including fallback if necessary.
+                        */
 
-                        caption.textContent =
-                            item.dataset.caption ||
+                        image.src =
+                            clickedImage?.currentSrc ||
+                            clickedImage?.src ||
+                            item.dataset.image ||
                             "";
 
+
+                        if (caption) {
+
+                            caption.textContent =
+                                item.dataset.caption ||
+                                "";
+
+                        }
+
+
+                        modal.classList.add(
+                            "open"
+                        );
+
+                        modal.setAttribute(
+                            "aria-hidden",
+                            "false"
+                        );
+
+                        document.body.classList.add(
+                            "no-scroll"
+                        );
+
                     }
+                );
 
-
-                    lightbox.classList.add(
-                        "open"
-                    );
-
-
-                    lightbox.setAttribute(
-                        "aria-hidden",
-                        "false"
-                    );
-
-
-                    document.body.classList.add(
-                        "no-scroll"
-                    );
-
-                }
-            );
-
-        }
-    );
+            }
+        );
 
 
     close?.addEventListener(
         "click",
-        closeLightbox
+        closeModal
     );
 
 
-    lightbox.addEventListener(
+    modal.addEventListener(
         "click",
         (event) => {
 
             if (
                 event.target ===
-                lightbox
+                modal
             ) {
 
-                closeLightbox();
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key ===
+                "Escape"
+            ) {
+
+                closeModal();
 
             }
 
@@ -2438,15 +1820,28 @@ function setupLightbox() {
 
 
 /* =========================================================
-   VALIDATION
+   BOOKING FORM
+========================================================= */
+
+function setupBookingForm() {
+
+    $("#bookingForm")
+        ?.addEventListener(
+            "submit",
+            handleBookingSubmit
+        );
+
+}
+
+
+/* =========================================================
+   VALIDATE
 ========================================================= */
 
 function validateBookingForm() {
 
     const fields =
-        $$(
-            "#bookingForm [required]"
-        );
+        $$("#bookingForm [required]");
 
 
     for (
@@ -2456,17 +1851,16 @@ function validateBookingForm() {
 
         if (
             !String(
-                field.value
+                field.value ||
+                ""
             ).trim()
         ) {
 
             field.focus();
 
-
             showToast(
-                t("toast.required")
+                "Please complete all required booking fields."
             );
-
 
             return false;
 
@@ -2484,33 +1878,16 @@ function validateBookingForm() {
 
 
     if (
-        !email ||
         !emailPattern.test(
-            email.value.trim()
+            email?.value.trim() ||
+            ""
         )
     ) {
 
         email?.focus();
 
-
         showToast(
-            t("toast.email")
-        );
-
-
-        return false;
-
-    }
-
-
-    const phone =
-        $("#phone");
-
-
-    if (!phone) {
-
-        showToast(
-            t("toast.phone")
+            "Please enter a valid email address."
         );
 
         return false;
@@ -2518,25 +1895,27 @@ function validateBookingForm() {
     }
 
 
-    const digits =
-        phone.value.replace(
-            /\D/g,
-            ""
-        );
+    const phoneDigits =
+        $("#phone")
+            ?.value
+            .replace(
+                /\D/g,
+                ""
+            ) ||
+        "";
 
 
     if (
-        digits.length < 5 ||
-        digits.length > 15
+        phoneDigits.length <
+        5
     ) {
 
-        phone.focus();
-
+        $("#phone")
+            ?.focus();
 
         showToast(
-            t("toast.phone")
+            "Please enter a valid phone number."
         );
-
 
         return false;
 
@@ -2579,59 +1958,36 @@ async function handleBookingSubmit(
     }
 
 
-    const submit =
+    const button =
         $("#submitBooking");
 
 
-    if (submit) {
+    if (button) {
 
-        submit.disabled =
+        button.disabled =
             true;
 
-
-        submit.setAttribute(
-            "aria-busy",
-            "true"
-        );
+        button.textContent =
+            "Submitting...";
 
     }
 
 
     try {
 
-        /*
-            1. Send email to BTSM.
-        */
-
         await sendBookingEmail(
             booking
         );
 
 
-        /*
-            Save message for modal button.
-        */
-
         LAST_BOOKING_MESSAGE =
             booking.message;
 
-
-        LAST_BOOKING_ID =
-            booking.bookingId;
-
-
-        /*
-            Show confirmation.
-        */
 
         showSuccessModal(
             booking.bookingId
         );
 
-
-        /*
-            2. Redirect to WhatsApp.
-        */
 
         setTimeout(
             () => {
@@ -2641,7 +1997,7 @@ async function handleBookingSubmit(
                 );
 
             },
-            700
+            900
         );
 
     }
@@ -2649,29 +2005,294 @@ async function handleBookingSubmit(
     catch (error) {
 
         console.error(
-            "Booking submission failed:",
             error
         );
 
 
+        /*
+           Even if FormSubmit has not yet been activated,
+           preserve the user's booking by opening WhatsApp.
+        */
+
+        LAST_BOOKING_MESSAGE =
+            booking.message;
+
+
         showToast(
-            t("toast.emailSend")
+            "Opening WhatsApp with your booking request."
         );
 
 
-        if (submit) {
+        openWhatsApp(
+            booking.message
+        );
 
-            submit.disabled =
+    }
+
+    finally {
+
+        if (button) {
+
+            button.disabled =
                 false;
 
-
-            submit.removeAttribute(
-                "aria-busy"
-            );
+            button.textContent =
+                "Submit Booking";
 
         }
 
     }
+
+}
+
+
+/* =========================================================
+   BUILD BOOKING
+========================================================= */
+
+function buildBooking() {
+
+    const form =
+        $("#bookingForm");
+
+
+    if (!form) {
+
+        return null;
+
+    }
+
+
+    const data =
+        Object.fromEntries(
+            new FormData(
+                form
+            ).entries()
+        );
+
+
+    const pickupPlace =
+        data.pickupPlace ===
+        OTHER_PLACE
+            ? data.pickupCustomPlace
+            : data.pickupPlace;
+
+
+    const destinationPlace =
+        data.destinationPlace ===
+        OTHER_PLACE
+            ? data.destinationCustomPlace
+            : data.destinationPlace;
+
+
+    const bookingId =
+        generateBookingId();
+
+
+    const phone =
+        getCustomerPhone();
+
+
+    const babySeats =
+        getBabySeatText(
+            Number(
+                data.babySeats ||
+                0
+            )
+        );
+
+
+    const vehicleDetails =
+        getVehicleDetails(
+            data.vehicle
+        );
+
+
+    const message = [
+
+        "Hello BTSM - Best Taxi Service in Mauritius!",
+
+        "",
+
+        "I would like to make a booking.",
+
+        "",
+
+        "━━━━━━━━━━━━━━━━━━━━",
+
+        "BTSM BOOKING REQUEST",
+
+        "━━━━━━━━━━━━━━━━━━━━",
+
+        "",
+
+        `Booking ID: ${bookingId}`,
+
+        "",
+
+        "CUSTOMER DETAILS",
+
+        `Full Name: ${data.fullName}`,
+
+        `Email: ${data.customerEmail}`,
+
+        `WhatsApp / Phone: ${phone}`,
+
+        "",
+
+        "JOURNEY DETAILS",
+
+        `Service: ${data.bookingType}`,
+
+        `Travel Date: ${formatDate(data.date)}`,
+
+        `Pickup Time: ${formatTime(data.time)}`,
+
+        `Passengers: ${data.passengers}`,
+
+        `Vehicle: ${data.vehicle}`,
+
+        `Vehicle Details: ${vehicleDetails}`,
+
+        "",
+
+        "PICKUP",
+
+        `District: ${data.pickupDistrict}`,
+
+        `Place: ${pickupPlace}`,
+
+        `Address: ${data.pickupAddress}`,
+
+        "",
+
+        "DESTINATION",
+
+        `District: ${data.destinationDistrict}`,
+
+        `Place: ${destinationPlace}`,
+
+        `Address: ${data.destinationAddress}`,
+
+        "",
+
+        "ADDITIONAL DETAILS",
+
+        `Baby Seats: ${babySeats}`,
+
+        `Special Request: ${data.notes || "None"}`,
+
+        "",
+
+        "Please confirm availability and the final price.",
+
+        "",
+
+        `BTSM Contact: ${BUSINESS_PHONE}`,
+
+        `Email: ${BUSINESS_EMAIL}`,
+
+        "",
+
+        "Thank you!"
+
+    ].join(
+        "\n"
+    );
+
+
+    return {
+
+        data,
+
+        bookingId,
+
+        phone,
+
+        pickupPlace,
+
+        destinationPlace,
+
+        babySeats,
+
+        vehicleDetails,
+
+        message
+
+    };
+
+}
+
+
+/* =========================================================
+   VEHICLE DETAILS
+========================================================= */
+
+function getVehicleDetails(
+    vehicle
+) {
+
+    const vehicles = {
+
+        "Standard Car":
+            "1–3 passengers, 3 luggage, from EUR 40",
+
+        "SUV":
+            "1–3 passengers, 3 large + 1 small luggage, from EUR 55",
+
+        "Minivan":
+            "4–6 passengers, maximum 8 luggage, from EUR 70",
+
+        "Large Van":
+            "7–8 passengers, maximum 10 luggage, from EUR 90"
+
+    };
+
+
+    return (
+        vehicles[vehicle] ||
+        "Not specified"
+    );
+
+}
+
+
+/* =========================================================
+   BABY SEAT
+========================================================= */
+
+function getBabySeatText(
+    count
+) {
+
+    if (
+        count <= 0
+    ) {
+
+        return "No baby seat";
+
+    }
+
+
+    if (
+        count ===
+        1
+    ) {
+
+        return "1 baby seat - FREE";
+
+    }
+
+
+    const additional =
+        count - 1;
+
+
+    return (
+        `${count} baby seats - ` +
+        `1 free + ${additional} additional ` +
+        `(EUR ${additional * 5} extra)`
+    );
 
 }
 
@@ -2709,13 +2330,13 @@ async function sendBookingEmail(
             booking.data.customerEmail,
 
         Customer_Phone:
-            booking.customerPhone,
+            booking.phone,
 
         Service:
             booking.data.bookingType,
 
-        Travel_Date:
-            formatEnglishDate(
+        Date:
+            formatDate(
                 booking.data.date
             ),
 
@@ -2730,8 +2351,11 @@ async function sendBookingEmail(
         Vehicle:
             booking.data.vehicle,
 
+        Vehicle_Details:
+            booking.vehicleDetails,
+
         Pickup_District:
-            booking.pickupDistrict,
+            booking.data.pickupDistrict,
 
         Pickup_Place:
             booking.pickupPlace,
@@ -2740,7 +2364,7 @@ async function sendBookingEmail(
             booking.data.pickupAddress,
 
         Destination_District:
-            booking.destinationDistrict,
+            booking.data.destinationDistrict,
 
         Destination_Place:
             booking.destinationPlace,
@@ -2755,7 +2379,7 @@ async function sendBookingEmail(
             booking.data.notes ||
             "None",
 
-        Full_Booking_Message:
+        Full_Message:
             booking.message
 
     };
@@ -2793,13 +2417,10 @@ async function sendBookingEmail(
     ) {
 
         throw new Error(
-            "Email request failed."
+            "Booking email could not be sent."
         );
 
     }
-
-
-    return response;
 
 }
 
@@ -2812,263 +2433,12 @@ function openWhatsApp(
     message
 ) {
 
-    if (!message) {
-
-        return;
-
-    }
-
-
-    const encoded =
-        encodeURIComponent(
-            message
-        );
-
-
     const url =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
 
     window.location.href =
         url;
-
-}
-/* =========================================================
-   BUILD BOOKING
-========================================================= */
-
-function buildBooking() {
-
-    const form =
-        $("#bookingForm");
-
-
-    if (!form) {
-
-        return null;
-
-    }
-
-
-    const data =
-        Object.fromEntries(
-            new FormData(
-                form
-            ).entries()
-        );
-
-
-    const pickupPlace =
-        data.pickupPlace ===
-        OTHER_PLACE
-
-            ? data.pickupCustomPlace
-
-            : data.pickupPlace;
-
-
-    const destinationPlace =
-        data.destinationPlace ===
-        OTHER_PLACE
-
-            ? data.destinationCustomPlace
-
-            : data.destinationPlace;
-
-
-    const pickupDistrict =
-        data.pickupDistrict ||
-
-        PLACE_TO_DISTRICT[
-            pickupPlace
-        ] ||
-
-        "Not specified";
-
-
-    const destinationDistrict =
-        data.destinationDistrict ||
-
-        PLACE_TO_DISTRICT[
-            destinationPlace
-        ] ||
-
-        "Not specified";
-
-
-    const bookingId =
-        generateBookingId();
-
-
-    const customerPhone =
-        getFullCustomerPhone();
-
-
-    const babySeats =
-        getBabySeatEnglish(
-            Number(
-                data.babySeats || 0
-            )
-        );
-
-
-    const message = [
-
-        "Hello BTSM - Best Taxi Service in Mauritius!",
-
-        "",
-
-        "I would like to make a booking.",
-
-        "",
-
-        "━━━━━━━━━━━━━━━━━━━━",
-
-        "BTSM BOOKING REQUEST",
-
-        "Best Taxi Service in Mauritius",
-
-        "━━━━━━━━━━━━━━━━━━━━",
-
-        "",
-
-        `Booking ID: ${bookingId}`,
-
-        "",
-
-        "CUSTOMER DETAILS",
-
-        `Full Name: ${data.fullName}`,
-
-        `Email: ${data.customerEmail}`,
-
-        `WhatsApp / Phone: ${customerPhone}`,
-
-        "",
-
-        "JOURNEY DETAILS",
-
-        `Service: ${data.bookingType}`,
-
-        `Travel Date: ${formatEnglishDate(data.date)}`,
-
-        `Pickup Time: ${formatTime(data.time)}`,
-
-        `Passengers: ${data.passengers}`,
-
-        `Preferred Vehicle: ${data.vehicle}`,
-
-        "",
-
-        "PICKUP LOCATION",
-
-        `District / Area: ${pickupDistrict}`,
-
-        `Town / Place: ${pickupPlace}`,
-
-        `Exact Address: ${data.pickupAddress}`,
-
-        "",
-
-        "DESTINATION",
-
-        `District / Area: ${destinationDistrict}`,
-
-        `Town / Place: ${destinationPlace}`,
-
-        `Exact Address: ${data.destinationAddress}`,
-
-        "",
-
-        "ADDITIONAL DETAILS",
-
-        `Baby Seats: ${babySeats}`,
-
-        `Special Request: ${data.notes || "None"}`,
-
-        "",
-
-        "Please confirm availability and the final price.",
-
-        "",
-
-        `BTSM Contact: ${BUSINESS_PHONE}`,
-
-        `Email: ${BUSINESS_EMAIL}`,
-
-        "",
-
-        "Thank you!"
-
-    ].join(
-        "\n"
-    );
-
-
-    return {
-
-        bookingId,
-
-        customerPhone,
-
-        pickupDistrict,
-
-        pickupPlace,
-
-        destinationDistrict,
-
-        destinationPlace,
-
-        babySeats,
-
-        message,
-
-        data
-
-    };
-
-}
-
-
-/* =========================================================
-   BABY SEATS
-========================================================= */
-
-function getBabySeatEnglish(
-    count
-) {
-
-    if (
-        count <= 0
-    ) {
-
-        return "No baby seat";
-
-    }
-
-
-    if (
-        count === 1
-    ) {
-
-        return "1 baby seat - FREE";
-
-    }
-
-
-    const additional =
-        count - 1;
-
-
-    const cost =
-        additional * 5;
-
-
-    return (
-        `${count} baby seats - ` +
-        `1 free + ${additional} additional ` +
-        `(EUR ${cost} extra)`
-    );
 
 }
 
@@ -3090,25 +2460,27 @@ function generateBookingId() {
     const month =
         String(
             now.getMonth() + 1
-        ).padStart(
-            2,
-            "0"
-        );
+        )
+            .padStart(
+                2,
+                "0"
+            );
 
 
     const day =
         String(
             now.getDate()
-        ).padStart(
-            2,
-            "0"
-        );
+        )
+            .padStart(
+                2,
+                "0"
+            );
 
 
     const random =
         Math.random()
             .toString(36)
-            .slice(2, 7)
+            .slice(2,7)
             .toUpperCase();
 
 
@@ -3120,10 +2492,10 @@ function generateBookingId() {
 
 
 /* =========================================================
-   FORMAT DATE
+   DATE
 ========================================================= */
 
-function formatEnglishDate(
+function formatDate(
     value
 ) {
 
@@ -3134,34 +2506,19 @@ function formatEnglishDate(
     }
 
 
-    const parts =
+    const [
+        year,
+        month,
+        day
+    ] =
         value.split("-");
-
-
-    if (
-        parts.length !== 3
-    ) {
-
-        return value;
-
-    }
 
 
     const date =
         new Date(
-
-            Number(
-                parts[0]
-            ),
-
-            Number(
-                parts[1]
-            ) - 1,
-
-            Number(
-                parts[2]
-            )
-
+            Number(year),
+            Number(month) - 1,
+            Number(day)
         );
 
 
@@ -3179,15 +2536,16 @@ function formatEnglishDate(
                 "numeric"
 
         }
-    ).format(
-        date
-    );
+    )
+        .format(
+            date
+        );
 
 }
 
 
 /* =========================================================
-   FORMAT TIME
+   TIME
 ========================================================= */
 
 function formatTime(
@@ -3216,9 +2574,7 @@ function formatTime(
 
     const period =
         hour >= 12
-
             ? "PM"
-
             : "AM";
 
 
@@ -3240,80 +2596,58 @@ function formatTime(
 
 function setupSuccessModal() {
 
-    const modal =
-        $("#successModal");
+    $("#successModalClose")
+        ?.addEventListener(
+            "click",
+            closeSuccessModal
+        );
 
 
-    const closeTop =
-        $("#successModalClose");
+    $("#closeSuccessButton")
+        ?.addEventListener(
+            "click",
+            closeSuccessModal
+        );
 
 
-    const closeButton =
-        $("#closeSuccessButton");
+    $("#openWhatsAppButton")
+        ?.addEventListener(
+            "click",
+            () => {
 
-
-    const openButton =
-        $("#openWhatsAppButton");
-
-
-    if (!modal) {
-
-        return;
-
-    }
-
-
-    closeTop?.addEventListener(
-        "click",
-        closeSuccessModal
-    );
-
-
-    closeButton?.addEventListener(
-        "click",
-        closeSuccessModal
-    );
-
-
-    openButton?.addEventListener(
-        "click",
-        () => {
-
-            if (
-                LAST_BOOKING_MESSAGE
-            ) {
-
-                openWhatsApp(
+                if (
                     LAST_BOOKING_MESSAGE
-                );
+                ) {
+
+                    openWhatsApp(
+                        LAST_BOOKING_MESSAGE
+                    );
+
+                }
 
             }
-
-        }
-    );
+        );
 
 
-    modal.addEventListener(
-        "click",
-        (event) => {
+    $("#successModal")
+        ?.addEventListener(
+            "click",
+            (event) => {
 
-            if (
-                event.target === modal
-            ) {
+                if (
+                    event.target ===
+                    $("#successModal")
+                ) {
 
-                closeSuccessModal();
+                    closeSuccessModal();
+
+                }
 
             }
-
-        }
-    );
+        );
 
 }
 
-
-/* =========================================================
-   SHOW SUCCESS
-========================================================= */
 
 function showSuccessModal(
     bookingId
@@ -3321,7 +2655,6 @@ function showSuccessModal(
 
     const modal =
         $("#successModal");
-
 
     const id =
         $("#successBookingId");
@@ -3346,12 +2679,10 @@ function showSuccessModal(
         "open"
     );
 
-
     modal.setAttribute(
         "aria-hidden",
         "false"
     );
-
 
     document.body.classList.add(
         "no-scroll"
@@ -3359,10 +2690,6 @@ function showSuccessModal(
 
 }
 
-
-/* =========================================================
-   CLOSE SUCCESS
-========================================================= */
 
 function closeSuccessModal() {
 
@@ -3381,12 +2708,10 @@ function closeSuccessModal() {
         "open"
     );
 
-
     modal.setAttribute(
         "aria-hidden",
         "true"
     );
-
 
     document.body.classList.remove(
         "no-scroll"
@@ -3398,9 +2723,6 @@ function closeSuccessModal() {
 /* =========================================================
    TOAST
 ========================================================= */
-
-let toastTimer;
-
 
 function showToast(
     message
@@ -3426,9 +2748,13 @@ function showToast(
     );
 
 
-    clearTimeout(
-        toastTimer
-    );
+    if (toastTimer) {
+
+        clearTimeout(
+            toastTimer
+        );
+
+    }
 
 
     toastTimer =
@@ -3440,7 +2766,7 @@ function showToast(
                 );
 
             },
-            4000
+            3500
         );
 
 }
