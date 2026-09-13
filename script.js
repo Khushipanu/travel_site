@@ -2212,22 +2212,6 @@ function buildBooking() {
                 form
             ).entries()
         );
-
-
-    const pickupPlace =
-        data.pickupPlace ===
-        OTHER_PLACE
-            ? data.pickupCustomPlace
-            : data.pickupPlace;
-
-
-    const destinationPlace =
-        data.destinationPlace ===
-        OTHER_PLACE
-            ? data.destinationCustomPlace
-            : data.destinationPlace;
-
-
     const bookingId =
         generateBookingId();
 
@@ -2301,15 +2285,11 @@ function buildBooking() {
 
         "PICKUP",
 
-        `Place: ${pickupPlace}`,
-
         `Address: ${data.pickupAddress}`,
 
         "",
 
         "DESTINATION",
-
-        `Place: ${destinationPlace}`,
 
         `Address: ${data.destinationAddress}`,
 
@@ -2347,10 +2327,6 @@ function buildBooking() {
         bookingId,
 
         phone,
-
-        pickupPlace,
-
-        destinationPlace,
 
         babySeats,
 
@@ -2487,14 +2463,8 @@ async function sendBookingEmail(
         Vehicle_Details:
             booking.vehicleDetails,
 
-        Pickup_Place:
-            booking.pickupPlace,
-
         Pickup_Address:
             booking.data.pickupAddress,
-
-        Destination_Place:
-            booking.destinationPlace,
 
         Destination_Address:
             booking.data.destinationAddress,
