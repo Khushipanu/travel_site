@@ -10,6 +10,10 @@
 const BUSINESS_EMAIL =
     "info.mauritiustaxi@proton.me";
 
+/* Direct Contact / WhatsApp enquiries are sent here. */
+const CONTACT_EMAIL =
+    "info.mauritius@proton.me";
+
 const BUSINESS_PHONE =
     "+230 5253 2214";
 
@@ -38,6 +42,9 @@ let LAST_BOOKING_MESSAGE =
 
 let toastTimer =
     null;
+
+let CONTACT_REQUEST_IN_PROGRESS =
+    false;
 
 
 /* =========================================================
@@ -171,6 +178,8 @@ document.addEventListener(
         setupSuccessModal();
 
         setupBookingForm();
+
+        setupContactGate();
 
     }
 );
@@ -1991,7 +2000,9 @@ function setupBookingForm() {
    VALIDATE
 ========================================================= */
 
-function validateBookingForm() {
+function validateBookingForm(
+    requiredMessage = "Please complete all required booking fields."
+) {
 
     const fields =
         $$("#bookingForm [required]");
@@ -2011,7 +2022,7 @@ function validateBookingForm() {
 
             field.focus();
 
-            showToast(t("Please complete all required booking fields."));
+            showToast(t(requiredMessage));
 
             return false;
 
@@ -2155,20 +2166,12 @@ async function handleBookingSubmit(
         );
 
 
-        /*
-           Even if FormSubmit has not yet been activated,
-           preserve the user's booking by opening WhatsApp.
-        */
-
         LAST_BOOKING_MESSAGE =
             booking.message;
 
 
-        showToast(t("Opening WhatsApp with your booking request."));
-
-
-        openWhatsApp(
-            booking.message
+        showToast(
+            t("We could not send your booking details by email. Please try again.")
         );
 
     }
@@ -2410,24 +2413,30 @@ function getBabySeatText(
    EMAIL
 ========================================================= */
 
-async function sendBookingEmail(
-    booking
+async function sendLeadEmail(
+    booking,
+    recipientEmail,
+    subjectPrefix,
+    sourceLabel
 ) {
 
     const endpoint =
-        `https://formsubmit.co/ajax/${encodeURIComponent(BUSINESS_EMAIL)}`;
+        `https://formsubmit.co/ajax/${encodeURIComponent(recipientEmail)}`;
 
 
     const payload = {
 
         _subject:
-            `New BTSM Booking - ${booking.bookingId}`,
+            `${subjectPrefix} - ${booking.bookingId}`,
 
         _template:
             "table",
 
         _captcha:
             "false",
+
+        Source:
+            sourceLabel,
 
         Booking_ID:
             booking.bookingId,
@@ -2514,7 +2523,174 @@ async function sendBookingEmail(
     ) {
 
         throw new Error(
-            "Booking email could not be sent."
+            "Customer details could not be emailed."
+        );
+
+    }
+
+}
+
+
+async function sendBookingEmail(
+    booking
+) {
+
+    return sendLeadEmail(
+        booking,
+        BUSINESS_EMAIL,
+        "New BTSM Booking",
+        "Booking form submission"
+    );
+
+}
+
+
+async function sendContactEmail(
+    booking
+) {
+
+    return sendLeadEmail(
+        booking,
+        CONTACT_EMAIL,
+        "New BTSM Contact / WhatsApp Request",
+        "Direct Contact / WhatsApp link"
+    );
+
+}
+
+
+/* =========================================================
+   CONTACT / WHATSAPP GATE
+
+   Direct WhatsApp/contact links are intentionally blocked
+   until the customer has completed the booking details.
+   After validation, the details are emailed first and only
+   then is WhatsApp opened with the prepared message.
+========================================================= */
+
+function setupContactGate() {
+
+    const directContactLinks =
+        $$('a[href^="https://wa.me/"], footer a[href^="mailto:"]');
+
+
+    directContactLinks.forEach(
+        (link) => {
+
+            link.addEventListener(
+                "click",
+                handleDirectContactClick
+            );
+
+        }
+    );
+
+}
+
+
+async function handleDirectContactClick(
+    event
+) {
+
+    event.preventDefault();
+
+
+    if (CONTACT_REQUEST_IN_PROGRESS) {
+
+        return;
+
+    }
+
+
+    const isValid =
+        validateBookingForm(
+            "Please fill in the booking details first before contacting us on WhatsApp."
+        );
+
+
+    if (!isValid) {
+
+        $("#booking")
+            ?.scrollIntoView(
+                {
+                    behavior: "smooth",
+                    block: "start"
+                }
+            );
+
+        return;
+
+    }
+
+
+    const booking =
+        buildBooking();
+
+
+    if (!booking) {
+
+        return;
+
+    }
+
+
+    CONTACT_REQUEST_IN_PROGRESS =
+        true;
+
+
+    const clickedLink =
+        event.currentTarget;
+
+
+    clickedLink?.setAttribute(
+        "aria-busy",
+        "true"
+    );
+
+
+    showToast(
+        t("Sending your details before opening WhatsApp...")
+    );
+
+
+    try {
+
+        await sendContactEmail(
+            booking
+        );
+
+
+        LAST_BOOKING_MESSAGE =
+            booking.message;
+
+
+        openWhatsApp(
+            booking.message
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        showToast(
+            t("We could not send your details. Please try again before opening WhatsApp.")
+        );
+
+    }
+
+    finally {
+
+        CONTACT_REQUEST_IN_PROGRESS =
+            false;
+
+
+        clickedLink?.removeAttribute(
+            "aria-busy"
         );
 
     }
