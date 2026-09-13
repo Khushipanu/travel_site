@@ -3,8 +3,8 @@
 ========================================================= */
 
 :root {
-    --nav: #53697c;
-    --nav-dark: #465b6c;
+    --nav: #f1eadc;
+    --nav-dark: #e6dcc8;
 
     --navy: #082f49;
     --navy-dark: #052538;
@@ -109,13 +109,18 @@ button {
 
     z-index: 1000;
 
-    background: var(--nav);
+    background:
+        linear-gradient(
+            180deg,
+            #f7f2e8 0%,
+            #eee5d5 100%
+        );
 
     border-bottom:
-        1px solid rgba(255,255,255,.16);
+        3px solid var(--gold);
 
     box-shadow:
-        0 9px 28px rgba(21,42,56,.18);
+        0 8px 24px rgba(8,47,73,.14);
 }
 
 .nav {
@@ -133,72 +138,37 @@ button {
 ========================================================= */
 
 .brand {
-    min-width: 285px;
+    min-width: 250px;
 
     display: flex;
     align-items: center;
 
-    gap: 13px;
+    gap: 12px;
 }
 
-.brand-mark {
-    width: 50px;
-    height: 50px;
+.brand-logo {
+    width: 88px;
+    height: 72px;
 
-    flex: 0 0 50px;
+    flex: 0 0 88px;
 
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    border:
-        1px solid rgba(236,196,103,.72);
-
-    border-radius: 14px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #425669,
-            #314352
-        );
-
-    color: #f2cd70;
-
-    font:
-        700 28px/1
-        "Playfair Display",
-        Georgia,
-        serif;
+    overflow: hidden;
 }
 
-.brand-copy strong {
+.brand-logo img {
+    width: 92px;
+    height: 92px;
+
+    max-width: none;
+
+    object-fit: contain;
+
     display: block;
-
-    color: #ffffff;
-
-    font-size: 30px;
-    font-weight: 900;
-
-    line-height: 1;
-
-    letter-spacing: .11em;
 }
-
-.brand-copy small {
-    display: block;
-
-    margin-top: 7px;
-
-    color: rgba(255,255,255,.78);
-
-    font-size: 10px;
-    font-weight: 800;
-
-    line-height: 1.2;
-
-    letter-spacing: .04em;
-}
-
 
 /* =========================================================
    NAVIGATION
@@ -219,7 +189,7 @@ button {
 
     padding: 38px 0 34px;
 
-    color: rgba(255,255,255,.95);
+    color: var(--navy);
 
     font-size: 15px;
     font-weight: 700;
@@ -286,14 +256,14 @@ button {
     padding: 0 12px;
 
     border:
-        1px solid rgba(255,255,255,.28);
+        1px solid rgba(8,47,73,.18);
 
     border-radius: 13px;
 
     background:
-        rgba(255,255,255,.08);
+        rgba(255,255,255,.58);
 
-    color: #ffffff;
+    color: var(--navy);
 
     font-size: 13px;
     font-weight: 700;
@@ -302,10 +272,10 @@ button {
 .language-button:hover,
 .language-picker.open .language-button {
     background:
-        rgba(255,255,255,.14);
+        #ffffff;
 
     border-color:
-        rgba(239,202,119,.75);
+        rgba(217,166,68,.75);
 }
 
 .language-chevron {
@@ -561,7 +531,7 @@ button {
             rgba(5,49,66,.92) 47%,
             rgba(5,58,74,.63) 100%
         ),
-        url("./images/image2.jpeg");
+        url("./images/mauritius-scenic-viewpoint.jpeg");
 
     background-size: cover;
     background-position: center;
@@ -575,9 +545,9 @@ button {
     display: grid;
 
     grid-template-columns:
-        1fr 1.04fr;
+        .92fr 1.08fr;
 
-    gap: 48px;
+    gap: 42px;
 
     align-items: start;
 
@@ -587,6 +557,89 @@ button {
 
 .hero-copy {
     padding-top: 55px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-showcase {
+    display: grid;
+
+    grid-template-columns: 150px 1fr;
+
+    min-height: 174px;
+
+    margin-top: 24px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255,255,255,.16);
+
+    border-radius: 18px;
+
+    background:
+        rgba(3,28,40,.55);
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.18);
+
+    backdrop-filter: blur(6px);
+}
+
+.hero-showcase-image {
+    min-height: 235px;
+
+    overflow: hidden;
+}
+
+.hero-showcase-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.hero-showcase-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 20px 22px;
+}
+
+.hero-showcase-content > span {
+    margin-bottom: 6px;
+
+    color: var(--gold-light);
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: .14em;
+}
+
+.hero-showcase-content strong {
+    max-width: 300px;
+
+    color: #ffffff;
+
+    font:
+        700 22px/1.12
+        "Playfair Display",
+        Georgia,
+        serif;
+}
+
+.hero-showcase-content p {
+    max-width: 330px;
+
+    margin: 8px 0 0;
+
+    color: rgba(255,255,255,.70);
+
+    font-size: 10px;
+    line-height: 1.55;
 }
 
 .eyebrow {
@@ -1182,7 +1235,7 @@ h3 em {
     background: var(--soft);
 }
 
-.vehicle-prices {
+.vehicle-grid {
     display: grid;
 
     grid-template-columns:
@@ -1329,33 +1382,6 @@ h3 em {
     color: #56666e;
 
     font-size: 10px;
-}
-
-.vehicle-price {
-    margin-top: auto;
-
-    padding-top: 15px;
-}
-
-.vehicle-price small {
-    display: block;
-
-    color: #8a969d;
-
-    font-size: 8px;
-    font-weight: 900;
-}
-
-.vehicle-price strong {
-    display: block;
-
-    color: var(--navy);
-
-    font:
-        700 35px
-        "Playfair Display",
-        Georgia,
-        serif;
 }
 
 .choose-vehicle {
@@ -1505,7 +1531,13 @@ h3 em {
         0 15px 40px rgba(0,0,0,.2);
 }
 
-.excursion-photo img {
+.excursion-gallery {
+    position: absolute;
+
+    inset: 0;
+}
+
+.excursion-gallery-image {
     position: absolute;
 
     inset: 0;
@@ -1516,14 +1548,29 @@ h3 em {
     object-fit: cover;
     object-position: center;
 
+    opacity: 0;
+
+    transform: scale(1.015);
+
+    transition:
+        opacity .8s ease,
+        transform 4s ease;
+
     color: transparent;
 }
 
-.excursion-slide.active
-.excursion-photo img {
-    animation:
-        imageZoom 7s ease forwards;
+.excursion-gallery-image.active {
+    opacity: 1;
+
+    transform: scale(1.045);
 }
+
+.excursion-gallery-image.is-leaving {
+    opacity: 0;
+
+    transform: scale(1.02);
+}
+
 
 @keyframes imageZoom {
 
@@ -2584,21 +2631,16 @@ footer {
         min-width: 0;
     }
 
-    .brand-mark {
-        width: 41px;
-        height: 41px;
+    .brand-logo {
+        width: 68px;
+        height: 58px;
 
-        flex-basis: 41px;
-
-        font-size: 22px;
+        flex-basis: 68px;
     }
 
-    .brand strong {
-        font-size: 24px;
-    }
-
-    .brand-copy small {
-        font-size: 8.5px;
+    .brand-logo img {
+        width: 74px;
+        height: 74px;
     }
 
     .nav nav,
@@ -2614,14 +2656,14 @@ footer {
         place-items: center;
 
         border:
-            1px solid rgba(255,255,255,.26);
+            1px solid rgba(8,47,73,.18);
 
         border-radius: 11px;
 
         background:
-            rgba(255,255,255,.08);
+            rgba(255,255,255,.72);
 
-        color: #ffffff;
+        color: var(--navy);
 
         font-size: 22px;
     }
@@ -2637,13 +2679,16 @@ footer {
 
     .mobile-nav.open {
         display: flex;
+
+        border-top:
+            1px solid rgba(8,47,73,.12);
     }
 
     .mobile-nav a {
         padding:
             9px 0;
 
-        color: #ffffff;
+        color: var(--navy);
 
         font-size: 14px;
         font-weight: 700;
@@ -2669,6 +2714,26 @@ footer {
         text-align: center;
     }
 
+    .hero-showcase {
+        grid-template-columns: 120px 1fr;
+
+        margin-top: 20px;
+
+        text-align: left;
+    }
+
+    .hero-showcase-image {
+        min-height: 190px;
+    }
+
+    .hero-showcase-content {
+        padding: 17px;
+    }
+
+    .hero-showcase-content strong {
+        font-size: 19px;
+    }
+
     .hero-copy > p,
     .hero-tourist-note {
         margin-left: auto;
@@ -2685,7 +2750,7 @@ footer {
             1fr 1fr;
     }
 
-    .vehicle-prices {
+    .vehicle-grid {
         grid-template-columns:
             1fr 1fr;
     }
@@ -2855,7 +2920,7 @@ footer {
     }
 
     .service-grid,
-    .vehicle-prices {
+    .vehicle-grid {
         grid-template-columns:
             1fr;
     }
@@ -2935,4 +3000,352 @@ footer {
             1fr;
     }
 
+}
+/* =========================================================
+   MOBILE-FIRST POLISH / PHONE OPTIMIZATION
+   Keeps the desktop design intact while making the booking
+   experience much shorter, cleaner and easier to use on phones.
+========================================================= */
+
+@media (max-width: 560px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: calc(100% - 20px);
+    }
+
+    .nav {
+        min-height: 68px;
+    }
+
+    .brand-logo {
+        width: 56px;
+        height: 50px;
+        flex-basis: 56px;
+    }
+
+    .brand-logo img {
+        width: 62px;
+        height: 62px;
+    }
+
+    .brand strong {
+        font-size: 19px;
+    }
+
+    .brand-copy small {
+        max-width: 125px;
+        font-size: 7px;
+    }
+
+    .language-button,
+    #menuToggle {
+        width: 42px;
+        min-width: 42px;
+        height: 42px;
+    }
+
+    /* Hero: reduce vertical stacking so the booking form appears much sooner. */
+    .hero-grid {
+        gap: 20px;
+        padding: 26px 0 24px;
+    }
+
+    .hero-copy {
+        padding-top: 0;
+    }
+
+    .eyebrow {
+        padding: 7px 10px;
+        font-size: 8px;
+        letter-spacing: .09em;
+    }
+
+    .hero h1 {
+        margin: 16px 0 12px;
+        font-size: clamp(36px, 10vw, 42px);
+        line-height: 1.02;
+    }
+
+    .hero-copy > p {
+        max-width: 365px;
+        font-size: 12px;
+        line-height: 1.55;
+    }
+
+    .hero-tourist-note {
+        max-width: 365px;
+        margin-top: 12px;
+        padding: 9px 11px;
+        border-radius: 9px;
+        font-size: 9px;
+        line-height: 1.45;
+    }
+
+    .hero-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin: 14px 0 10px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        min-height: 44px;
+        padding: 10px 8px;
+        font-size: 10px;
+    }
+
+    .trust {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+    }
+
+    .trust span {
+        min-height: 34px;
+        display: grid;
+        place-items: center;
+        padding: 6px 4px;
+        border-radius: 6px;
+        font-size: 7.5px;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    /* Compact island showcase instead of a tall card. */
+    .hero-showcase {
+        grid-template-columns: 82px 1fr;
+        min-height: 96px;
+        margin-top: 12px;
+        border-radius: 12px;
+    }
+
+    .hero-showcase-image {
+        min-height: 96px;
+    }
+
+    .hero-showcase-content {
+        padding: 10px 11px;
+    }
+
+    .hero-showcase-content > span {
+        margin-bottom: 3px;
+        font-size: 7px;
+    }
+
+    .hero-showcase-content strong {
+        font-size: 15px;
+        line-height: 1.12;
+    }
+
+    .hero-showcase-content p {
+        margin-top: 4px;
+        font-size: 8px;
+        line-height: 1.35;
+    }
+
+    /* Booking card: tighter but still comfortable touch targets. */
+    .booking {
+        padding: 15px;
+        border-radius: 17px;
+        box-shadow: 0 18px 45px rgba(0,0,0,.24);
+    }
+
+    .book-head {
+        margin-bottom: 11px;
+        padding-right: 0;
+    }
+
+    .book-head > span {
+        font-size: 8px;
+    }
+
+    .book-head > b {
+        padding: 5px 7px;
+        font-size: 7px;
+    }
+
+    .book-head h2 {
+        margin: 4px 0 3px;
+        font-size: 25px;
+    }
+
+    .book-head p {
+        max-width: 290px;
+        font-size: 9px;
+        line-height: 1.35;
+    }
+
+    /* Keep useful pairs side-by-side on phones to cut form length almost in half. */
+    .form-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .form-grid label,
+    .baby-seat-select {
+        font-size: 8px;
+    }
+
+    .form-grid label.full,
+    .form-section-title {
+        grid-column: 1 / -1;
+    }
+
+    .form-grid input,
+    .form-grid select,
+    .form-grid textarea,
+    .baby-seat-select select {
+        margin-top: 3px;
+        min-height: 42px;
+        padding: 9px 10px;
+        border-radius: 8px;
+        font-size: 10px;
+    }
+
+    .form-grid textarea {
+        min-height: 74px;
+    }
+
+    .form-section-title {
+        gap: 8px;
+        padding-top: 9px;
+    }
+
+    .location-icon {
+        width: 26px;
+        height: 26px;
+        flex: 0 0 26px;
+        font-size: 9px;
+    }
+
+    .form-section-title strong {
+        font-size: 11px;
+    }
+
+    .form-section-title small {
+        font-size: 8px;
+    }
+
+    .baby-seat-box {
+        margin-top: 9px;
+        padding: 10px;
+        border-radius: 12px;
+    }
+
+    .baby-seat-heading {
+        gap: 7px;
+        margin-bottom: 7px;
+    }
+
+    .baby-seat-heading > span {
+        font-size: 19px;
+    }
+
+    .baby-seat-heading strong {
+        font-size: 11px;
+    }
+
+    .baby-seat-heading small {
+        font-size: 8px;
+    }
+
+    .baby-seat-select select {
+        min-height: 40px;
+    }
+
+    .full-btn {
+        min-height: 46px;
+        margin-top: 9px;
+        font-size: 11px;
+    }
+
+    .note {
+        margin-top: 7px;
+        font-size: 8px;
+        line-height: 1.4;
+    }
+}
+
+/* Very small phones: keep the layout comfortable without horizontal overflow. */
+@media (max-width: 380px) {
+    .container {
+        width: calc(100% - 16px);
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .trust {
+        grid-template-columns: 1fr;
+    }
+
+    .trust span {
+        min-height: 30px;
+    }
+
+    .hero-showcase {
+        grid-template-columns: 72px 1fr;
+    }
+
+    .hero-showcase-image {
+        min-height: 92px;
+    }
+
+    .hero-showcase-content strong {
+        font-size: 14px;
+    }
+
+    .form-grid {
+        gap: 7px;
+    }
+}
+
+/* =========================================================
+   FINAL PHONE HEADER + LANGUAGE POLISH
+========================================================= */
+@media (max-width: 560px) {
+    .nav {
+        width: calc(100% - 20px);
+        min-height: 66px;
+        gap: 8px;
+    }
+
+    .brand {
+        min-width: 0;
+        flex: 0 1 auto;
+    }
+
+    .actions {
+        margin-left: auto;
+        flex: 0 0 auto;
+        gap: 8px;
+    }
+
+    .language-picker {
+        order: 1;
+    }
+
+    #menuToggle {
+        order: 2;
+    }
+
+    .language-menu {
+        right: 0;
+        width: 176px;
+    }
+}
+
+@media (max-width: 380px) {
+    .brand-logo { width: 52px; height: 48px; flex-basis: 52px; }
+    .brand-logo img { width: 58px; height: 58px; }
+    .actions { gap: 6px; }
 }
