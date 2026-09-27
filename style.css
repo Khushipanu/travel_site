@@ -138,36 +138,72 @@ button {
 ========================================================= */
 
 .brand {
-    min-width: 250px;
+    min-width: 220px;
 
     display: flex;
     align-items: center;
 
-    gap: 12px;
+    gap: 6px;
 }
 
 .brand-logo {
-    width: 88px;
-    height: 72px;
+    width: 66px;
+    height: 62px;
 
-    flex: 0 0 88px;
+    flex: 0 0 66px;
 
     display: flex;
     align-items: center;
     justify-content: center;
-
-    overflow: hidden;
 }
 
 .brand-logo img {
-    width: 92px;
-    height: 92px;
+    width: 70px;
+    height: 70px;
 
     max-width: none;
 
     object-fit: contain;
 
     display: block;
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 2px;
+    line-height: 1;
+    color: var(--navy);
+    white-space: nowrap;
+}
+
+.brand-copy strong {
+    display: block;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+}
+
+.brand-copy strong span {
+    color: var(--navy);
+}
+
+.brand-copy strong em {
+    color: var(--gold);
+    font-style: normal;
+}
+
+.brand-copy small {
+    display: block;
+    margin-left: 1px;
+
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: .075em;
+    text-transform: none;
+    color: var(--navy);
 }
 
 /* =========================================================
@@ -473,12 +509,12 @@ button {
 }
 
 .header-book {
-    min-height: 48px;
+    min-height: 38px;
 
     padding:
-        12px 20px;
+        8px 14px;
 
-    font-size: 13px;
+    font-size: 11px;
 }
 
 .primary {
@@ -2595,11 +2631,7 @@ footer {
 @media (max-width: 1100px) {
 
     .brand {
-        min-width: 240px;
-    }
-
-    .brand strong {
-        font-size: 27px;
+        min-width: 220px;
     }
 
     .nav nav {
@@ -2632,15 +2664,22 @@ footer {
     }
 
     .brand-logo {
-        width: 68px;
-        height: 58px;
-
-        flex-basis: 68px;
+        width: 60px;
+        height: 56px;
+        flex-basis: 60px;
     }
 
     .brand-logo img {
-        width: 74px;
-        height: 74px;
+        width: 64px;
+        height: 64px;
+    }
+
+    .brand-copy strong {
+        font-size: 19px;
+    }
+
+    .brand-copy small {
+        font-size: 10px;
     }
 
     .nav nav,
@@ -2843,23 +2882,14 @@ footer {
         gap: 8px;
     }
 
-    .brand-mark {
-        width: 37px;
-        height: 37px;
-
-        flex-basis: 37px;
-
-        font-size: 20px;
-    }
-
-    .brand strong {
-        font-size: 21px;
+    .brand-copy strong {
+        font-size: 12px;
     }
 
     .brand-copy small {
         max-width: 145px;
-
-        font-size: 7.5px;
+        font-size: 7px;
+        letter-spacing: .045em;
     }
 
     .actions {
@@ -3021,23 +3051,24 @@ footer {
     }
 
     .brand-logo {
-        width: 56px;
-        height: 50px;
-        flex-basis: 56px;
+        width: 44px;
+        height: 40px;
+        flex-basis: 44px;
     }
 
     .brand-logo img {
-        width: 62px;
-        height: 62px;
+        width: 48px;
+        height: 48px;
     }
 
-    .brand strong {
-        font-size: 19px;
+    .brand-copy strong {
+        font-size: 10px;
     }
 
     .brand-copy small {
-        max-width: 125px;
-        font-size: 7px;
+        max-width: 100px;
+        font-size: 6.5px;
+        letter-spacing: .035em;
     }
 
     .language-button,
@@ -3345,7 +3376,335 @@ footer {
 }
 
 @media (max-width: 380px) {
-    .brand-logo { width: 52px; height: 48px; flex-basis: 52px; }
-    .brand-logo img { width: 58px; height: 58px; }
+    .brand-logo { width: 40px; height: 38px; flex-basis: 40px; }
+    .brand-logo img { width: 44px; height: 44px; }
+    .brand-copy strong { font-size: 9px; }
+    .brand-copy small { font-size: 6px; letter-spacing: .025em; }
     .actions { gap: 6px; }
+}
+
+
+/* =========================================================
+   INTERNATIONAL PHONE COUNTRY SEARCH
+   Keep the country selector/search visually aligned with the
+   booking form. These rules override the generic form-input
+   styles that would otherwise affect the plugin's search box.
+========================================================= */
+
+.iti {
+    position: relative;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.iti__dropdown-content {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.iti__search-input {
+    display: block;
+    box-sizing: border-box !important;
+    width: calc(100% - 16px) !important;
+    min-height: 38px !important;
+    margin: 8px !important;
+    padding: 8px 10px !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 8px !important;
+    background: #ffffff !important;
+    color: var(--ink) !important;
+    font-family: inherit !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.iti__search-input:focus {
+    border-color: #5ba49c !important;
+    box-shadow: 0 0 0 3px rgba(15,118,110,.08) !important;
+}
+
+.iti__country-list {
+    box-sizing: border-box;
+}
+
+.iti__country {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PHONE COUNTRY DROPDOWN — FINAL ALIGNMENT FIX
+   Keep the international country picker wide enough for the
+   search field and country names. This only affects the
+   intl-tel-input dropdown; the approved page layout is unchanged.
+========================================================= */
+.iti__dropdown-content {
+    width: 360px !important;
+    min-width: 320px !important;
+    max-width: min(360px, calc(100vw - 24px)) !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    z-index: 99999 !important;
+}
+
+.iti__search-input {
+    display: block !important;
+    width: calc(100% - 20px) !important;
+    min-width: 0 !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    margin: 8px 10px !important;
+    padding: 8px 12px !important;
+    box-sizing: border-box !important;
+    border: 1px solid #d8e0e4 !important;
+    border-radius: 8px !important;
+    background: #fff !important;
+    color: #163047 !important;
+    font: inherit !important;
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+    outline: none !important;
+}
+
+.iti__search-input:focus {
+    border-color: #5ba49c !important;
+    box-shadow: 0 0 0 3px rgba(15,118,110,.08) !important;
+}
+
+.iti__country-list {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 280px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
+
+.iti__country {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 9px 12px !important;
+}
+
+.iti__country-name,
+.iti__dial-code {
+    white-space: nowrap !important;
+}
+
+@media (max-width: 480px) {
+    .iti__dropdown-content {
+        width: calc(100vw - 24px) !important;
+        min-width: 0 !important;
+        max-width: calc(100vw - 24px) !important;
+    }
+}
+
+
+/* =========================================================
+   DESKTOP COMPACT UI — MATCH APPROVED VERCEL SCALE
+   The live approved design is the same layout, but its desktop
+   content is intentionally more compact. This only reduces the
+   desktop scale; colors, sections, functionality and structure
+   remain unchanged. Mobile/tablet styles are untouched.
+========================================================= */
+@media (min-width: 1101px) {
+    /* Header is intentionally full-width on desktop so the
+       logo/brand stays left, navigation stays central, and
+       language + Book Now stay on the far right. */
+    .nav {
+        width: calc(100% - 48px);
+        max-width: none;
+        min-height: 84px;
+        gap: 28px;
+    }
+
+    .brand {
+        min-width: 285px;
+        flex: 0 0 285px;
+        gap: 7px;
+    }
+
+    .brand-logo {
+        width: 58px;
+        height: 56px;
+        flex-basis: 58px;
+    }
+
+    .brand-logo img {
+        width: 62px;
+        height: 62px;
+    }
+
+    .brand-copy strong {
+        font-size: 17px;
+        line-height: 1.02;
+    }
+
+    .brand-copy small {
+        font-size: 11px;
+        letter-spacing: .055em;
+        line-height: 1.05;
+    }
+
+    .nav nav {
+        flex: 1 1 auto;
+        gap: 25px;
+        justify-content: center;
+    }
+
+    .nav nav .nav-link {
+        padding: 32px 0 28px;
+        font-size: 13px;
+    }
+
+    .nav nav .nav-link::after {
+        bottom: 18px;
+        height: 2px;
+    }
+
+    .language-button {
+        min-height: 42px;
+    }
+
+    .header-book {
+        min-height: 36px;
+        padding: 7px 12px;
+        font-size: 10px;
+        border-radius: 9px;
+    }
+
+    .hero {
+        min-height: 0;
+    }
+
+    .hero-grid {
+        gap: 34px;
+        padding: 44px 0;
+    }
+
+    .hero-copy {
+        padding-top: 44px;
+    }
+
+    .eyebrow {
+        padding: 7px 11px;
+        font-size: 9px;
+    }
+
+    .hero h1 {
+        margin: 19px 0 15px;
+        font-size: clamp(40px, 4vw, 55px);
+    }
+
+    .hero-copy > p {
+        font-size: 12px;
+    }
+
+    .hero-tourist-note {
+        margin-top: 15px;
+        padding: 10px 12px;
+        font-size: 9px;
+    }
+
+    .hero-buttons {
+        gap: 9px;
+        margin: 18px 0 15px;
+    }
+
+    .trust {
+        gap: 6px;
+    }
+
+    .trust span {
+        padding: 6px 8px;
+        font-size: 8px;
+    }
+
+    .hero-showcase {
+        grid-template-columns: 120px 1fr;
+        min-height: 140px;
+        margin-top: 19px;
+        border-radius: 15px;
+    }
+
+    .hero-showcase-image {
+        min-height: 188px;
+    }
+
+    .hero-showcase-content {
+        padding: 16px 18px;
+    }
+
+    .hero-showcase-content > span {
+        font-size: 8px;
+    }
+
+    .hero-showcase-content strong {
+        font-size: 18px;
+    }
+
+    .hero-showcase-content p {
+        font-size: 8px;
+    }
+
+    .booking {
+        padding: 20px;
+        border-radius: 18px;
+        box-shadow: 0 21px 56px rgba(0,0,0,.30);
+    }
+
+    .book-head {
+        margin-bottom: 14px;
+    }
+
+    .book-head > span,
+    .book-head > b {
+        font-size: 8px;
+    }
+
+    .book-head > b {
+        padding: 5px 8px;
+    }
+
+    .book-head h2 {
+        margin: 4px 0;
+        font-size: 23px;
+    }
+
+    .book-head p {
+        font-size: 8px;
+    }
+
+    .form-grid {
+        gap: 9px;
+    }
+
+    .form-grid label,
+    .baby-seat-select {
+        font-size: 8px;
+    }
+
+    .form-grid input,
+    .form-grid select,
+    .form-grid textarea,
+    .baby-seat-select select {
+        margin-top: 3px;
+        padding: 9px;
+        border-radius: 8px;
+        font-size: 9px;
+    }
+
+    .form-section-title {
+        gap: 8px;
+        padding-top: 11px;
+    }
+
+    .location-icon {
+        width: 26px;
+        height: 26px;
+    }
 }

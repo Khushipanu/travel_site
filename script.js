@@ -12,13 +12,13 @@ const BUSINESS_EMAIL =
 
 /* Direct Contact / WhatsApp enquiries are sent here. */
 const CONTACT_EMAIL =
-    "info.mauritius@proton.me";
+    "info.mauritiustaxi@proton.me";
 
 const BUSINESS_PHONE =
-    "+230 5253 2214";
+    "+230 58252214";
 
 const WHATSAPP_NUMBER =
-    "23052532214";
+    "23058252214";
 
 
 /* =========================================================
@@ -1987,11 +1987,95 @@ function setupLightbox() {
 
 function setupBookingForm() {
 
-    $("#bookingForm")
-        ?.addEventListener(
-            "submit",
-            handleBookingSubmit
-        );
+    const form =
+        $("#bookingForm");
+
+    if (!form) {
+        return;
+    }
+
+    form.addEventListener(
+        "submit",
+        handleBookingSubmit
+    );
+
+    setupFieldValidation();
+
+}
+
+
+/* =========================================================
+   FIELD VALIDATION / INPUT GUARDS
+
+   These checks are intentionally kept in JavaScript because
+   the booking form uses novalidate and submits through the
+   existing WhatsApp/email workflow.
+========================================================= */
+
+function setupFieldValidation() {
+
+    const name = $("#fullName");
+    const email = $("#customerEmail");
+    const phone = $("#phone");
+    const date = $("#date");
+
+    if (name) {
+
+        name.addEventListener("input", () => {
+
+            // Keep only letters (including accented letters), spaces,
+            // apostrophes, hyphens and periods. Numbers are never kept.
+            name.value = name.value
+                .replace(/[^\p{L}\p{M} .'-]/gu, "")
+                .replace(/\s{2,}/g, " ")
+                .slice(0, 80);
+
+        });
+
+        name.addEventListener("blur", () => {
+            name.value = name.value.trim().replace(/\s{2,}/g, " ");
+        });
+
+    }
+
+    if (email) {
+
+        email.addEventListener("input", () => {
+            email.value = email.value.replace(/\s/g, "").slice(0, 254);
+        });
+
+    }
+
+    if (phone) {
+
+        phone.addEventListener("input", () => {
+
+            // The country/dial code is selected separately by
+            // intl-tel-input. The customer may have a number from any
+            // country, so do not apply country-specific length/format
+            // validation here. Only keep numeric digits in the local
+            // number field.
+            phone.value = phone.value.replace(/\D/g, "");
+
+        });
+
+        phone.addEventListener("paste", () => {
+            requestAnimationFrame(() => {
+                phone.value = phone.value.replace(/\D/g, "");
+            });
+        });
+
+    }
+
+    if (date) {
+
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, "0");
+        const dd = String(today.getDate()).padStart(2, "0");
+        date.min = `${yyyy}-${mm}-${dd}`;
+
+    }
 
 }
 
@@ -2004,85 +2088,118 @@ function validateBookingForm(
     requiredMessage = "Please complete all required booking fields."
 ) {
 
+    const form = $("#bookingForm");
+
+    if (!form) {
+        return false;
+    }
+
     const fields =
         $$("#bookingForm [required]");
 
+    for (const field of fields) {
 
-    for (
-        const field
-        of fields
-    ) {
-
-        if (
-            !String(
-                field.value ||
-                ""
-            ).trim()
-        ) {
+        if (!String(field.value || "").trim()) {
 
             field.focus();
-
             showToast(t(requiredMessage));
-
             return false;
 
         }
 
     }
 
-
-    const email =
-        $("#customerEmail");
-
-
-    const emailPattern =
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+    // Full name: letters only, with normal spaces, apostrophes,
+    // hyphens and periods allowed. Numbers and random symbols fail.
+    const name = $("#fullName");
+    const fullName = name?.value.trim() || "";
+    const namePattern = /^[\p{L}\p{M}]+(?:[ .'-][\p{L}\p{M}]+)*$/u;
 
     if (
-        !emailPattern.test(
-            email?.value.trim() ||
-            ""
-        )
+        fullName.length < 2 ||
+        fullName.length > 80 ||
+        !namePattern.test(fullName)
+    ) {
+
+        name?.focus();
+        showToast(t("Please enter a valid full name."));
+        return false;
+
+    }
+
+    // Email: basic RFC-compatible practical validation.
+    const email = $("#customerEmail");
+    const emailValue = email?.value.trim() || "";
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    if (
+        emailValue.length > 254 ||
+        !emailPattern.test(emailValue)
     ) {
 
         email?.focus();
-
         showToast(t("Please enter a valid email address."));
-
         return false;
 
     }
 
-
+    // Phone: the country/dial code is selected from the country dropdown.
+    // Do not apply country-specific phone-number length or validity rules,
+    // because customers may contact the business from any country.
+    // Only ensure that the local number field contains digits.
+    const phone = $("#phone");
     const phoneDigits =
-        $("#phone")
-            ?.value
-            .replace(
-                /\D/g,
-                ""
-            ) ||
-        "";
+        phone?.value.replace(/\D/g, "") || "";
 
+    if (!phoneDigits) {
 
-    if (
-        phoneDigits.length <
-        5
-    ) {
-
-        $("#phone")
-            ?.focus();
-
-        showToast(t("Please enter a valid phone number."));
-
+        phone?.focus();
+        showToast(t("Please enter your phone number."));
         return false;
 
     }
 
+    // Travel date cannot be in the past.
+    const date = $("#date");
+    const dateValue = date?.value || "";
+
+    if (dateValue) {
+
+        const selected = new Date(`${dateValue}T00:00:00`);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        if (Number.isNaN(selected.getTime()) || selected < today) {
+            date?.focus();
+            showToast(t("Please choose a valid travel date."));
+            return false;
+        }
+
+    }
+
+    // Pickup and destination addresses should contain real text,
+    // not just whitespace or punctuation.
+    const addressFields = [
+        $("#pickupAddress"),
+        $("#destinationAddress")
+    ];
+
+    for (const field of addressFields) {
+
+        const value = field?.value.trim() || "";
+
+        if (value.length < 3) {
+            field?.focus();
+            showToast(t(requiredMessage));
+            return false;
+        }
+
+    }
 
     return true;
 
 }
+
 
 
 /* =========================================================
