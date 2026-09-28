@@ -3856,3 +3856,530 @@ footer {
         font-size: 6.5px;
     }
 }
+
+/* =========================================================
+   DESKTOP WIDE LAYOUT FIX
+   Prevents the deployed desktop version from looking overly
+   narrow/centered. The original structure is preserved; this
+   only restores a fuller desktop scale and wider content area.
+========================================================= */
+@media (min-width: 1101px) {
+    .container {
+        width: min(1400px, calc(100% - 64px));
+    }
+
+    /* Keep the header stretched across the viewport while giving
+       the actual page content more horizontal breathing room. */
+    .hero-grid {
+        grid-template-columns: minmax(0, 0.98fr) minmax(620px, 1.02fr);
+        gap: 54px;
+        padding: 58px 0 70px;
+    }
+
+    .hero-copy {
+        padding-top: 48px;
+    }
+
+    .eyebrow {
+        padding: 9px 14px;
+        font-size: 10px;
+    }
+
+    .hero h1 {
+        margin: 23px 0 20px;
+        max-width: 700px;
+        font-size: clamp(54px, 4.25vw, 72px);
+        line-height: 1.02;
+    }
+
+    .hero-copy > p {
+        max-width: 650px;
+        font-size: 15px;
+        line-height: 1.65;
+    }
+
+    .hero-tourist-note {
+        max-width: 650px;
+        margin-top: 19px;
+        padding: 13px 16px;
+        font-size: 11px;
+    }
+
+    .hero-buttons {
+        gap: 12px;
+        margin: 23px 0 18px;
+    }
+
+    .trust {
+        gap: 8px;
+    }
+
+    .trust span {
+        padding: 7px 10px;
+        font-size: 10px;
+    }
+
+    .hero-showcase {
+        grid-template-columns: 155px 1fr;
+        min-height: 170px;
+        margin-top: 23px;
+        border-radius: 18px;
+    }
+
+    .hero-showcase-image {
+        min-height: 225px;
+    }
+
+    .hero-showcase-content {
+        padding: 20px 23px;
+    }
+
+    .hero-showcase-content > span {
+        font-size: 9px;
+    }
+
+    .hero-showcase-content strong {
+        max-width: 390px;
+        font-size: 22px;
+    }
+
+    .hero-showcase-content p {
+        max-width: 420px;
+        font-size: 10px;
+    }
+
+    .booking {
+        padding: 27px;
+        border-radius: 22px;
+        box-shadow: 0 28px 72px rgba(0,0,0,.32);
+    }
+
+    .book-head {
+        margin-bottom: 19px;
+    }
+
+    .book-head > span,
+    .book-head > b {
+        font-size: 9px;
+    }
+
+    .book-head > b {
+        padding: 6px 10px;
+    }
+
+    .book-head h2 {
+        margin: 5px 0;
+        font-size: 30px;
+    }
+
+    .book-head p {
+        font-size: 10px;
+    }
+
+    .form-grid {
+        gap: 12px;
+    }
+
+    .form-grid label,
+    .baby-seat-select {
+        font-size: 9px;
+    }
+
+    .form-grid input,
+    .form-grid select,
+    .form-grid textarea,
+    .baby-seat-select select {
+        margin-top: 4px;
+        padding: 11px;
+        border-radius: 9px;
+        font-size: 11px;
+    }
+
+    .form-section-title {
+        gap: 9px;
+        padding-top: 13px;
+    }
+
+    .location-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* Larger desktop section typography/content widths below the hero. */
+    .section {
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+
+    .section h2 {
+        font-size: clamp(38px, 3.2vw, 54px);
+    }
+}
+
+
+/* =========================================================
+   FINAL BALANCED RESPONSIVE POLISH
+   Desktop: wider than the original compact version, but with
+   intentional side margins so the layout does not look stretched.
+   Phone: leaves the existing mobile design untouched.
+========================================================= */
+@media (min-width: 1101px) {
+    .container {
+        width: min(1320px, calc(100% - 72px));
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .site-header .nav {
+        width: min(1320px, calc(100% - 72px));
+        max-width: 1320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-grid {
+        grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+        gap: 48px;
+        padding: 54px 0 64px;
+        align-items: start;
+    }
+
+    .hero-copy {
+        padding-top: 42px;
+        min-width: 0;
+    }
+
+    .hero h1 {
+        max-width: 620px;
+        margin: 18px 0 18px;
+        font-size: clamp(52px, 4.1vw, 66px);
+        line-height: 1.03;
+        letter-spacing: -.025em;
+    }
+
+    .hero-copy > p,
+    .hero-tourist-note {
+        max-width: 600px;
+    }
+
+    .hero-showcase {
+        grid-template-columns: 150px minmax(0, 1fr);
+        min-height: 160px;
+        margin-top: 21px;
+    }
+
+    .hero-showcase-image {
+        min-height: 205px;
+    }
+
+    .booking {
+        width: 100%;
+        max-width: none;
+        padding: 25px;
+        border-radius: 22px;
+    }
+
+    .book-head h2 {
+        font-size: 30px;
+    }
+
+    .section {
+        padding: 76px 0;
+    }
+
+    .head,
+    .center {
+        margin-bottom: 34px;
+    }
+
+    .service-grid,
+    .vehicle-grid,
+    .experience-grid {
+        gap: 20px;
+    }
+
+    .service-grid article,
+    .vehicle-card {
+        padding: 24px;
+    }
+
+    .excursion-section {
+        padding: 72px 0 60px;
+    }
+
+    .excursion-slide {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 52px;
+    }
+
+    .excursion-photo {
+        height: 440px;
+    }
+
+    .why-grid {
+        gap: 64px;
+    }
+}
+
+/* Large screens: avoid oversized empty margins while preserving a calm edge. */
+@media (min-width: 1500px) {
+    .container,
+    .site-header .nav {
+        width: min(1360px, calc(100% - 96px));
+        max-width: 1360px;
+    }
+}
+
+/* Tablet: maintain comfortable gutters and prevent squeezed navigation/content. */
+@media (min-width: 561px) and (max-width: 1100px) {
+    .container {
+        width: calc(100% - 40px);
+    }
+
+    .hero-grid {
+        padding-top: 42px;
+        padding-bottom: 48px;
+    }
+}
+
+/* Phone safety: preserve the earlier mobile layout and prevent horizontal overflow. */
+@media (max-width: 560px) {
+    .container {
+        width: calc(100% - 20px);
+    }
+
+    .hero-grid,
+    .service-grid,
+    .vehicle-grid,
+    .experience-grid,
+    .why-grid,
+    .excursion-slide {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .booking,
+    .hero-showcase,
+    .experience-grid article,
+    .vehicle-card,
+    .service-grid article {
+        max-width: 100%;
+    }
+
+    img,
+    input,
+    select,
+    textarea,
+    button {
+        max-width: 100%;
+    }
+}
+
+/* =========================================================
+   FINAL DESKTOP BALANCE
+   Keeps the site wide with calm side margins and makes the
+   booking card compact enough to sit comfortably in the first
+   desktop viewport. Mobile rules below remain unchanged.
+========================================================= */
+@media (min-width: 1101px) {
+    .container,
+    .site-header .nav {
+        width: min(1340px, calc(100% - 120px));
+        max-width: 1340px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero {
+        min-height: calc(100vh - 99px);
+    }
+
+    .hero-grid {
+        grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+        gap: 42px;
+        padding: 30px 0 34px;
+        align-items: start;
+    }
+
+    .hero-copy {
+        padding-top: 30px;
+    }
+
+    .hero h1 {
+        margin: 16px 0 14px;
+        font-size: clamp(50px, 3.7vw, 62px);
+    }
+
+    .hero-copy > p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .hero-tourist-note {
+        margin-top: 14px;
+        padding: 10px 13px;
+        font-size: 10px;
+    }
+
+    .hero-buttons {
+        margin: 17px 0 13px;
+    }
+
+    .hero-showcase {
+        grid-template-columns: 135px minmax(0, 1fr);
+        min-height: 145px;
+        margin-top: 17px;
+    }
+
+    .hero-showcase-image {
+        min-height: 185px;
+    }
+
+    .hero-showcase-content {
+        padding: 16px 18px;
+    }
+
+    .hero-showcase-content strong {
+        font-size: 20px;
+    }
+
+    /* Compact the booking card vertically without changing its structure. */
+    .booking {
+        padding: 18px 20px;
+        border-radius: 20px;
+        box-shadow: 0 20px 52px rgba(0,0,0,.28);
+    }
+
+    .book-head {
+        margin-bottom: 10px;
+    }
+
+    .book-head > span,
+    .book-head > b {
+        font-size: 8px;
+    }
+
+    .book-head > b {
+        padding: 5px 8px;
+    }
+
+    .book-head h2 {
+        margin: 3px 0 2px;
+        font-size: 27px;
+    }
+
+    .book-head p {
+        font-size: 9px;
+    }
+
+    .form-grid {
+        gap: 7px 9px;
+    }
+
+    .form-grid label,
+    .baby-seat-select {
+        font-size: 8px;
+    }
+
+    .form-grid input,
+    .form-grid select,
+    .form-grid textarea,
+    .baby-seat-select select {
+        margin-top: 3px;
+        padding: 8px 9px;
+        min-height: 34px;
+        border-radius: 8px;
+        font-size: 10px;
+    }
+
+    .form-grid textarea {
+        min-height: 58px;
+    }
+
+    .form-section-title {
+        gap: 8px;
+        padding-top: 8px;
+    }
+
+    .location-icon {
+        width: 26px;
+        height: 26px;
+        flex: 0 0 26px;
+    }
+
+    .form-section-title strong {
+        font-size: 11px;
+    }
+
+    .form-section-title small {
+        font-size: 8px;
+    }
+
+    .baby-seat-box {
+        margin-top: 8px;
+        padding: 9px 10px;
+        border-radius: 10px;
+    }
+
+    .baby-seat-heading {
+        gap: 7px;
+        margin-bottom: 6px;
+    }
+
+    .baby-seat-heading > span {
+        font-size: 16px;
+    }
+
+    .baby-seat-heading strong {
+        font-size: 10px;
+    }
+
+    .baby-seat-heading small {
+        font-size: 8px;
+    }
+
+    .full-btn {
+        min-height: 39px;
+        margin-top: 9px;
+    }
+
+    .note {
+        margin-top: 5px;
+        font-size: 8px;
+    }
+}
+
+/* Extra-wide monitors: retain the same visual rhythm instead of stretching edge-to-edge. */
+@media (min-width: 1500px) {
+    .container,
+    .site-header .nav {
+        width: min(1340px, calc(100% - 140px));
+        max-width: 1340px;
+    }
+}
+
+/* Phone: do not inherit any desktop compaction; keep comfortable touch targets. */
+@media (max-width: 560px) {
+    .container,
+    .site-header .nav {
+        width: calc(100% - 20px);
+        max-width: none;
+    }
+
+    .hero {
+        min-height: 0;
+    }
+
+    .booking {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .form-grid input,
+    .form-grid select,
+    .form-grid textarea,
+    .baby-seat-select select {
+        min-height: 42px;
+    }
+}
