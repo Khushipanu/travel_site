@@ -3708,3 +3708,151 @@ footer {
         height: 26px;
     }
 }
+
+
+/* =========================================================
+   BRAND TITLE EMPHASIS
+   Requested: keep the existing logo, but make the
+   "Best Taxi Service in Mauritius" brand text more prominent.
+========================================================= */
+
+@media (min-width: 1101px) {
+    .brand-copy strong {
+        font-size: 22px;
+        line-height: 1.02;
+        letter-spacing: -.02em;
+    }
+
+    .brand-copy small {
+        font-size: 13px;
+        line-height: 1.05;
+        letter-spacing: .045em;
+    }
+}
+
+
+/* =========================================================
+   REFINED BRANDING — BEST TAXI SERVICE IN MAURITIUS
+   Makes the primary business name more prominent while keeping
+   the existing header structure, logo and navigation unchanged.
+========================================================= */
+.brand-copy {
+    gap: 5px;
+    line-height: 1;
+}
+
+.brand-copy strong {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: .98;
+    color: var(--navy);
+    text-shadow: 0 1px 0 rgba(255,255,255,.65);
+}
+
+.brand-copy strong span {
+    color: var(--navy);
+}
+
+.brand-copy strong em {
+    color: var(--gold);
+    font-style: normal;
+}
+
+.brand-copy strong b {
+    color: var(--navy);
+    font-weight: 900;
+}
+
+.brand-copy small {
+    margin-left: 1px;
+    font-size: 14px;
+    font-weight: 850;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #8a6a2c;
+    line-height: 1;
+    position: relative;
+}
+
+.brand-copy small::after {
+    content: "";
+    display: block;
+    width: 54px;
+    height: 2px;
+    margin-top: 5px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--gold), rgba(183,142,50,0));
+}
+
+@media (min-width: 1101px) {
+    .brand {
+        min-width: 325px;
+        flex-basis: 325px;
+        gap: 10px;
+    }
+
+    .brand-logo {
+        width: 62px;
+        height: 58px;
+        flex-basis: 62px;
+    }
+
+    .brand-logo img {
+        width: 66px;
+        height: 66px;
+    }
+
+    .brand-copy strong {
+        font-size: 26px;
+    }
+
+    .brand-copy small {
+        font-size: 13px;
+        letter-spacing: .17em;
+    }
+}
+
+@media (max-width: 1100px) and (min-width: 561px) {
+    .brand-copy strong {
+        font-size: 22px;
+    }
+
+    .brand-copy small {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 560px) {
+    .brand {
+        gap: 7px;
+    }
+
+    .brand-copy strong {
+        font-size: 14px;
+        letter-spacing: -.025em;
+        line-height: 1;
+    }
+
+    .brand-copy small {
+        font-size: 7.5px;
+        letter-spacing: .095em;
+        line-height: 1;
+    }
+
+    .brand-copy small::after {
+        width: 32px;
+        height: 1.5px;
+        margin-top: 3px;
+    }
+}
+
+@media (max-width: 380px) {
+    .brand-copy strong {
+        font-size: 12px;
+    }
+
+    .brand-copy small {
+        font-size: 6.5px;
+    }
+}

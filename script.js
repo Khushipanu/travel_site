@@ -8,11 +8,11 @@
 ========================================================= */
 
 const BUSINESS_EMAIL =
-    "info.mauritiustaxi@proton.me";
+    "infomauritiustaxi@gmail.com";
 
 /* Direct Contact / WhatsApp enquiries are sent here. */
 const CONTACT_EMAIL =
-    "info.mauritiustaxi@proton.me";
+    "infomauritiustaxi@gmail.com";
 
 const BUSINESS_PHONE =
     "+230 58252214";
